@@ -1,2 +1,8 @@
 # FumblingHotshots
-Main repository for our project(s)
+
+Dungeon Crawler
+Play Here: https://jbarajar.github.io/FumblingHotshots/
+
+Controls:
+Move: WASD
+Attack: Space
