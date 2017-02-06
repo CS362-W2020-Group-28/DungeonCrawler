@@ -6,7 +6,6 @@
 <meta property="og:image" content="http://mrmatt.tv/dungeoncrawler/img/preview.png" />
 <meta property="og:description" content="2D graphics!" />
 <link rel="stylesheet" href="css/styles.css">
-
 </head>
 
 <body>
@@ -39,5 +38,28 @@
 <script type="text/javascript" src="scripts/player.js"></script>
 <script type="text/javascript" src="scripts/map.js"></script>
 <script type="text/javascript" src="scripts/scene.js"></script>
+
+<script type="text/javascript">
+
+
+
+$(function() {
+
+	Scene = new Scene();
+	tileImage = document.getElementById("basicTiles");
+
+
+	Scene.Start();
+
+	requestAnimationFrame(mainLoop);
+
+});
+
+
+
+
+
+</script>
+
 
 </html>
