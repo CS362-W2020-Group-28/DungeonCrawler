@@ -6,6 +6,7 @@
 <meta property="og:image" content="http://mrmatt.tv/dungeoncrawler/img/preview.png" />
 <meta property="og:description" content="2D graphics!" />
 <link rel="stylesheet" href="css/styles.css">
+
 </head>
 
 <body>
@@ -37,10 +38,10 @@
 <script type="text/javascript">
 
 var input = {
-		w: false,
-		s: false,
-		a: false,
-		d: false,
+	w: false,
+	s: false,
+	a: false,
+	d: false,
     // New key implementations for attacking
     space: false,
     arrowKeyUp: false,
@@ -68,7 +69,7 @@ document.addEventListener('keydown',doKeyDown,false);
 document.addEventListener('keyup',doKeyRelease,false);
 
 
-
+// Where the game is executed. Runs when page elements are loaded.
 $(function() {
 
 	Scene = new Scene();
@@ -2649,7 +2650,7 @@ function doKeyDown(e) {
 
 	}
 
-
+    
 	function getRandomArbitrary(min, max) {
   		return Math.random() * (max - min) + min;
 	}
