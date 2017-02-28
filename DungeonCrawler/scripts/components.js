@@ -21,15 +21,31 @@ function SpriteRenderer() {
 
 function BoxCollider(width, height, parent) {
 
+    this.type = "BoxCollider";
 	this.offset = new Vector2();
 	this.parent = parent;
 	this.width = width;
 	this.height = height;
-    this.isTrigger = false; //if true collider only triggers onCollide() functions. Doesn't return
     this.ignorePlayer = false;
 
+
+    this.Start = function() {
+
+
+    }
+
+    this.Update = function(scene) {
+
+
+    }
+
+
+    this.Draw = function(scene) {
+
+
+    }
+
 	this.checkCollision = function(scene, position) {
-        if(!this.isTrigger) {
     		//Get tile id
     		var tileID;
 
@@ -40,6 +56,7 @@ function BoxCollider(width, height, parent) {
     			}
 
     			if(scene.tileRenderer.map.layers[i].type == "tilelayer") {
+                    //Top left
     				tileID = scene.tileRenderer.map.layers[i].data[Math.floor(position.x/16) + scene.tileRenderer.map.width*Math.floor((position.y - 16)/16)] - 1;
 
     				if(scene.tileRenderer.map.tilesets[0].tileproperties[tileID.toString()]) {
@@ -48,6 +65,7 @@ function BoxCollider(width, height, parent) {
     					}
     				} 
 
+                    //Top right
     				tileID = scene.tileRenderer.map.layers[i].data[Math.floor((position.x + this.width)/16) + scene.tileRenderer.map.width*Math.floor((position.y - 16)/16)] - 1;
 
     				if(scene.tileRenderer.map.tilesets[0].tileproperties[tileID.toString()]) {
@@ -56,6 +74,7 @@ function BoxCollider(width, height, parent) {
     					}
     				}
 
+                    //Bottom left
     				tileID = scene.tileRenderer.map.layers[i].data[Math.floor((position.x + this.width)/16) + scene.tileRenderer.map.width*Math.floor((position.y + this.height - 16)/16)] - 1;
 
     				if(scene.tileRenderer.map.tilesets[0].tileproperties[tileID.toString()]) {
@@ -64,6 +83,7 @@ function BoxCollider(width, height, parent) {
     					}
     				}
 
+                    //Bottom right
     				tileID = scene.tileRenderer.map.layers[i].data[Math.floor(position.x/16) + scene.tileRenderer.map.width*Math.floor((position.y + this.height - 16)/16)] - 1;
 
     				if(scene.tileRenderer.map.tilesets[0].tileproperties[tileID.toString()]) {
@@ -75,7 +95,6 @@ function BoxCollider(width, height, parent) {
     			}
 
     		}
-		}
 
 		for(var i = 0; i < scene.GameObjects.length; i++) {
 

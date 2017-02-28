@@ -9,10 +9,10 @@ function mainLoop() {
 }
 
 var input = {
-        w: false,
-        s: false,
-        a: false,
-        d: false,
+    w: false,
+    s: false,
+    a: false,
+    d: false,
     // New key implementations for attacking
     space: false,
     arrowKeyUp: false,
@@ -41,7 +41,7 @@ document.addEventListener('keyup',doKeyRelease,false);
 
 function doKeyDown(e) {
 
-            var code = e.keyCode;
+    var code = e.keyCode;
 
         if (code == 87) { // w
             input.w = true;
@@ -67,11 +67,11 @@ function doKeyDown(e) {
       else if(code == 40) { // arrowKeyDown
           input.arrowKeyDown = true;
       }
-    }
+  }
 
-    function doKeyRelease(e) {
+  function doKeyRelease(e) {
 
-        var code = e.keyCode;
+    var code = e.keyCode;
 
             if (code == 87) { // w
                 input.w = false;
@@ -83,7 +83,7 @@ function doKeyDown(e) {
                 input.d = false;
             } else if(code == 32) { // spacebar
                 input.space = false;
-      }
+            }
       else if(code == 37) { // arrowKeyLeft
           input.arrowKeyLeft = false;
       }
@@ -96,10 +96,10 @@ function doKeyDown(e) {
       else if(code == 40) { // arrowKeyDown
           input.arrowKeyDown = false;
       }
-    }
+  }
 
 
-    function lerp2(a,b,t) {
+  function lerp2(a,b,t) {
 
         //x axis
         var x = a + t * (b - a);
@@ -135,10 +135,51 @@ function Vector2() {
 	this.y = 0.0;
 }
 
-function Transform() {
+function Transform(GameObject) {
 	this.position = new Vector2();
-	this.rotation = new Vector2();
-	this.scale = new Vector2();
+    this.prevPosition = new Vector2();
+    this.rotation = new Vector2();
+    this.scale = new Vector2();
+    this.gameObject = GameObject;
+    this.collider = null;
+
+    //Check if collider exists for gameobject
+    if(this.gameObject.components) {
+        for(var i = 0; i < this.gameObject.components.length; i++) {
+            if(this.gameObject.components[i].type == "BoxCollider") {
+                this.collider = this.gameObject.components[i];
+            }
+        }
+
+    }
+
+    this.Translate = function(x, y, scene) {
+
+        this.prevPosition.x = this.position.x;
+        this.prevPosition.y = this.position.y;
+
+        this.position.x += x;
+
+        if(this.collider) {
+            if(this.collider.checkCollision(scene, this.position)) {
+                this.position.x = this.prevPosition.x;
+            }
+
+        }
+
+
+        this.position.y += y;
+
+        if(this.collider) {
+            if(this.collider.checkCollision(scene, this.position)) {
+                this.position.y = this.prevPosition.y;
+            }
+
+        }
+
+
+
+    }
 }
 
 
@@ -152,7 +193,7 @@ function GameObject() {
 
     this.Start = function(scene) {
 
-        
+
     }
 
     this.Update = function(scene) {
@@ -164,7 +205,7 @@ function GameObject() {
 }
 
 function StaticProp(buffer, x, y) {
-    this.transform = new Transform();
+    this.transform = new Transform(this);
     this.type = "StaticProp";
     this.boxCollider = new BoxCollider(16, 16, this);
     this.transform.position.x = x;
@@ -188,7 +229,7 @@ function StaticProp(buffer, x, y) {
     }
 
     this.Update = function(scene) {
-        
+
     }
 
     this.Draw = function(scene) {
@@ -197,4 +238,4 @@ function StaticProp(buffer, x, y) {
 
 
 }
- 
+

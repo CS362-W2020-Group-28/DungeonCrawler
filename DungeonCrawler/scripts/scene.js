@@ -2,7 +2,7 @@
 
 
 function Camera() {
-	this.transform = new Transform();
+	this.transform = new Transform(this);
 
     this.width = 320;
     this.height = 240;
@@ -97,12 +97,14 @@ function Scene() {
         //Iterate through game objects
         for(var i = 0; i < this.GameObjects.length; i++) {
 
+            this.GameObjects[i].Update(this);
+
+
             //Iterate through components
-            for(var j = 0; j < this.GameObjects[i].components[j]; j++) {
-                this.GameObjects[i].components[j].Update();
+            for(var j = 0; j < this.GameObjects[i].components.length; j++) {
+                this.GameObjects[i].components[j].Update(this);
             }
 
-            this.GameObjects[i].Update(this);
         }
 
 

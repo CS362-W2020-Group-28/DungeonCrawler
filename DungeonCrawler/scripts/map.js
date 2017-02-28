@@ -1,5 +1,5 @@
 function TileRenderer() {
-	this.transform = new Transform();
+	this.transform = new Transform(this);
 
     this.map = {};
     this.img = document.getElementById("basicTiles");
