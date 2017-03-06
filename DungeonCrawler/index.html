@@ -9,6 +9,13 @@
 </head>
 
 <body>
+
+    <!-- Mocha Stuff -->
+    <div id="mocha"></div>
+    <script src="node_modules/mocha/mocha.js"></script>
+    <script src="node_modules/chai/chai.js"></script>
+    <script>mocha.setup('bdd')</script>
+
 <div id="preloadfont">.</div>
 <canvas id="canvas" width="320" height="240"></canvas>
 
@@ -32,12 +39,16 @@
 	
 </body>
 
+
 <script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="scripts/util.js"></script>
 <script type="text/javascript" src="scripts/enemy.js"></script>
 <script type="text/javascript" src="scripts/player.js"></script>
 <script type="text/javascript" src="scripts/map.js"></script>
 <script type="text/javascript" src="scripts/scene.js"></script>
+
+<!-- Testing script -->
+<script type="text/javascript" src="test/test.js"></script>
 
 <script type="text/javascript">
 
@@ -58,7 +69,7 @@ $(function() {
 
 
 
-
+mocha.run();
 </script>
 
 
