@@ -27,6 +27,7 @@ function BoxCollider(width, height, parent) {
 	this.width = width;
 	this.height = height;
     this.ignorePlayer = false;
+    this.isTrigger = false;
 
 
     this.Start = function() {
@@ -100,21 +101,17 @@ function BoxCollider(width, height, parent) {
 
 
 			//Does the object have a box collider?
-			if(scene.GameObjects[i].boxCollider) {
+			if(scene.GameObjects[i].components.boxCollider) {
 
-				if(scene.GameObjects[i].boxCollider != this) {
-                    if(scene.GameObjects[i].hasOwnProperty("type") && scene.GameObjects[i].type == "Player" && this.ignorePlayer) {
-
-                    }
-                    else {
-                        if (position.x < scene.GameObjects[i].transform.position.x + scene.GameObjects[i].boxCollider.width &&
+				if(scene.GameObjects[i].components.boxCollider != this) {
+                        if (position.x < scene.GameObjects[i].transform.position.x + scene.GameObjects[i].components.boxCollider.width &&
                        position.x + this.width > scene.GameObjects[i].transform.position.x &&
-                       position.y < scene.GameObjects[i].transform.position.y + scene.GameObjects[i].boxCollider.height &&
+                       position.y < scene.GameObjects[i].transform.position.y + scene.GameObjects[i].components.boxCollider.height &&
                        this.height + position.y > scene.GameObjects[i].transform.position.y) {
                             
 
                         if(this.parent.onCollide) {
-                            if(this.isTrigger) {
+                            if(scene.GameObjects[i].components.boxCollider.isTrigger) {
                                 this.parent.onCollide(scene, scene.GameObjects[i]);
                             }
                             else {
@@ -137,9 +134,10 @@ function BoxCollider(width, height, parent) {
 
 			}
 
-		}
+		
 
 		return false;
 
-	}
+        }
+
 }

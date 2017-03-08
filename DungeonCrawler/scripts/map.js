@@ -113,6 +113,11 @@ function TileRenderer() {
                                     prop.onCollide = new Function("scene", this.map.layers[i].objects[o].properties.onCollide + "return true;");
                                 }
 
+                                if(this.map.layers[i].objects[o].properties.isTrigger) {
+                                  if(prop.components.boxCollider) {
+                                    prop.components.boxCollider.isTrigger = this.map.layers[i].objects[o].properties.isTrigger;
+                                  }
+                                }
 
 
                             }

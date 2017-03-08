@@ -26,11 +26,7 @@ function Camera() {
 	this.Draw = function(scene) {
 
 
-
 	}
-
-
-
 }
 
 
@@ -101,8 +97,8 @@ function Scene() {
 
 
             //Iterate through components
-            for(var j = 0; j < this.GameObjects[i].components.length; j++) {
-                this.GameObjects[i].components[j].Update(this);
+            for(var component in this.GameObjects[i].components) {
+                console.log(component);
             }
 
         }

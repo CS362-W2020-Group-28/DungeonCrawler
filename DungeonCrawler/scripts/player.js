@@ -16,7 +16,7 @@ function Player() {
   this.speed = 0.1;
 
 
-  this.components = [];
+  this.components = {};
 
   this.setPosition = function(x, y) {
     this.transform.position.x = x;
@@ -32,11 +32,11 @@ function Player() {
 this.Start = function(scene) {
 
 
-    this.components.push(new BoxCollider(14, 14, this));
+    this.components.boxCollider = new BoxCollider(14, 14, this);
     this.transform = new Transform(this);
 
-        this.transform.position.x = 7*16;
-    this.transform.position.y = 26*16;
+    this.transform.position.x = 31*16;
+    this.transform.position.y = 36*16;
 
 }
 
@@ -70,7 +70,6 @@ this.Update = function(scene) {
                       if(input.s) {
                         this.transform.Translate(0, (scene.deltaTime * this.speed), scene);
                         this.facing = 0; //Down
-
                       }
                    }
                    if(input.a || input.d) {

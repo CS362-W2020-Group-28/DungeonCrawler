@@ -207,7 +207,6 @@ function GameObject() {
 function StaticProp(buffer, x, y) {
     this.transform = new Transform(this);
     this.type = "StaticProp";
-    this.boxCollider = new BoxCollider(16, 16, this);
     this.transform.position.x = x;
     this.transform.position.y = y;
 
@@ -216,7 +215,7 @@ function StaticProp(buffer, x, y) {
     this.offset.y = -16;
     this.img = buffer;
 
-    this.components = [];
+    this.components = {}; //making this a hash table (so we don't have to do searches)
 
     this.onCollide = function(scene, collider) {
 
@@ -224,11 +223,13 @@ function StaticProp(buffer, x, y) {
     }
 
     this.Start = function(scene) {
-
+      this.components.boxCollider = new BoxCollider(16, 16, this);
 
     }
 
     this.Update = function(scene) {
+
+      
 
     }
 
