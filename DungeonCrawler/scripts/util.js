@@ -73,17 +73,17 @@ function doKeyDown(e) {
 
     var code = e.keyCode;
 
-            if (code == 87) { // w
-                input.w = false;
-            } else if(code == 83) { // s
-                input.s = false;
-            } else if(code == 65) { // a
-                input.a = false;
-            } else if(code == 68) { // d
-                input.d = false;
-            } else if(code == 32) { // spacebar
-                input.space = false;
-            }
+    if (code == 87) { // w
+        input.w = false;
+    } else if(code == 83) { // s
+        input.s = false;
+    } else if(code == 65) { // a
+        input.a = false;
+    } else if(code == 68) { // d
+        input.d = false;
+    } else if(code == 32) { // spacebar
+        input.space = false;
+    }
       else if(code == 37) { // arrowKeyLeft
           input.arrowKeyLeft = false;
       }
@@ -96,38 +96,39 @@ function doKeyDown(e) {
       else if(code == 40) { // arrowKeyDown
           input.arrowKeyDown = false;
       }
-  }
+}
 
 
-  function lerp2(a,b,t) {
+//Linear interpolation
+function lerp2(a,b,t) {
 
-        //x axis
-        var x = a + t * (b - a);
+    //x axis
+    var x = a + t * (b - a);
 
-        return x;
-    }
+    return x;
+}
 
     //a and b are Vector2 objects
-    function lerp(a,b,t) {
+function lerp(a,b,t) {
 
-        //x axis
-        var x = a.x + t * (b.x - a.x);
+    //x axis
+    var x = a.x + t * (b.x - a.x);
 
-        //y axis
-        var y = a.y + t * (b.y - a.y);
+    //y axis
+    var y = a.y + t * (b.y - a.y);
 
-        var ret = new Vector2();
-        ret.x = x;
-        ret.y = y;
+    var ret = new Vector2();
+    ret.x = x;
+    ret.y = y;
 
-        return ret;
+    return ret;
 
-    }
+}
 
 
-    function getRandomArbitrary(min, max) {
-        return Math.random() * (max - min) + min;
-    }
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
 
 //X & Y coordinates
 function Vector2() {
@@ -160,7 +161,6 @@ function Transform(GameObject) {
             if(this.collider.checkCollision(scene, this.position)) {
                 this.position.x = this.prevPosition.x;
             }
-
         }
 
         this.position.y += y;
@@ -169,11 +169,7 @@ function Transform(GameObject) {
             if(this.collider.checkCollision(scene, this.position)) {
                 this.position.y = this.prevPosition.y;
             }
-
         }
-
-
-
     }
 }
 
@@ -212,8 +208,9 @@ function StaticProp(buffer, x, y) {
 
     this.components = {}; //making this a hash table (so we don't have to do searches)
 
-    this.onCollide = function(scene, collider) {
+    this.destroyOnLoad = true; //If true, this will be cleared on map load
 
+    this.onCollide = function(scene, collider) {
         return true;
     }
 
@@ -224,7 +221,6 @@ function StaticProp(buffer, x, y) {
 
     this.Update = function(scene) {
       
-
     }
 
     this.Draw = function(scene) {

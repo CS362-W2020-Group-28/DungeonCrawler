@@ -12,14 +12,15 @@ function TileRenderer() {
 
   this.components = {};
 
+  this.destroyOnLoad = false;
+
   this.loadMap = function(filename, scene) {
 
 		scene.GameObjects = []; //Clear array
 		scene.GameObjects.push(this); //Push this tile renderer back into the list
 		scene.GameObjects.push(scene.player); //Push player back into the list
 
-
-
+  
     this.tileBuffer = document.createElement('canvas');
     this.floatBuffer = document.createElement('canvas');
     this.tileContext = this.tileBuffer.getContext('2d');
@@ -33,8 +34,6 @@ function TileRenderer() {
     $.get('/maps/' + filename + '.json', function(data) {
      mapData = data;
      console.log("during map load");
-
-
    });
 
     console.log("after map load");
@@ -103,12 +102,12 @@ function TileRenderer() {
 
 
             var prop = new StaticProp(imgBuffer, this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
-            prop.onCollide = new Function("scene", "return true;");
+            prop.onCollide = new Function("scene", "collider", "return true;");
 
             if(this.map.layers[i].objects[o].properties) {
                                 //If there is an onCollide function for this object, parse the function and override the abstract function
                                 if(this.map.layers[i].objects[o].properties.onCollide) {
-                                  prop.onCollide = new Function("scene", this.map.layers[i].objects[o].properties.onCollide + "return true;");
+                                  prop.onCollide = new Function("scene", "collider", this.map.layers[i].objects[o].properties.onCollide + "return true;");
                                 }
 
                                 if(this.map.layers[i].objects[o].properties.isTrigger) {
@@ -120,20 +119,11 @@ function TileRenderer() {
 
                               }
 
+                              prop.Start(scene);
+
                               scene.GameObjects.push(prop);
-
-
-
-
-
-
-
                             }
-
-
                           }
-
-
                         }
 
                         if(this.map.properties) {

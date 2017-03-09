@@ -185,7 +185,7 @@
    <properties>
     <property name="isTrigger" type="bool" value="true"/>
     <property name="onCollide">console.log(&quot;door collision!&quot;);
-Scene.player.setPosition(9*16, 11*16);
+Scene.player.setPosition(9*16, 13*16);
 Scene.loadMap(&quot;dungeon1/entrance/entrance&quot;);
 Scene.playSound(&quot;doorSound&quot;);</property>
    </properties>

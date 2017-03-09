@@ -108,15 +108,14 @@ function BoxCollider(width, height, parent) {
                        position.x + this.width > scene.GameObjects[i].transform.position.x &&
                        position.y < scene.GameObjects[i].transform.position.y + scene.GameObjects[i].components.boxCollider.height &&
                        this.height + position.y > scene.GameObjects[i].transform.position.y) {
-                            
-                            console.log("collision!");
+                        
 
                         if(scene.GameObjects[i].onCollide) {
                             if(scene.GameObjects[i].components.boxCollider.isTrigger) {
-                                scene.GameObjects[i].onCollide(scene, this.parent);
+                                scene.GameObjects[i].onCollide(scene, this);
                             }
                             else {
-                            return scene.GameObjects[i].onCollide(scene, this.parent);
+                            return scene.GameObjects[i].onCollide(scene, this);
 
                         }
 
@@ -127,7 +126,12 @@ function BoxCollider(width, height, parent) {
                         }
                     }
 				}
+
+
 			}
+
+
+
 		return false;
 
         }

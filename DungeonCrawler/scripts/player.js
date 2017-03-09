@@ -18,6 +18,8 @@ function Player() {
 
   this.components = {};
 
+  this.destroyOnLoad = false;
+
   this.setPosition = function(x, y) {
     this.transform.position.x = x;
     this.transform.position.y = y;

@@ -47,7 +47,7 @@
                  "properties":
                     {
                      "isTrigger":true,
-                     "onCollide":"console.log(\"door collision!\");\nScene.player.setPosition(9*16, 11*16);\nScene.loadMap(\"dungeon1\/entrance\/entrance\");\nScene.playSound(\"doorSound\");"
+                     "onCollide":"console.log(\"door collision!\");\nScene.player.setPosition(9*16, 13*16);\nScene.loadMap(\"dungeon1\/entrance\/entrance\");\nScene.playSound(\"doorSound\");"
                     },
                  "propertytypes":
                     {
