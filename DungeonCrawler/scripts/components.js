@@ -36,7 +36,7 @@ function BoxCollider(width, height, parent) {
     }
 
     this.Update = function(scene) {
-
+    	//this.checkCollision(scene, this.parent.transform.position);
 
     }
 
@@ -56,7 +56,7 @@ function BoxCollider(width, height, parent) {
     				continue;
     			}
 
-    			if(scene.tileRenderer.map.layers[i].type == "tilelayer") {
+    			if(scene.tileRenderer.map.tilesets[0].tileproperties && scene.tileRenderer.map.layers[i].type == "tilelayer") {
                     //Top left
     				tileID = scene.tileRenderer.map.layers[i].data[Math.floor(position.x/16) + scene.tileRenderer.map.width*Math.floor((position.y - 16)/16)] - 1;
 
@@ -109,13 +109,16 @@ function BoxCollider(width, height, parent) {
                        position.y < scene.GameObjects[i].transform.position.y + scene.GameObjects[i].components.boxCollider.height &&
                        this.height + position.y > scene.GameObjects[i].transform.position.y) {
                             
+                            console.log("collision!");
 
-                        if(this.parent.onCollide) {
+                        if(scene.GameObjects[i].onCollide) {
                             if(scene.GameObjects[i].components.boxCollider.isTrigger) {
-                                this.parent.onCollide(scene, scene.GameObjects[i]);
+                                scene.GameObjects[i].onCollide(scene, this.parent);
                             }
                             else {
-                            return this.parent.onCollide(scene, scene.GameObjects[i]);}
+                            return scene.GameObjects[i].onCollide(scene, this.parent);
+
+                        }
 
                         }
 
@@ -123,19 +126,8 @@ function BoxCollider(width, height, parent) {
 
                         }
                     }
-					
-
-					
 				}
-
-
-
-
-
 			}
-
-		
-
 		return false;
 
         }

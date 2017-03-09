@@ -97,8 +97,8 @@ function Scene() {
 
 
             //Iterate through components
-            for(var component in this.GameObjects[i].components) {
-                console.log(component);
+            for(var c in this.GameObjects[i].components) {
+                this.GameObjects[i].components[c].Update(this);
             }
 
         }

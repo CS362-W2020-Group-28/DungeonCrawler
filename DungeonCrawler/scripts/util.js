@@ -144,13 +144,9 @@ function Transform(GameObject) {
     this.collider = null;
 
     //Check if collider exists for gameobject
-    if(this.gameObject.components) {
-        for(var i = 0; i < this.gameObject.components.length; i++) {
-            if(this.gameObject.components[i].type == "BoxCollider") {
-                this.collider = this.gameObject.components[i];
-            }
-        }
 
+    if(this.gameObject.components && this.gameObject.components.boxCollider) {
+        this.collider = this.gameObject.components.boxCollider;
     }
 
     this.Translate = function(x, y, scene) {
@@ -166,7 +162,6 @@ function Transform(GameObject) {
             }
 
         }
-
 
         this.position.y += y;
 
@@ -211,7 +206,7 @@ function StaticProp(buffer, x, y) {
     this.transform.position.y = y;
 
     this.offset = new Vector2();
-    this.offset.x = 0;
+    this.offset.x = 16;
     this.offset.y = -16;
     this.img = buffer;
 
@@ -228,7 +223,6 @@ function StaticProp(buffer, x, y) {
     }
 
     this.Update = function(scene) {
-
       
 
     }
