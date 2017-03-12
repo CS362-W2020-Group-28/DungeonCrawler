@@ -21,7 +21,7 @@ var input = {
     arrowKeyRight: false,
     enter: false,
     z: false,
-    x: true
+    x: false
 }
 
 
@@ -59,23 +59,45 @@ function doKeyDown(e) {
           input.space = true;
       }
       else if(code == 37) { // arrowKeyLeft
+        if(Scene.player.isMenu) {
+          Scene.player.menuGoLeft();
+        } else {
           input.arrowKeyLeft = true;
+
+        }
       }
       else if(code == 38) { // arrowKeyUp
           input.arrowKeyUp = true;
       }
       else if(code == 39) { // arrowKeyRight
+        if(Scene.player.isMenu) {
+          Scene.player.menuGoRight();
+        } else {
           input.arrowKeyRight = true;
+
+        }
+
       }
       else if(code == 40) { // arrowKeyDown
           input.arrowKeyDown = true;
       } else if(code == 13) { //Enter
           Scene.player.isMenu = !Scene.player.isMenu;
       } else if(code == 90) { //Z
-        input.z = true;
+        if(Scene.player.isMenu) {
+          Scene.player.menuAssignZ();
+        } else {
+          input.z = true;
+
+        }
+
 
       } else if(code == 88) { //X
-        input.x = true;
+        if(Scene.player.isMenu) {
+          Scene.player.menuAssignX();
+        } else {
+          input.x = true;
+
+        }
       }
   }
 

@@ -96,7 +96,6 @@ function Scene() {
 
             this.GameObjects[i].Update(this);
 
-
             //Iterate through components
             for(var c in this.GameObjects[i].components) {
                 this.GameObjects[i].components[c].Update(this);
@@ -112,6 +111,8 @@ function Scene() {
     this.Draw = function() {
         ctx.fillStyle = "#000000";
         ctx.fillRect(0, 0, width, height);
+
+        //ctx.clearRect(0, 0, width, height);
 
         //Iterate through GameObject components
         for(var i = 0; i < this.GameObjects.length; i++) {

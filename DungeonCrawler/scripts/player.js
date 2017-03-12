@@ -7,6 +7,7 @@ function Player() {
   this.health = 100;
   this.img = document.getElementById("characters");
   this.button = document.getElementById("button");
+  this.rect = document.getElementById("rect");
   this.facing = 0; //0 - down; 1 - left; 2 - right; 3 - up
   this.frame = 0;
 
@@ -23,11 +24,46 @@ function Player() {
 
 
   this.isMenu = false;
-  this.inventory = [];
   this.coin = 0;
 
+  this.inventory = [];
+  this.maxInventorySize = 10;
   this.zButton = new InventoryItem();
-  this.xButton = new InventoryItem();
+  this.xButton = new IronSword();
+
+  this.menuIndex = 0;
+
+  this.menuGoLeft = function() {
+
+    this.menuIndex--;
+
+    if(this.menuIndex <= 0)
+      this.menuIndex = 0;
+
+
+  }
+
+  this.menuGoRight = function() {
+    this.menuIndex++;
+
+    if(this.menuIndex >= this.maxInventorySize)
+      this.menuIndex = this.maxInventorySize;
+
+  }
+
+  this.menuAssignZ = function() {
+    var temp = this.zButton;
+
+    this.zButton = this.inventory[this.menuIndex];
+    this.inventory[this.menuIndex] = temp;
+  }
+
+  this.menuAssignX = function() {
+    var temp = this.xButton;
+
+    this.xButton = this.inventory[this.menuIndex];
+    this.inventory[this.menuIndex] = temp;
+  }
 
   this.setPosition = function(x, y) {
     this.transform.position.x = x;
@@ -47,6 +83,11 @@ function Player() {
     this.transform.position.x = 31*16;
     this.transform.position.y = 36*16;
 
+    //Initialize inventory
+    for(var i = 0; i < this.maxInventorySize; i++) {
+      this.inventory.push(new InventoryItem());
+    }
+
   }
 
   this.Update = function(scene) {
@@ -63,6 +104,22 @@ function Player() {
         } else {
 
           if(this.alive) {
+
+            if(input.z) {
+              this.zButton.Use(this);
+            } else if(input.x) {
+              this.xButton.Use(this);
+
+            }
+
+            if(!input.z) {
+              this.zButton.Reset();
+            }
+
+            if(!input.x) {
+              this.xButton.Reset();
+            }
+
 
             if(input.arrowKeyUp || input.arrowKeyDown || input.arrowKeyLeft || input.arrowKeyRight) {
 
@@ -116,15 +173,42 @@ function Player() {
                 ctx.drawImage(this.img, (Math.floor(this.frame)*16), this.facing*16, 16, 16, Math.floor(this.transform.position.x - scene.Camera.transform.position.x + scene.Camera.offset.x),Math.floor(this.transform.position.y - scene.Camera.transform.position.y + scene.Camera.offset.y), 16, 16);
                 
                 //Buttons
+                //z button
                 ctx.drawImage(this.button,0, 0, 22,22, 260,210 - (this.isMenu ? 24 : 0), 22, 22);
+
+                //z button icon
+                if(this.zButton.icon)
+                  ctx.drawImage(this.zButton.icon,0, 0, 22,22, 260,210 - (this.isMenu ? 24 : 0), 16, 16);
+
+                //x button
                 ctx.drawImage(this.button,0, 0, 22,22, 285,210  - (this.isMenu ? 24 : 0), 22, 22);
 
+                //x button icon
+                if(this.xButton.icon)
+                  ctx.drawImage(this.xButton.icon,0, 0, 16,16, 285,210 - (this.isMenu ? 24 : 0), 16, 16);
 
 
+                //Draw inventory menu
                 if(this.isMenu) {
 
-                  ctx.fillRect(0,220,320,20);
-                  ctx.stroke();
+                  //Draw black background
+                  ctx.strokeStyle="#FFFFFF";
+                  ctx.fillRect(0,210,320,30);
+
+
+                  //Draw selection rectangle
+                  ctx.drawImage(this.rect,0, 0, 16,16, 8+(this.menuIndex*16),218, 16, 16);
+
+                  //Draw icons
+                  for(var i = 0; i < this.inventory.length; i++) {
+                    if(this.inventory[i].icon)
+                      ctx.drawImage(this.inventory[i].icon,0, 0, 16,16, 8+(i*16),218, 16, 16);
+                  }
+
+
+
+
+                  ctx.strokeStyle="#000000";
                 }
 
               }
