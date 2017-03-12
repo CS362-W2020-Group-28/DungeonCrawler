@@ -33,10 +33,8 @@ function Player() {
 
 this.Start = function(scene) {
 
-
     this.components.boxCollider = new BoxCollider(14, 14, this);
     this.transform = new Transform(this);
-
     this.transform.position.x = 31*16;
     this.transform.position.y = 36*16;
 

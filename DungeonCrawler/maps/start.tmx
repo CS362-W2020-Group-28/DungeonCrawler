@@ -186,12 +186,31 @@
     <property name="isTrigger" type="bool" value="true"/>
     <property name="onCollide">console.log(&quot;door collision!&quot;);
 Scene.player.setPosition(9*16, 13*16);
+Scene.playSound(&quot;doorSound&quot;);
 Scene.loadMap(&quot;dungeon1/entrance/entrance&quot;);
+</property>
+   </properties>
+  </object>
+  <object id="7" name="Door(to dungeon2)" gid="85" x="960" y="789.5" width="32" height="19">
+   <properties>
+    <property name="onCollide">Scene.player.setPosition(9*16, 13*16);
+Scene.loadMap(&quot;dungeon2/entrance/entrance&quot;);
 Scene.playSound(&quot;doorSound&quot;);</property>
    </properties>
   </object>
-  <object id="7" name="Door(to dungeon2)" gid="85" x="960" y="789.5" width="32" height="19"/>
-  <object id="8" name="Door(to dungeon3)" gid="85" x="127" y="836.5" width="32" height="19"/>
-  <object id="9" name="Door(to dungeon4)" gid="85" x="127" y="84.5" width="32" height="19"/>
+  <object id="8" name="Door(to dungeon3)" gid="85" x="127" y="836.5" width="32" height="19">
+   <properties>
+    <property name="onCollide">Scene.player.setPosition(9*16, 13*16);
+Scene.loadMap(&quot;dungeon3/entrance/entrance&quot;);
+Scene.playSound(&quot;doorSound&quot;);</property>
+   </properties>
+  </object>
+  <object id="9" name="Door(to dungeon4)" gid="85" x="127" y="84.5" width="32" height="19">
+   <properties>
+    <property name="onCollide">Scene.player.setPosition(9*16, 13*16);
+Scene.loadMap(&quot;dungeon4/entrance/entrance&quot;);
+Scene.playSound(&quot;doorSound&quot;);</property>
+   </properties>
+  </object>
  </objectgroup>
 </map>
