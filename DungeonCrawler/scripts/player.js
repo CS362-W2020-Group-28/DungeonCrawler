@@ -44,10 +44,9 @@ function Player() {
   }
 
   this.menuGoRight = function() {
-    this.menuIndex++;
 
-    if(this.menuIndex >= this.maxInventorySize)
-      this.menuIndex = this.maxInventorySize;
+    if(this.menuIndex < this.maxInventorySize - 1)
+      this.menuIndex++;
 
   }
 
@@ -178,14 +177,14 @@ function Player() {
 
                 //z button icon
                 if(this.zButton.icon)
-                  ctx.drawImage(this.zButton.icon,0, 0, 22,22, 260,210 - (this.isMenu ? 24 : 0), 16, 16);
+                  ctx.drawImage(this.zButton.icon,0, 0, 16,16, 263,213 - (this.isMenu ? 24 : 0), 16, 16);
 
                 //x button
                 ctx.drawImage(this.button,0, 0, 22,22, 285,210  - (this.isMenu ? 24 : 0), 22, 22);
 
                 //x button icon
                 if(this.xButton.icon)
-                  ctx.drawImage(this.xButton.icon,0, 0, 16,16, 285,210 - (this.isMenu ? 24 : 0), 16, 16);
+                  ctx.drawImage(this.xButton.icon,0, 0, 16,16, 288,213 - (this.isMenu ? 24 : 0), 16, 16);
 
 
                 //Draw inventory menu
@@ -201,7 +200,7 @@ function Player() {
 
                   //Draw icons
                   for(var i = 0; i < this.inventory.length; i++) {
-                    if(this.inventory[i].icon)
+                    if(this.inventory && this.inventory[i].icon)
                       ctx.drawImage(this.inventory[i].icon,0, 0, 16,16, 8+(i*16),218, 16, 16);
                   }
 
