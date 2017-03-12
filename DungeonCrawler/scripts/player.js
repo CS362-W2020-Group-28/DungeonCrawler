@@ -5,7 +5,7 @@ function Player() {
   //this.boxCollider = new BoxCollider(14, 14, this);
 
   this.health = 100;
-  this.img = document.getElementById("characters");
+  this.img = document.getElementById("playerSheet");
   this.button = document.getElementById("button");
   this.rect = document.getElementById("rect");
   this.facing = 0; //0 - down; 1 - left; 2 - right; 3 - up
