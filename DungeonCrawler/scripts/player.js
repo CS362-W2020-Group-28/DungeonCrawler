@@ -87,6 +87,8 @@ function Player() {
       this.inventory.push(new InventoryItem());
     }
 
+    this.inventory[0] = new CrossBow();
+
   }
 
   this.Update = function(scene) {
@@ -104,12 +106,16 @@ function Player() {
 
           if(this.alive) {
 
+            //Action buttons
             if(input.z) {
               this.zButton.Use(this);
             } else if(input.x) {
               this.xButton.Use(this);
 
             }
+
+            this.zButton.Update(this);
+            this.xButton.Update(this);
 
             if(!input.z) {
               this.zButton.Reset();
