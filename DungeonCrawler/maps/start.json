@@ -68,10 +68,12 @@
                  "name":"Door(to dungeon2)",
                  "properties":
                     {
+                     "isTrigger":true,
                      "onCollide":"Scene.player.setPosition(9*16, 13*16);\nScene.loadMap(\"dungeon2\/entrance\/entrance\");\nScene.playSound(\"doorSound\");"
                     },
                  "propertytypes":
                     {
+                     "isTrigger":"bool",
                      "onCollide":"string"
                     },
                  "rotation":0,
@@ -88,10 +90,12 @@
                  "name":"Door(to dungeon3)",
                  "properties":
                     {
+                     "isTrigger":true,
                      "onCollide":"Scene.player.setPosition(9*16, 13*16);\nScene.loadMap(\"dungeon3\/entrance\/entrance\");\nScene.playSound(\"doorSound\");"
                     },
                  "propertytypes":
                     {
+                     "isTrigger":"bool",
                      "onCollide":"string"
                     },
                  "rotation":0,
@@ -108,10 +112,12 @@
                  "name":"Door(to dungeon4)",
                  "properties":
                     {
+                     "isTrigger":true,
                      "onCollide":"Scene.player.setPosition(9*16, 13*16);\nScene.loadMap(\"dungeon4\/entrance\/entrance\");\nScene.playSound(\"doorSound\");"
                     },
                  "propertytypes":
                     {
+                     "isTrigger":"bool",
                      "onCollide":"string"
                     },
                  "rotation":0,

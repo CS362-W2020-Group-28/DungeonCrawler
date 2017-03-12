@@ -61,12 +61,12 @@
 0,0,0,0,0,0,0,0,0,34,34,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="Object Layer 1">
+ <objectgroup name="Object Layer 1" opacity="0">
   <object id="1" name="Exit" gid="85" x="143.5" y="222.75" width="32.25" height="16">
    <properties>
     <property name="isTrigger" type="bool" value="true"/>
     <property name="onCollide">console.log(&quot;door collision!&quot;);
-Scene.player.setPosition(52*16, 6*16);
+Scene.player.setPosition(9*16, 53*16);
 Scene.loadMap(&quot;start&quot;);</property>
    </properties>
   </object>

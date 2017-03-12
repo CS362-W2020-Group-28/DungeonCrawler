@@ -102,9 +102,12 @@ function TileRenderer() {
 
 
             var prop = new StaticProp(imgBuffer, this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
+            prop.Start(scene);
             prop.onCollide = new Function("scene", "collider", "return true;");
 
             if(this.map.layers[i].objects[o].properties) {
+
+
                                 //If there is an onCollide function for this object, parse the function and override the abstract function
                                 if(this.map.layers[i].objects[o].properties.onCollide) {
                                   prop.onCollide = new Function("scene", "collider", this.map.layers[i].objects[o].properties.onCollide + "return true;");
@@ -119,7 +122,7 @@ function TileRenderer() {
 
                               }
 
-                              prop.Start(scene);
+                              
 
                               scene.GameObjects.push(prop);
                             }

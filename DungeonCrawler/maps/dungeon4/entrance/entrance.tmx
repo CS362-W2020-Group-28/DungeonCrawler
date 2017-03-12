@@ -66,7 +66,7 @@
    <properties>
     <property name="isTrigger" type="bool" value="true"/>
     <property name="onCollide">console.log(&quot;door collision!&quot;);
-Scene.player.setPosition(52*16, 6*16);
+Scene.player.setPosition(9*16, 6*16);
 Scene.loadMap(&quot;start&quot;);</property>
    </properties>
   </object>

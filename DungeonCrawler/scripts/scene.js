@@ -75,16 +75,17 @@ function Scene() {
 	this.Start = function() {
         this.GameObjects.push(this.tileRenderer);
         this.player = new Player();
+        this.player.Start(this);
         this.GameObjects.push(this.player);
         //run TileRenderer's Start() before pushing in other objects to prevent them from being wiped from inital loadMap call
         this.tileRenderer.Start(this);
 
 
         //Skips TileRenderer at index 0 since already done above
-		for(var i = 1; i < this.GameObjects.length; i++) {
-			this.GameObjects[i].Start(this);
+		//for(var i = 1; i < this.GameObjects.length; i++) {
+			//this.GameObjects[i].Start(this);
 
-		}
+		//}
 	}
 
 	this.Update = function() {

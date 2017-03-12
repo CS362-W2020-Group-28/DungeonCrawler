@@ -112,9 +112,11 @@ function BoxCollider(width, height, parent) {
 
                         if(scene.GameObjects[i].onCollide) {
                             if(scene.GameObjects[i].components.boxCollider.isTrigger) {
+                                console.log("Triggered!");
                                 scene.GameObjects[i].onCollide(scene, this);
                             }
                             else {
+                                console.log("Collision!");
                             return scene.GameObjects[i].onCollide(scene, this);
 
                         }

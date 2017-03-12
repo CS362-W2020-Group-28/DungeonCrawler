@@ -18,7 +18,10 @@ var input = {
     arrowKeyUp: false,
     arrowKeyDown: false,
     arrowKeyLeft: false,
-    arrowKeyRight: false
+    arrowKeyRight: false,
+    enter: false,
+    z: false,
+    x: true
 }
 
 
@@ -66,6 +69,13 @@ function doKeyDown(e) {
       }
       else if(code == 40) { // arrowKeyDown
           input.arrowKeyDown = true;
+      } else if(code == 13) { //Enter
+          Scene.player.isMenu = !Scene.player.isMenu;
+      } else if(code == 90) { //Z
+        input.z = true;
+
+      } else if(code == 88) { //X
+        input.x = true;
       }
   }
 
@@ -95,6 +105,11 @@ function doKeyDown(e) {
       }
       else if(code == 40) { // arrowKeyDown
           input.arrowKeyDown = false;
+      } else if(code == 90) { //Z
+        input.z = false;
+
+      } else if(code == 88) { //X
+        input.x = false;
       }
 }
 
