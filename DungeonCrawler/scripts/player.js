@@ -17,11 +17,9 @@ function Player() {
   this.alive = true;
   this.speed = 0.1;
 
-
   this.components = {};
 
   this.destroyOnLoad = false;
-
 
   this.isMenu = false;
   this.coin = 0;
