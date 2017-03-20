@@ -1,9 +1,13 @@
-var assert = chai.assert;
+// var chai = require('chai');
+var expect = chai.expect;
+// var test = require("../scripts/player.js");
+// console.log(test.health);
 
-describe('Array', function() {
-  it('should start empty', function() {
-    var arr = [];
+describe('Player', function() {
 
-    assert.equal(arr.length, 0);
+  var player = new Player();
+
+  it('health should be 100%', function() {
+    expect(player.health).to.equal(50);
   });
 });
