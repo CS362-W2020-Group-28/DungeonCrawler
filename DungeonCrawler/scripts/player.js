@@ -24,8 +24,11 @@ function Player() {
   this.isMenu = false;
   this.coin = 0;
 
+
   this.inventory = [];
   this.maxInventorySize = 10;
+
+
   this.zButton = new InventoryItem();
   this.xButton = new IronSword();
 
@@ -137,24 +140,46 @@ function Player() {
 
 
           if(input.arrowKeyUp || input.arrowKeyDown) {
+
+            var newSpeed = this.speed;
+
+            if(input.shift) {
+              newSpeed = this.speed *2;
+
+            }
+
+
             if(input.arrowKeyUp) {
-              this.transform.Translate(0, -(scene.deltaTime * this.speed), scene);
+
+              this.transform.Translate(0, -(scene.deltaTime * newSpeed), scene);
                         this.facing = 3; //Up
                       }
 
+
+
+
                       if(input.arrowKeyDown) {
-                        this.transform.Translate(0, (scene.deltaTime * this.speed), scene);
+                        this.transform.Translate(0, (scene.deltaTime * newSpeed), scene);
                         this.facing = 0; //Down
                       }
                     }
                     if(input.arrowKeyLeft || input.arrowKeyRight) {
+
+                                  var newSpeed = this.speed;
+
+                      if(input.shift) {
+                        newSpeed = this.speed *2;
+
+                      }
+
+
                       if(input.arrowKeyLeft) {
-                        this.transform.Translate(-(scene.deltaTime * this.speed), 0, scene);
+                        this.transform.Translate(-(scene.deltaTime * newSpeed), 0, scene);
                         this.facing = 1; //Left
                       }
 
                       if(input.arrowKeyRight) {
-                        this.transform.Translate((scene.deltaTime * this.speed), 0, scene);
+                        this.transform.Translate((scene.deltaTime * newSpeed), 0, scene);
                         this.facing = 2; //Right
 
                       }

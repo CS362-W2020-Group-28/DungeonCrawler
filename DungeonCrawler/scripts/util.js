@@ -21,7 +21,8 @@ var input = {
     arrowKeyRight: false,
     enter: false,
     z: false,
-    x: false
+    x: false,
+    shift: false
 }
 
 
@@ -55,6 +56,9 @@ function doKeyDown(e) {
         } else if(code == 68) { // d
             input.d = true;
         }
+        else if(code == 16) {
+          input.shift = true;
+        } //shift
       else if(code == 32) { // spacebar
           input.space = true;
       }
@@ -113,7 +117,11 @@ function doKeyDown(e) {
         input.a = false;
     } else if(code == 68) { // d
         input.d = false;
-    } else if(code == 32) { // spacebar
+    } else if(code == 16) {
+          input.shift = false;
+        } //shift
+
+    else if(code == 32) { // spacebar
         input.space = false;
     }
       else if(code == 37) { // arrowKeyLeft
