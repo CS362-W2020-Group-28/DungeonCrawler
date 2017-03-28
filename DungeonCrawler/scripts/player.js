@@ -1,4 +1,3 @@
-
 function Player() {
   this.transform = null;
   this.type = "Player";
@@ -118,24 +117,7 @@ function Player() {
 
           if(this.alive) {
 
-            //Action buttons
-            if(input.z) {
-              this.zButton.Use(this);
-            } else if(input.x) {
-              this.xButton.Use(this);
-
-            }
-
-            this.zButton.Update(this);
-            this.xButton.Update(this);
-
-            if(!input.z) {
-              this.zButton.Reset(this);
-            }
-
-            if(!input.x) {
-              this.xButton.Reset(this);
-            }
+            
 
 
             if(input.arrowKeyUp || input.arrowKeyDown || input.arrowKeyLeft || input.arrowKeyRight) {
@@ -195,6 +177,27 @@ function Player() {
 
                       }
                     }
+
+
+
+                    //Action buttons
+            if(input.z) {
+              this.zButton.Use(this);
+            } else if(input.x) {
+              this.xButton.Use(this);
+
+            }
+
+            this.zButton.Update(this);
+            this.xButton.Update(this);
+
+            if(!input.z) {
+              this.zButton.Reset(this);
+            }
+
+            if(!input.x) {
+              this.xButton.Reset(this);
+            }
 
                   }
 

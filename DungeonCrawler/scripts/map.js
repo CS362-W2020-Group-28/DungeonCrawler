@@ -14,6 +14,8 @@ function TileRenderer() {
 
   this.destroyOnLoad = false;
 
+  this.fadeAlpha = 1.0;
+
   this.loadMap = function(filename, scene) {
 
 		scene.GameObjects = []; //Clear array
@@ -142,6 +144,8 @@ function TileRenderer() {
                         }
                       }
 
+                      this.fadeAlpha = 1;
+
                     }
 
 
@@ -153,13 +157,26 @@ function TileRenderer() {
                     }
 
                     this.Update = function(scene) {
+                      this.fadeAlpha -= Scene.deltaTime*0.001;
 
+
+                      if(this.fadeAlpha <= 0) {
+                        this.fadeAlpha = 0;
+                      }
 
 
                     }
 
                     this.Draw = function(scene) {
                       ctx.drawImage(this.tileBuffer, 0,0, this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
+                      //ctx.drawImage(this.tileBuffer, Scene.Camera.transform.position.x - Scene.Camera.offset.x,Scene.Camera.transform.position.y - Scene.Camera.offset.y, canvas.width, canvas.height,Scene.Camera.transform.position.x - Scene.Camera.offset.x,Scene.Camera.transform.position.y - Scene.Camera.offset.y, canvas.width, canvas.height);
+
+                      Scene.Camera.resetTransform();
+
+                      ctx.fillStyle = "rgba(0,0,0,"+ this.fadeAlpha.toFixed(2) +")";
+                      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                      Scene.Camera.translate();
                     }
 
                     this.DrawTopLayer = function(scene) {

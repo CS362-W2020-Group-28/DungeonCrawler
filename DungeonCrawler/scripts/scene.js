@@ -14,6 +14,9 @@ function Camera() {
 
     this.scale = 2.0;
 
+    this.vPosX = 0;
+    this.vPosY = 0;
+
 	this.Start = function(scene) {
 
 		
@@ -46,11 +49,22 @@ function Camera() {
     }
 
     this.translate = function() {
-        var vPosX = -this.transform.position.x + this.offset.x;
-        var vPosY = -this.transform.position.y + this.offset.y;
 
 
-        ctx.translate(vPosX, vPosY);
+
+        if((this.transform.position.x - this.offset.x) > 0 
+            && (this.transform.position.x + this.offset.x) < (Scene.tileRenderer.map.width * Scene.tileRenderer.map.tilewidth)) {
+            this.vPosX = this.transform.position.x - this.offset.x;
+
+        }
+
+        if((this.transform.position.y - this.offset.y) > 0
+            && (this.transform.position.y + this.offset.y) < (Scene.tileRenderer.map.height * Scene.tileRenderer.map.tileheight)) {
+            this.vPosY = this.transform.position.y - this.offset.y;
+
+        }
+
+        ctx.translate(Math.floor(-this.vPosX), Math.floor(-this.vPosY));
     }
 
     this.resetTransform = function() {
@@ -73,6 +87,8 @@ function Scene() {
 
     this.tileRenderer = new TileRenderer();
     this.player = new Player();
+
+
 
 	this.loadMap = function(fileName) {
 
@@ -118,10 +134,10 @@ function Scene() {
 	}
 
 	this.Update = function() {
-canvas.width = window.innerWidth/2;
-  canvas.height = window.innerHeight/2;
+canvas.width = window.innerWidth/3;
+  canvas.height = window.innerHeight/3;
 
-  //ctx.scale(1,1);
+  //ctx.scale(2,2);
 
 
 		this.Camera.Update(this);
@@ -169,7 +185,7 @@ canvas.width = window.innerWidth/2;
 
         }
 
-        this.tileRenderer.DrawTopLayer(this);
+        //this.tileRenderer.DrawTopLayer(this);
 
     }
 
