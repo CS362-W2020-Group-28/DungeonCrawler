@@ -102,7 +102,13 @@ function TileRenderer() {
 
 
             var prop = new StaticProp(imgBuffer, this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
+
+
             prop.Start(scene);
+
+            prop.components.boxCollider.width = this.map.layers[i].objects[o].width;
+            prop.components.boxCollider.height = this.map.layers[i].objects[o].height;
+
             prop.onCollide = new Function("scene", "collider", "return true;");
 
             if(this.map.layers[i].objects[o].properties) {
@@ -153,11 +159,11 @@ function TileRenderer() {
                     }
 
                     this.Draw = function(scene) {
-                      ctx.drawImage(this.tileBuffer, Math.floor(this.transform.position.x - scene.Camera.transform.position.x + scene.Camera.offset.x),Math.floor(this.transform.position.y - scene.Camera.transform.position.y + scene.Camera.offset.y + 16), this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
+                      ctx.drawImage(this.tileBuffer, 0,0, this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
                     }
 
                     this.DrawTopLayer = function(scene) {
-                     ctx.drawImage(this.floatBuffer, Math.floor(this.transform.position.x - scene.Camera.transform.position.x + scene.Camera.offset.x),Math.floor(this.transform.position.y - scene.Camera.transform.position.y + scene.Camera.offset.y + 16), this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
+                     ctx.drawImage(this.floatBuffer, this.transform.position.x,this.transform.position.y, this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
                    }
 
                  }

@@ -10,6 +10,12 @@ function Player() {
   this.rect = document.getElementById("rect");
   this.facing = 0; //0 - down; 1 - left; 2 - right; 3 - up
   this.frame = 0;
+  this.frameOffset = 0;
+
+  this.sourceOffsetX = 0;
+  this.sourceOffsetY = 0;
+  this.sourceOffsetWidth = 0;
+  this.sourceOffsetHeight = 0;
 
   this.prevX = 0;
   this.prevY = 0;
@@ -78,6 +84,8 @@ function Player() {
 
   this.Start = function(scene) {
 
+
+
     this.components.boxCollider = new BoxCollider(14, 14, this);
     this.transform = new Transform(this);
     this.transform.position.x = 31*16;
@@ -93,7 +101,10 @@ function Player() {
   }
 
   this.Update = function(scene) {
-    scene.Camera.transform.position = lerp(scene.Camera.transform.position, this.transform.position, scene.deltaTime*0.004);
+    
+
+
+      Scene.Camera.setTarget(this.transform);
 
         //Store previous values of X and Y (for collisions)
         this.prevX = this.transform.position.x;
@@ -119,11 +130,11 @@ function Player() {
             this.xButton.Update(this);
 
             if(!input.z) {
-              this.zButton.Reset();
+              this.zButton.Reset(this);
             }
 
             if(!input.x) {
-              this.xButton.Reset();
+              this.xButton.Reset(this);
             }
 
 
@@ -198,39 +209,48 @@ function Player() {
 
               this.Draw = function(scene) {
 
-                ctx.drawImage(this.img, (Math.floor(this.frame)*16), this.facing*16, 16, 16, Math.floor(this.transform.position.x - scene.Camera.transform.position.x + scene.Camera.offset.x),Math.floor(this.transform.position.y - scene.Camera.transform.position.y + scene.Camera.offset.y), 16, 16);
+
+
+                ctx.drawImage(this.img, (Math.floor(this.frame + this.frameOffset)*64) + this.sourceOffsetX, this.facing*64 + this.sourceOffsetY, 64 + this.sourceOffsetWidth, 64 + this.sourceOffsetHeight, Math.floor(this.transform.position.x - 32),Math.floor(this.transform.position.y - 32), 64 + this.sourceOffsetWidth, 64 + this.sourceOffsetHeight);
                 
+                //Draw red dot
+                ctx.fillStyle = "#FF0000";
+                ctx.fillRect(this.transform.position.x, this.transform.position.y,2,2);
+
+                Scene.Camera.resetTransform();
+
                 //Buttons
                 //z button
-                ctx.drawImage(this.button,0, 0, 22,22, 260,210 - (this.isMenu ? 24 : 0), 22, 22);
+                ctx.drawImage(this.button,0, 0, 22,22, canvas.width - 64,canvas.height - 32 - (this.isMenu ? 24 : 0), 22, 22);
 
                 //z button icon
                 if(this.zButton.icon)
-                  ctx.drawImage(this.zButton.icon,0, 0, 16,16, 263,213 - (this.isMenu ? 24 : 0), 16, 16);
+                  ctx.drawImage(this.zButton.icon,0, 0, 16,16, canvas.width - 64 + 3,canvas.height - 32 + 3 - (this.isMenu ? 24 : 0), 16, 16);
 
                 //x button
-                ctx.drawImage(this.button,0, 0, 22,22, 285,210  - (this.isMenu ? 24 : 0), 22, 22);
+                ctx.drawImage(this.button,0, 0, 22,22, canvas.width - 32,canvas.height - 32 - (this.isMenu ? 24 : 0), 22, 22);
 
                 //x button icon
                 if(this.xButton.icon)
-                  ctx.drawImage(this.xButton.icon,0, 0, 16,16, 288,213 - (this.isMenu ? 24 : 0), 16, 16);
+                  ctx.drawImage(this.xButton.icon,0, 0, 16,16, canvas.width - 32 + 3,canvas.height - 32 + 3 - (this.isMenu ? 24 : 0), 16, 16);
 
 
                 //Draw inventory menu
                 if(this.isMenu) {
 
                   //Draw black background
-                  ctx.strokeStyle="#FFFFFF";
-                  ctx.fillRect(0,210,320,30);
+                  ctx.fillStyle = "#000000";
+
+                  ctx.fillRect(0,canvas.height - 30,canvas.width,30);
 
 
                   //Draw selection rectangle
-                  ctx.drawImage(this.rect,0, 0, 16,16, 8+(this.menuIndex*16),218, 16, 16);
+                  ctx.drawImage(this.rect,0, 0, 16,16, 8+(this.menuIndex*16),canvas.height - 22, 16, 16);
 
                   //Draw icons
                   for(var i = 0; i < this.inventory.length; i++) {
                     if(this.inventory && this.inventory[i].icon)
-                      ctx.drawImage(this.inventory[i].icon,0, 0, 16,16, 8+(i*16),218, 16, 16);
+                      ctx.drawImage(this.inventory[i].icon,0, 0, 16,16, 8+(i*16),canvas.height - 22, 16, 16);
                   }
 
 
@@ -238,6 +258,8 @@ function Player() {
 
                   ctx.strokeStyle="#000000";
                 }
+
+                Scene.Camera.translate();
 
               }
 

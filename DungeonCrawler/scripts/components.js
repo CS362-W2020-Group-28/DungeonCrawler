@@ -58,7 +58,7 @@ function BoxCollider(width, height, parent) {
 
     			if(scene.tileRenderer.map.tilesets[0].tileproperties && scene.tileRenderer.map.layers[i].type == "tilelayer") {
                     //Top left
-    				tileID = scene.tileRenderer.map.layers[i].data[Math.floor(position.x/16) + scene.tileRenderer.map.width*Math.floor((position.y - 16)/16)] - 1;
+    				tileID = scene.tileRenderer.map.layers[i].data[Math.floor((position.x - (this.width/2))/16) + scene.tileRenderer.map.width*Math.floor((position.y - (this.height/2))/16)] - 1;
 
     				if(scene.tileRenderer.map.tilesets[0].tileproperties[tileID.toString()]) {
     					if(scene.tileRenderer.map.tilesets[0].tileproperties[tileID.toString()].isSolid) {
@@ -67,7 +67,7 @@ function BoxCollider(width, height, parent) {
     				} 
 
                     //Top right
-    				tileID = scene.tileRenderer.map.layers[i].data[Math.floor((position.x + this.width)/16) + scene.tileRenderer.map.width*Math.floor((position.y - 16)/16)] - 1;
+    				tileID = scene.tileRenderer.map.layers[i].data[Math.floor((position.x + (this.width/2))/16) + scene.tileRenderer.map.width*Math.floor((position.y - (this.height/2))/16)] - 1;
 
     				if(scene.tileRenderer.map.tilesets[0].tileproperties[tileID.toString()]) {
     					if(scene.tileRenderer.map.tilesets[0].tileproperties[tileID.toString()].isSolid) {
@@ -76,7 +76,7 @@ function BoxCollider(width, height, parent) {
     				}
 
                     //Bottom left
-    				tileID = scene.tileRenderer.map.layers[i].data[Math.floor((position.x + this.width)/16) + scene.tileRenderer.map.width*Math.floor((position.y + this.height - 16)/16)] - 1;
+    				tileID = scene.tileRenderer.map.layers[i].data[Math.floor((position.x - (this.width/2))/16) + scene.tileRenderer.map.width*Math.floor((position.y + (this.height/2))/16)] - 1;
 
     				if(scene.tileRenderer.map.tilesets[0].tileproperties[tileID.toString()]) {
     					if(scene.tileRenderer.map.tilesets[0].tileproperties[tileID.toString()].isSolid) {
@@ -85,7 +85,7 @@ function BoxCollider(width, height, parent) {
     				}
 
                     //Bottom right
-    				tileID = scene.tileRenderer.map.layers[i].data[Math.floor(position.x/16) + scene.tileRenderer.map.width*Math.floor((position.y + this.height - 16)/16)] - 1;
+    				tileID = scene.tileRenderer.map.layers[i].data[Math.floor((position.x + (this.width/2))/16) + scene.tileRenderer.map.width*Math.floor((position.y + (this.height/2))/16)] - 1;
 
     				if(scene.tileRenderer.map.tilesets[0].tileproperties[tileID.toString()]) {
     					if(scene.tileRenderer.map.tilesets[0].tileproperties[tileID.toString()].isSolid) {
@@ -104,10 +104,10 @@ function BoxCollider(width, height, parent) {
 			if(scene.GameObjects[i].components.boxCollider) {
 
 				if(scene.GameObjects[i].components.boxCollider != this) {
-                        if (position.x < scene.GameObjects[i].transform.position.x + scene.GameObjects[i].components.boxCollider.width &&
-                       position.x + this.width > scene.GameObjects[i].transform.position.x &&
-                       position.y < scene.GameObjects[i].transform.position.y + scene.GameObjects[i].components.boxCollider.height &&
-                       this.height + position.y > scene.GameObjects[i].transform.position.y) {
+                        if (position.x - (this.width/2) < scene.GameObjects[i].transform.position.x + scene.GameObjects[i].components.boxCollider.width &&
+                       position.x + (this.width/2) > scene.GameObjects[i].transform.position.x &&
+                       position.y - (this.height/2) < scene.GameObjects[i].transform.position.y + scene.GameObjects[i].components.boxCollider.height &&
+                       (this.height/2) + position.y > scene.GameObjects[i].transform.position.y) {
                         
 
                         if(scene.GameObjects[i].onCollide) {

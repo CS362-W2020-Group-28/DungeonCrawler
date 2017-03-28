@@ -35,7 +35,7 @@
                  "properties":
                     {
                      "isTrigger":true,
-                     "onCollide":"console.log(\"door collision!\");\nScene.player.setPosition(52*16, 7*16);\nScene.loadMap(\"start\");"
+                     "onCollide":"console.log(\"door collision!\");\nScene.player.setPosition(52*16, 8*16);\nScene.loadMap(\"start\");"
                     },
                  "propertytypes":
                     {

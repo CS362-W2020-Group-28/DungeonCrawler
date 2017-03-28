@@ -11,11 +11,13 @@ function IronSword() {
 
 		if(!this.isUsing) {
 			console.log("Using sword...");
+			gameObject.frameOffset = 2;
 
 
 
 
 			this.isUsing = true;
+			this.isActive = true;
 		}
 
 		
@@ -26,15 +28,32 @@ function IronSword() {
 	this.Update = function(gameObject) {
 
 		if(this.isActive) {
+			gameObject.frameOffset+= 0.33;
 
+			if(gameObject.frameOffset > 5) {
+
+				gameObject.frameOffset = 0;
+				gameObject.sourceOffsetHeight = 0;
+				this.isActive = false;
+			}
 
 		}
 
 
 	}
 
-	this.Reset = function() {
-		this.isUsing = false;
+	this.Reset = function(gameObject) {
+
+		if(!this.isActive) {
+			gameObject.frameOffset = 0;
+			this.isActive = false;
+			this.isUsing = false;
+			gameObject.sourceOffsetHeight = 0;
+
+
+		}
+		
+		
 	}
 
 

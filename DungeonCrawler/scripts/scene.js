@@ -12,6 +12,8 @@ function Camera() {
 	this.offset.x = 320/2;
 	this.offset.y = 240/2;
 
+    this.scale = 2.0;
+
 	this.Start = function(scene) {
 
 		
@@ -27,6 +29,33 @@ function Camera() {
 
 
 	}
+
+    this.setTarget = function(transform) {
+
+        this.offset.x = canvas.width / 2;
+        this.offset.y = canvas.height / 2;
+
+
+        
+        this.transform.position = lerp(this.transform.position, transform.position, Scene.deltaTime*0.004);
+
+
+        
+
+
+    }
+
+    this.translate = function() {
+        var vPosX = -this.transform.position.x + this.offset.x;
+        var vPosY = -this.transform.position.y + this.offset.y;
+
+
+        ctx.translate(vPosX, vPosY);
+    }
+
+    this.resetTransform = function() {
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+    }
 }
 
 
@@ -89,10 +118,17 @@ function Scene() {
 	}
 
 	this.Update = function() {
+canvas.width = window.innerWidth/2;
+  canvas.height = window.innerHeight/2;
+
+  //ctx.scale(1,1);
+
+
 		this.Camera.Update(this);
 
         //Iterate through game objects
         for(var i = 0; i < this.GameObjects.length; i++) {
+
 
             this.GameObjects[i].Update(this);
 
@@ -100,6 +136,7 @@ function Scene() {
             for(var c in this.GameObjects[i].components) {
                 this.GameObjects[i].components[c].Update(this);
             }
+
 
         }
 
@@ -109,19 +146,27 @@ function Scene() {
     }
 
     this.Draw = function() {
+
+        ctx.scale(1, 1);
         ctx.fillStyle = "#000000";
-        ctx.fillRect(0, 0, width, height);
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         //ctx.clearRect(0, 0, width, height);
 
         //Iterate through GameObject components
         for(var i = 0; i < this.GameObjects.length; i++) {
 
+            
+            this.Camera.translate();
+
             for(var j = 0; j < this.GameObjects[i].components[j]; j++) {
                 this.GameObjects[i].components[j].Draw(this);
             }
 
             this.GameObjects[i].Draw(this);
+
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+
         }
 
         this.tileRenderer.DrawTopLayer(this);

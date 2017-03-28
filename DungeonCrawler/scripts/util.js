@@ -1,5 +1,24 @@
 
+var width = 320;
+var height = 240;
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var Scene;
+var startTime = new Date();
+var endTime = new Date();
+var draw = true;
+
+var tileImage;
+
+var draw = true;
+
+
+document.addEventListener('keydown',doKeyDown,false);
+document.addEventListener('keyup',doKeyRelease,false);
+
 function mainLoop() {
+
+  
 
     Scene.Update();
     if(draw) Scene.Draw();
@@ -26,22 +45,8 @@ var input = {
 }
 
 
-var width = 320;
-var height = 240;
-var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d");
-var Scene;
-var startTime = new Date();
-var endTime = new Date();
-var draw = true;
-
-var tileImage;
-
-var draw = true;
 
 
-document.addEventListener('keydown',doKeyDown,false);
-document.addEventListener('keyup',doKeyRelease,false);
 
 function doKeyDown(e) {
 
@@ -179,6 +184,13 @@ function getRandomArbitrary(min, max) {
 function Vector2() {
 	this.x = 0.0;
 	this.y = 0.0;
+
+  this.add = function(operand) {
+    this.x += operand.x;
+    this.y += operand.y;
+
+    return this;
+  }
 }
 
 function Transform(GameObject) {
@@ -269,7 +281,7 @@ function StaticProp(buffer, x, y) {
     }
 
     this.Draw = function(scene) {
-        ctx.drawImage(this.img, 0, 0, 16, 16, Math.floor(this.transform.position.x - scene.Camera.transform.position.x + scene.Camera.offset.x),Math.floor(this.transform.position.y - scene.Camera.transform.position.y + scene.Camera.offset.y), 16, 16);
+        ctx.drawImage(this.img, 0, 0, 16, 16, Math.floor(this.transform.position.x),Math.floor(this.transform.position.y), 16, 16);
     }
 
 
