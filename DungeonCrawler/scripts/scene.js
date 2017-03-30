@@ -52,17 +52,17 @@ function Camera() {
 
 
 
-        if((this.transform.position.x - this.offset.x) > 0 
-            && (this.transform.position.x + this.offset.x) < (Scene.tileRenderer.map.width * Scene.tileRenderer.map.tilewidth)) {
+        //if((this.transform.position.x - this.offset.x) > 0 
+            //&& (this.transform.position.x + this.offset.x) < (Scene.tileRenderer.map.width * Scene.tileRenderer.map.tilewidth)) {
             this.vPosX = this.transform.position.x - this.offset.x;
 
-        }
+        //}
 
-        if((this.transform.position.y - this.offset.y) > 0
-            && (this.transform.position.y + this.offset.y) < (Scene.tileRenderer.map.height * Scene.tileRenderer.map.tileheight)) {
+        //if((this.transform.position.y - this.offset.y) > 0
+            //&& (this.transform.position.y + this.offset.y) < (Scene.tileRenderer.map.height * Scene.tileRenderer.map.tileheight)) {
             this.vPosY = this.transform.position.y - this.offset.y;
 
-        }
+        //}
 
         ctx.translate(Math.floor(-this.vPosX), Math.floor(-this.vPosY));
     }
