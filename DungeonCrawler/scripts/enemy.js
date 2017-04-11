@@ -1,15 +1,15 @@
 function Slime(x, y) {
-    this.transform = new Transform();
-    this.type = "StaticProp";
+    this.transform = new Transform(this);
+    this.type = "Slime";
     this.transform.position.x = x;
     this.transform.position.y = y;
 
     this.offset = new Vector2();
     this.offset.x = 0;
     this.offset.y = -16;
-    this.img = buffer;
+    this.img = document.getElementById("characters");
 
-    this.components = [];
+    this.components = {};
 
     this.onCollide = function(scene, collider) {
 
@@ -17,7 +17,7 @@ function Slime(x, y) {
     }
 
     this.Start = function(scene) {
-
+        this.components.boxCollider = new BoxCollider(16, 16, this);
 
     }
 
@@ -26,7 +26,7 @@ function Slime(x, y) {
     }
 
     this.Draw = function(scene) {
-        //ctx.drawImage(this.img, 0, 0, 16, 16, Math.floor(this.transform.position.x - scene.Camera.transform.position.x + scene.Camera.offset.x),Math.floor(this.transform.position.y - scene.Camera.transform.position.y + scene.Camera.offset.y), 16, 16);
+        ctx.drawImage(this.img, 0, 0, 16, 16, Math.floor(this.transform.position.x),Math.floor(this.transform.position.y), 16, 16);
     }
 
 

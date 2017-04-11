@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="16" tileheight="16" nextobjectid="10">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="16" tileheight="16" nextobjectid="18">
  <tileset firstgid="1" name="Tileset" tilewidth="16" tileheight="16" tilecount="512" columns="8">
   <image source="../img/basictiles.png" width="128" height="1024"/>
   <tile id="9">
@@ -215,5 +215,10 @@ Scene.loadMap(&quot;dungeon4/entrance/entrance&quot;);
 Scene.playSound(&quot;doorSound&quot;);</property>
    </properties>
   </object>
+  <object id="10" name="Chest" gid="37" x="576.667" y="368" width="16" height="16"/>
+  <object id="11" type="Slime" gid="84" x="129.5" y="359" width="16" height="16"/>
+  <object id="15" type="Slime" gid="84" x="120.5" y="428.5" width="16" height="16"/>
+  <object id="16" type="Slime" gid="84" x="172.5" y="430" width="16" height="16"/>
+  <object id="17" type="Slime" gid="84" x="153" y="476.5" width="16" height="16"/>
  </objectgroup>
 </map>

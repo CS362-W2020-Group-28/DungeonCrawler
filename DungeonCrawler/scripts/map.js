@@ -103,9 +103,17 @@ function TileRenderer() {
             imgCtx.drawImage(this.img, tX * 16, tY * 16, 16, 16, 0, 0, 16, 16);
 
 
-            var prop = new StaticProp(imgBuffer, this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
+            var prop;
+
+            if(this.map.layers[i].objects[o].type == "Slime") {
+              var prop = new Slime(this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
+
+            } else {
+              var prop = new StaticProp(imgBuffer, this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
+            }
 
 
+  
             prop.Start(scene);
 
             prop.components.boxCollider.width = this.map.layers[i].objects[o].width;
