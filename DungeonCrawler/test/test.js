@@ -1,9 +1,14 @@
 var assert = chai.assert;
 
-describe('Array', function() {
-  it('should start empty', function() {
-    var arr = [];
+describe('Slime', function() {
 
-    assert.equal(arr.length, 0);
+  it('should return slime', function() {
+    var testSlime = new Slime(12,12);
+    assertEquals(testSlime, new Slime(12,12));
+  });
+
+  it('should be of type slime', function() {
+    var testSlime = new Slime(12,12);
+    assertEquals(testSlime.type, "Slime");
   });
 });

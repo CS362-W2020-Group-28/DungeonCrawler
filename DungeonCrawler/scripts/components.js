@@ -64,7 +64,7 @@ function BoxCollider(width, height, parent) {
     					if(scene.tileRenderer.map.tilesets[0].tileproperties[tileID.toString()].isSolid) {
     						return true;
     					}
-    				} 
+    				}
 
                     //Top right
     				tileID = scene.tileRenderer.map.layers[i].data[Math.floor((position.x + (this.width/2))/16) + scene.tileRenderer.map.width*Math.floor((position.y - (this.height/2))/16)] - 1;
@@ -108,7 +108,7 @@ function BoxCollider(width, height, parent) {
                        position.x + (this.width/2) > scene.GameObjects[i].transform.position.x &&
                        position.y - (this.height/2) < scene.GameObjects[i].transform.position.y + scene.GameObjects[i].components.boxCollider.height &&
                        (this.height/2) + position.y > scene.GameObjects[i].transform.position.y) {
-                        
+
 
                         if(scene.GameObjects[i].onCollide) {
                             if(scene.GameObjects[i].components.boxCollider.isTrigger) {

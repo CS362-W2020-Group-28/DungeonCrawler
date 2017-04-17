@@ -22,7 +22,7 @@ function Slime(x, y) {
     }
 
     this.Update = function(scene) {
-        
+
     }
 
     this.Draw = function(scene) {
@@ -31,3 +31,5 @@ function Slime(x, y) {
 
 
 }
+
+module.exports = Slime;
