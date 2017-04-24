@@ -32,4 +32,4 @@ function Slime(x, y) {
 
 }
 
-module.exports = Slime;
+module.export= Slime;
