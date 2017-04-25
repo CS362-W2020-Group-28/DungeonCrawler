@@ -9,10 +9,34 @@ function IronSword() {
 
 	this.frame = 0;
 
+
 	this.Use = function(gameObject) {
 
 		if(!this.isUsing) {
 			console.log("Using sword...");
+
+			var x = gameObject.transform.position.x;
+			var y = gameObject.transform.position.y;
+			var width = 24;
+			var height = 24;
+
+			if(gameObject.facing == UP) {
+				y -= 24;
+			}
+
+			else if(gameObject.facing == DOWN) {
+				y += 24;
+			}
+
+			else if(gameObject.facing == LEFT) {
+				x -= 24;
+			}
+
+			else if(gameObject.facing == RIGHT) {
+				x += 24;
+			}
+
+			Scene.addObject(new SwordSlash(x, y, width, height));
 			this.frame = 3;
 
 

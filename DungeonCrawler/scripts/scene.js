@@ -7,31 +7,31 @@ function Camera() {
     this.width = 320;
     this.height = 240;
 
-	this.offset = new Vector2();
+    this.offset = new Vector2();
 
-	this.offset.x = 320/2;
-	this.offset.y = 240/2;
+    this.offset.x = 320/2;
+    this.offset.y = 240/2;
 
     this.scale = 2.0;
 
     this.vPosX = 0;
     this.vPosY = 0;
 
-	this.Start = function(scene) {
-
-		
-	}
+    this.Start = function(scene) {
 
 
-	this.Update = function(scene) {
-        
-
-	}
-
-	this.Draw = function(scene) {
+    }
 
 
-	}
+    this.Update = function(scene) {
+
+
+    }
+
+    this.Draw = function(scene) {
+
+
+    }
 
     this.setTarget = function(transform) {
 
@@ -54,13 +54,13 @@ function Camera() {
 
         //if((this.transform.position.x - this.offset.x) > 0 
             //&& (this.transform.position.x + this.offset.x) < (Scene.tileRenderer.map.width * Scene.tileRenderer.map.tilewidth)) {
-            this.vPosX = this.transform.position.x - this.offset.x;
+                this.vPosX = this.transform.position.x - this.offset.x;
 
         //}
 
         //if((this.transform.position.y - this.offset.y) > 0
             //&& (this.transform.position.y + this.offset.y) < (Scene.tileRenderer.map.height * Scene.tileRenderer.map.tileheight)) {
-            this.vPosY = this.transform.position.y - this.offset.y;
+                this.vPosY = this.transform.position.y - this.offset.y;
 
         //}
 
@@ -68,7 +68,7 @@ function Camera() {
     }
 
     this.resetTransform = function() {
-            ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
     }
 }
 
@@ -89,39 +89,44 @@ function Scene() {
     this.player = new Player();
 
 
-
-	this.loadMap = function(fileName) {
-
-		this.tileRenderer.loadMap(fileName, this);
-	}
-
-    this.playSound = function(soundName) {
-
-    	var element = document.getElementById(soundName);
-    	
-    	element.currentTime = 0;
-    	element.play();
-    }
-
-    this.playMusic = function(soundName) {
-
-    	var element = document.getElementById("music");
-
-    	if($("#music").attr("title") != soundName || element.currentTime == 0) {
-    		$("#music").attr("title", soundName); 
-    		element.pause();
-			element.currentTime = 0;
-    		element.src = "sounds/" + soundName + ".mp3";
-    		element.play();
-    	}
+    this.addObject = function (object){
+        object.Start();
+        this.GameObjects.push(object);
 
     }
 
-	this.Start = function() {
-        this.GameObjects.push(this.tileRenderer);
-        this.player = new Player();
-        this.player.Start(this);
-        this.GameObjects.push(this.player);
+    this.loadMap = function(fileName) {
+
+      this.tileRenderer.loadMap(fileName, this);
+  }
+
+  this.playSound = function(soundName) {
+
+     var element = document.getElementById(soundName);
+
+     element.currentTime = 0;
+     element.play();
+ }
+
+ this.playMusic = function(soundName) {
+
+     var element = document.getElementById("music");
+
+     if($("#music").attr("title") != soundName || element.currentTime == 0) {
+      $("#music").attr("title", soundName); 
+      element.pause();
+      element.currentTime = 0;
+      element.src = "sounds/" + soundName + ".mp3";
+      element.play();
+  }
+
+}
+
+this.Start = function() {
+    this.GameObjects.push(this.tileRenderer);
+    this.player = new Player();
+    this.player.Start(this);
+    this.GameObjects.push(this.player);
         //run TileRenderer's Start() before pushing in other objects to prevent them from being wiped from inital loadMap call
         this.tileRenderer.Start(this);
 
@@ -134,13 +139,13 @@ function Scene() {
 	}
 
 	this.Update = function() {
-canvas.width = window.innerWidth/3;
-  canvas.height = window.innerHeight/3;
+        canvas.width = window.innerWidth/3;
+        canvas.height = window.innerHeight/3;
 
   //ctx.scale(2,2);
 
 
-		this.Camera.Update(this);
+  this.Camera.Update(this);
 
         //Iterate through game objects
         for(var i = 0; i < this.GameObjects.length; i++) {
@@ -155,7 +160,6 @@ canvas.width = window.innerWidth/3;
 
 
         }
-
 
         this.deltaTime = new Date() - startTime;
         startTime = new Date();
@@ -172,7 +176,7 @@ canvas.width = window.innerWidth/3;
         //Iterate through GameObject components
         for(var i = 0; i < this.GameObjects.length; i++) {
 
-            
+
             this.Camera.translate();
 
             for(var j = 0; j < this.GameObjects[i].components[j]; j++) {
