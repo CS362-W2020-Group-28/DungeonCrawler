@@ -6,20 +6,23 @@
   <link rel="stylesheet" media="all" href="vendor/mocha.css">
 </head>
 <body>
-  <div id="mocha" style="display:none;"></div>
-  <script src="node_modules/mocha/mocha.js"></script>
-  <script src="node_modules/chai/chai.js"></script>
+  <div id="mocha"><p><a href=".">Index</a></p></div>
+  <div id="messages"></div>
+  <div id="fixtures"></div>
+
+  <script src="../node_modules/mocha/mocha.js"></script>
+  <script src="../node_modules/chai/chai.js"></script>
   <script>mocha.setup('bdd')</script>
 
-  <script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
-  <script type="text/javascript" src="scripts/util.js"></script>
-  <script type="text/javascript" src="scripts/components.js"></script>
-  <script type="text/javascript" src="scripts/enemy.js"></script>
-  <script type="text/javascript" src="scripts/objects.js"></script>
-  <script type="text/javascript" src="scripts/player.js"></script>
-  <script type="text/javascript" src="scripts/map.js"></script>
-  <script type="text/javascript" src="scripts/scene.js"></script>
-  <script type="text/javascript" src="scripts/inventoryitem.js"></script>
+  <script type="text/javascript" src="../scripts/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="../scripts/util.js"></script>
+  <script type="text/javascript" src="../scripts/components.js"></script>
+  <script type="text/javascript" src="../scripts/enemy.js"></script>
+  <script type="text/javascript" src="../scripts/objects.js"></script>
+  <script type="text/javascript" src="../scripts/player.js"></script>
+  <script type="text/javascript" src="../scripts/map.js"></script>
+  <script type="text/javascript" src="../scripts/scene.js"></script>
+  <script type="text/javascript" src="../scripts/inventoryitem.js"></script>
 
   <!-- Testing script -->
   <script type="text/javascript" src="test/test.js"></script>
