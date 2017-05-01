@@ -61,7 +61,7 @@ function IronSword() {
 	this.Use = function(gameObject) {
 
 		if(!this.isUsing) {
-			console.log("U        sing sword...");
+			console.log("Using sword...");
 
 			var x = gameObject.transform.position.x;
 			var y = gameObject.transform.position.y;
@@ -88,12 +88,9 @@ function IronSword() {
 			this.frame = 3;
 
 
-
-
 			this.isUsing = true;
 			this.isActive = true;
 		}
-
 		
 
 

@@ -25,7 +25,11 @@ function SwordSlash(x, y, width, height) {
 
     this.components = {};
 
+    this.timer = 100;
+
   	this.rect = document.getElementById("rect");
+
+  	this.delete = false;
 
 
     this.onCollide = function(scene, collider) {
@@ -34,7 +38,6 @@ function SwordSlash(x, y, width, height) {
     	try {
     	collider.parent.doDamage();
     	console.log("Doing damage on " + collider.parent.type);
-
 
 
     	} catch(ex) {
@@ -58,7 +61,11 @@ function SwordSlash(x, y, width, height) {
 	this.Update = function(scene) {
 		this.transform.Translate(0, 0, scene);
 
+		this.timer -= scene.deltaTime;
 
+		if(this.timer <= 0) {
+			this.delete = true;
+		}
 	}
 
 	this.Draw = function(scene) {
