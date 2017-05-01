@@ -40,12 +40,9 @@ function IronSword() {
 			this.frame = 3;
 
 
-
-
 			this.isUsing = true;
 			this.isActive = true;
 		}
-
 		
 
 

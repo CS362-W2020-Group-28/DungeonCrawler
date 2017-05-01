@@ -6,7 +6,9 @@ var UP = 3;
 
 function Player() {
   this.transform = null;
+  this.velocity = new Vector2(0,0);
   this.type = "Player";
+  this.delete = false;
   //this.boxCollider = new BoxCollider(14, 14, this);
 
   this.health = 100;
@@ -88,8 +90,13 @@ function Player() {
 
   this.onCollide = function(scene, collider) {
 
-        return true;
+    if(collider.parent.type == "Slime") {
+        this.velocity.x += collider.parent.velocity.x*2;
+        this.velocity.y += collider.parent.velocity.y*2;
     }
+
+    return true;
+  }
 
 
   this.Start = function(scene) {
@@ -111,10 +118,10 @@ function Player() {
   }
 
   this.Update = function(scene) {
-    
 
 
-      Scene.Camera.setTarget(this.transform);
+
+    Scene.Camera.setTarget(this.transform);
 
         //Store previous values of X and Y (for collisions)
         this.prevX = this.transform.position.x;
@@ -128,9 +135,19 @@ function Player() {
 
           if(this.alive) {
 
-              
-            this.transform.Translate(0, 0, scene);
+
+            this.transform.Translate(this.velocity.x, this.velocity.y, scene);
             
+            this.velocity.x -= scene.deltaTime;
+            this.velocity.y -= scene.deltaTime;
+
+            if(this.velocity.x <= 0) {
+              this.velocity.x = 0;
+            }
+
+            if(this.velocity.y <= 0) {
+              this.velocity.y = 0;
+            }
 
 
             if(input.arrowKeyUp || input.arrowKeyDown || input.arrowKeyLeft || input.arrowKeyRight) {
@@ -157,7 +174,8 @@ function Player() {
 
             if(input.arrowKeyUp) {
 
-              this.transform.Translate(0, -(scene.deltaTime * newSpeed), scene);
+              this.velocity.y = -(scene.deltaTime * newSpeed);
+
                         this.facing = 3; //Up
                       }
 
@@ -165,13 +183,15 @@ function Player() {
 
 
                       if(input.arrowKeyDown) {
-                        this.transform.Translate(0, (scene.deltaTime * newSpeed), scene);
+
+                        this.velocity.y = (scene.deltaTime * newSpeed);
+
                         this.facing = 0; //Down
                       }
                     }
                     if(input.arrowKeyLeft || input.arrowKeyRight) {
 
-                                  var newSpeed = this.speed;
+                      var newSpeed = this.speed;
 
                       if(input.shift) {
                         newSpeed = this.speed *2;
@@ -180,37 +200,36 @@ function Player() {
 
 
                       if(input.arrowKeyLeft) {
-                        this.transform.Translate(-(scene.deltaTime * newSpeed), 0, scene);
+                        this.velocity.x = -(scene.deltaTime * newSpeed);
                         this.facing = 1; //Left
                       }
 
                       if(input.arrowKeyRight) {
-                        this.transform.Translate((scene.deltaTime * newSpeed), 0, scene);
+                        this.velocity.x = (scene.deltaTime * newSpeed);
                         this.facing = 2; //Right
-
                       }
                     }
 
 
 
                     //Action buttons
-            if(input.z) {
-              this.zButton.Use(this);
-            } else if(input.x) {
-              this.xButton.Use(this);
+                    if(input.z) {
+                      this.zButton.Use(this);
+                    } else if(input.x) {
+                      this.xButton.Use(this);
 
-            }
+                    }
 
-            this.zButton.Update(this);
-            this.xButton.Update(this);
+                    this.zButton.Update(this);
+                    this.xButton.Update(this);
 
-            if(!input.z) {
-              this.zButton.Reset(this);
-            }
+                    if(!input.z) {
+                      this.zButton.Reset(this);
+                    }
 
-            if(!input.x) {
-              this.xButton.Reset(this);
-            }
+                    if(!input.x) {
+                      this.xButton.Reset(this);
+                    }
 
                   }
 
