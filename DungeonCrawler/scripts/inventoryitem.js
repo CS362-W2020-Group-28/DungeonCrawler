@@ -6,14 +6,19 @@ function Shield() {
 	this.type = "Shield";
 
 	this.isActive = false;
-	this.timer=1;
+	this.timer=100;
+
+
 	this.Use = function(gameObject) {
 
-		if(this.timer>0)
-		{console.log("Shield");
+		if(this.timer>0){
+
+			this.isUsing = true;
+			console.log("Shield timer: " + this.timer);
 			gameObject.health=1000;
-			this.timer-=Scene.deltaTime;
+			this.timer -= Scene.deltaTime;
 			gameObject.speed= 0;
+
 		}
 	}
 
@@ -21,15 +26,24 @@ function Shield() {
 	
 	this.Update = function(gameObject) {
 
-		if(this.timer <= 0) {
-			this.timer = 0;
-		}
 
-		if(this.timer >= 1) {
-			this.timer = 1;
-		}
 
-		this.timer+=Scene.deltaTime * 0.5;
+		if(this.isUsing) {
+
+
+			if(this.timer <= 0) {
+				this.timer = 0;
+			}
+
+			if(this.timer >= 100) {
+				this.timer = 100;
+			}
+
+
+
+		} else {
+			this.timer+=Scene.deltaTime * 0.5;
+		}
 
 
 
