@@ -137,6 +137,15 @@ function BoxCollider(width, height, parent) {
 			if(scene.GameObjects[i].components.boxCollider) {
 
 				if(scene.GameObjects[i].components.boxCollider != this) {
+
+                    /*
+
+                    if(scene.GameObjects[i].components.boxCollider && this.parent == Scene.player) {
+                        continue;
+                    }
+
+                    */
+
                     if (position.x - (this.width/2) < scene.GameObjects[i].transform.position.x + scene.GameObjects[i].components.boxCollider.width &&
                      position.x + (this.width/2) > scene.GameObjects[i].transform.position.x &&
                      position.y - (this.height/2) < scene.GameObjects[i].transform.position.y + scene.GameObjects[i].components.boxCollider.height &&

@@ -2,22 +2,31 @@ function Shield() {
 
 	this.isUsing = false;
 
-	this.icon = document.getElementById("swordIcon");
+	this.icon = document.getElementById("shieldIcon");
 	this.type = "Shield";
 
 	this.isActive = false;
-	this.timer=100;
+	this.timer=500;
 
 
 	this.Use = function(gameObject) {
 
 		if(this.timer>0){
 
+			var x = gameObject.transform.position.x;
+			var y = gameObject.transform.position.y;
+
+			Scene.addObject(new ShieldBubble(x, y, 64, 64, gameObject));
+
 			this.isUsing = true;
 			console.log("Shield timer: " + this.timer);
 			gameObject.health=1000;
 			this.timer -= Scene.deltaTime;
 			gameObject.speed= 0;
+
+		} else {
+			gameObject.speed= 0.1;
+			gameObject.health=100;
 
 		}
 	}
@@ -35,14 +44,15 @@ function Shield() {
 				this.timer = 0;
 			}
 
-			if(this.timer >= 100) {
-				this.timer = 100;
+			if(this.timer >= 500) {
+				this.timer = 500;
 			}
 
 
 
 		} else {
-			this.timer+=Scene.deltaTime * 0.5;
+			this.timer+=Scene.deltaTime;
+			
 		}
 
 
@@ -52,8 +62,7 @@ function Shield() {
 
 	this.Reset = function(gameObject) {
 		this.isUsing = false;
-		gameObject.speed= 0.1;
-		gameObject.health=100;
+
 	}
 
 
