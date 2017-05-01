@@ -43,6 +43,7 @@ function Player() {
   this.zButton = new InventoryItem();
   this.xButton = new IronSword();
 
+
   this.menuIndex = 0;
 
   this.menuGoLeft = function() {
@@ -107,7 +108,7 @@ function Player() {
     }
 
     this.inventory[0] = new CrossBow();
-
+    this.inventory[1]= new Shield();
   }
 
   this.Update = function(scene) {
@@ -194,6 +195,7 @@ function Player() {
 
 
                     //Action buttons
+
             if(input.z) {
               this.zButton.Use(this);
             } else if(input.x) {

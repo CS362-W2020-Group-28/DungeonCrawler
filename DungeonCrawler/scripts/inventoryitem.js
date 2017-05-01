@@ -1,3 +1,51 @@
+function Shield() {
+
+	this.isUsing = false;
+
+	this.icon = document.getElementById("swordIcon");
+	this.type = "Shield";
+
+	this.isActive = false;
+	this.timer=1;
+	this.Use = function(gameObject) {
+
+		if(this.timer>0)
+		{console.log("Shield");
+			gameObject.health=1000;
+			this.timer-=Scene.deltaTime;
+			gameObject.speed= 0;
+		}
+	}
+
+
+	
+	this.Update = function(gameObject) {
+
+		if(this.timer <= 0) {
+			this.timer = 0;
+		}
+
+		if(this.timer >= 1) {
+			this.timer = 1;
+		}
+
+		this.timer+=Scene.deltaTime * 0.5;
+
+
+
+
+	}
+
+	this.Reset = function(gameObject) {
+		this.isUsing = false;
+		gameObject.speed= 0.1;
+		gameObject.health=100;
+	}
+
+
+}
+
+
 function IronSword() {
 
 	this.isUsing = false;
@@ -13,7 +61,7 @@ function IronSword() {
 	this.Use = function(gameObject) {
 
 		if(!this.isUsing) {
-			console.log("Using sword...");
+			console.log("U        sing sword...");
 
 			var x = gameObject.transform.position.x;
 			var y = gameObject.transform.position.y;
