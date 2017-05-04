@@ -77,6 +77,7 @@ function ShieldBubble(x, y, width, height, parent) {
 function SwordSlash(x, y, width, height) {
 
 	this.transform = new Transform(this);
+	this.velocity = new Vector2(0, 0);
 	this.type = "SwordSlash";
     this.transform.position.x = x;
     this.transform.position.y = y;

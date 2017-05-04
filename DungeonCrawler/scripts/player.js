@@ -91,11 +91,6 @@ function Player() {
 
   this.onCollide = function(scene, collider) {
 
-    if(collider.parent.type == "Slime") {
-        this.velocity.x += collider.parent.velocity.x*2;
-        this.velocity.y += collider.parent.velocity.y*2;
-    }
-
     return true;
   }
 
@@ -139,8 +134,12 @@ function Player() {
 
             this.transform.Translate(this.velocity.x, this.velocity.y, scene);
             
-            this.velocity.x -= scene.deltaTime;
-            this.velocity.y -= scene.deltaTime;
+            //this.velocity.x -= scene.deltaTime*0.01;
+            //this.velocity.y -= scene.deltaTime*0.01;
+            this.velocity.x *= 0.8;
+            this.velocity.y *= 0.8;
+
+            /*
 
             if(this.velocity.x <= 0) {
               this.velocity.x = 0;
@@ -149,6 +148,8 @@ function Player() {
             if(this.velocity.y <= 0) {
               this.velocity.y = 0;
             }
+
+            */
 
 
             if(input.arrowKeyUp || input.arrowKeyDown || input.arrowKeyLeft || input.arrowKeyRight) {

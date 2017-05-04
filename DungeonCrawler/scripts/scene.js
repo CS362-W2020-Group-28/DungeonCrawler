@@ -155,6 +155,7 @@ this.Start = function() {
 
             this.GameObjects[i].Update(this);
 
+
             //Iterate through components
             for(var c in this.GameObjects[i].components) {
                 this.GameObjects[i].components[c].Update(this);
@@ -167,6 +168,7 @@ this.Start = function() {
 
 
         }
+
 
         //"Delete" marked objects
         this.GameObjects = newList;
