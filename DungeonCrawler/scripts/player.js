@@ -45,7 +45,13 @@ function Player() {
   this.zButton = new InventoryItem();
   this.xButton = new IronSword();
 
-
+  this.playerHealth= function(p){
+    this.health+=p;
+  }
+  this.playerSpeed= function(p){
+    this.speed=p;
+  }
+  
   this.menuIndex = 0;
 
   this.menuGoLeft = function() {
@@ -99,9 +105,9 @@ function Player() {
     return true;
   }
 
-
+  //intializes the player class
   this.Start = function(scene) {
-
+  
 
 
     this.components.boxCollider = new BoxCollider(14, 14, this);
@@ -113,9 +119,10 @@ function Player() {
     for(var i = 0; i < this.maxInventorySize; i++) {
       this.inventory.push(new InventoryItem());
     }
-
+    //intitalizes the players inventory
     this.inventory[0] = new CrossBow();
     this.inventory[1]= new Shield();
+    this.inventory[2]= new Bomb();
   }
 
   this.Update = function(scene) {

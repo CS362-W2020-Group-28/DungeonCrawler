@@ -1,4 +1,4 @@
-function Shield() {
+function Shield(p) {
 
 	this.isUsing = false;
 
@@ -11,47 +11,21 @@ function Shield() {
 	this.min=0;
 
 	this.Use = function(gameObject) {
+			this.oldSpeed = gameObject.speed;
+			gameObject.playerSpeed(p);
+			console.log("Shield");
+			
 
-		if(this.timer>this.min){
+			setTimeout(function() {
+				gameObject.speed = this.oldSpeed;
 
-			this.isUsing = true;
-			console.log("Shield timer: " + this.timer);
-			gameObject.health=1000;
-			this.timer -= Scene.deltaTime;
-			gameObject.speed= 0;
-
-		}
-		else{
-			gameObject.speed= 0.1;
-			gameObject.health=100;
-		}
+			}, 10000);
+	
 	}
 
 
 	
 	this.Update = function(gameObject) {
-
-
-
-		if(this.isUsing) {
-
-
-			if(this.timer <= this.min) {
-				this.timer = this.min;
-			}
-
-			if(this.timer >= this.max) {
-				this.timer = this.max;
-			}
-
-
-
-		} else {
-			this.timer+=Scene.deltaTime;
-		}
-
-
-
 
 	}
 
@@ -61,8 +35,133 @@ function Shield() {
 
 
 }
+function Bomb() {
+
+	this.isUsing = false;
+
+	this.icon = document.getElementById("swordIcon");
+	this.type = "Bomb";
+	this.isActive = false;
+	this.timer=1000;
+	this.max=1000;
+	this.min=0;
+
+	this.Use = function(gameObject) 
+	{
+			console.log("bomb");
+			Scene.addObject(new SwordSlash(gameObject.transform.position.x+16, gameObject.transform.position.y, 72, 72));
+		
+	}
 
 
+	
+	this.Update = function(gameObject)
+	 {
+
+
+
+
+		
+	}
+
+	this.Reset = function(gameObject) 
+	{
+		this.isUsing = false;
+	}
+
+
+}
+function HealthPotion(p) {
+
+	this.isUsing = false;
+
+	this.icon = document.getElementById("swordIcon");
+	this.type = "HealthPotion";
+
+	this.isActive = false;
+
+	this.Use = function(gameObject) {
+			gameObject.playerHealth(p);
+	}
+
+
+	
+	this.Update = function(gameObject) {
+
+	}
+
+	
+
+	this.Reset = function(gameObject) {
+		this.isUsing = false;
+	}
+
+
+}
+function SpeedPotion(p) {
+
+	this.isUsing = false;
+
+	this.icon = document.getElementById("swordIcon");
+	this.type = "HealthPotion";
+
+	this.isActive = false;
+
+	this.oldSpeed = null;
+
+	this.Use = function(gameObject) {
+			this.oldSpeed = gameObject.speed;
+			gameObject.playerSpeed(p);
+
+			
+
+			setTimeout(function() {
+				gameObject.speed = this.oldSpeed;
+
+			}, 10000);
+	}
+
+
+	
+	this.Update = function(gameObject) {
+
+	}
+
+	
+
+	this.Reset = function(gameObject) {
+		this.isUsing = false;
+	}
+
+
+}
+function DefensePotion(p) {
+
+	this.isUsing = false;
+
+	this.icon = document.getElementById("swordIcon");
+	this.type = "AttackPotion";
+
+	this.isActive = false;
+
+	this.Use = function(gameObject) {
+			gameObject.playerHealth(p);
+	}
+
+
+	
+	this.Update = function(gameObject) {
+
+	}
+
+	
+
+	this.Reset = function(gameObject) {
+		this.isUsing = false;
+	}
+
+
+}
 function IronSword() {
 
 	this.isUsing = false;
