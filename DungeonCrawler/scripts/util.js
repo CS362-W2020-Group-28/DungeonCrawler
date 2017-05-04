@@ -45,7 +45,8 @@ var input = {
 }
 
 
-
+function normalize(val, max, min) 
+{ return (val - min) / (max - min); }
 
 
 function doKeyDown(e) {
@@ -212,21 +213,49 @@ function Transform(GameObject) {
         this.prevPosition.x = this.position.x;
         this.prevPosition.y = this.position.y;
 
-        this.position.x += x;
+        
+        
 
+        this.position.x += x;
+        
+
+        // X-Axis collision check
         if(this.collider) {
             if(this.collider.checkCollision(scene, this.position)) {
+                //this.position.x = this.prevPosition.x;
+                //this.gameObject.velocity.x = 0;
                 this.position.x = this.prevPosition.x;
+
+
             }
         }
+        
+        
+        this.position.y += y;      
 
-        this.position.y += y;
-
+        // Y-Axis collision check
         if(this.collider) {
             if(this.collider.checkCollision(scene, this.position)) {
+                //this.position.y = this.prevPosition.y;
+                //this.gameObject.velocity.y = 0;
+
                 this.position.y = this.prevPosition.y;
             }
         }
+
+        
+
+        
+
+        
+    }
+
+
+    this.doCollisionCheck = function(scene) {
+
+      
+
+
     }
 }
 
@@ -254,9 +283,11 @@ function GameObject() {
 
 function StaticProp(buffer, x, y) {
     this.transform = new Transform(this);
-    this.type = "StaticProp";
     this.transform.position.x = x;
     this.transform.position.y = y;
+    this.velocity = new Vector2(0, 0);
+    this.type = "StaticProp";
+
 
     this.offset = new Vector2();
     this.offset.x = 16;
@@ -267,17 +298,24 @@ function StaticProp(buffer, x, y) {
 
     this.destroyOnLoad = true; //If true, this will be cleared on map load
 
+    this.delete = false;
+
     this.onCollide = function(scene, collider) {
         return true;
     }
 
     this.Start = function(scene) {
       this.components.boxCollider = new BoxCollider(16, 16, this);
+      this.transform = new Transform(this);
+
+      this.transform.position.x = x;
+      this.transform.position.y = y;
 
     }
 
     this.Update = function(scene) {
-      
+      this.transform.Translate(0, 0, scene);
+
     }
 
     this.Draw = function(scene) {

@@ -2,24 +2,28 @@ function Shield(p) {
 
 	this.isUsing = false;
 
-	this.icon = document.getElementById("swordIcon");
+	this.icon = document.getElementById("shieldIcon");
 	this.type = "Shield";
 
 	this.isActive = false;
+
 	this.timer=1000;
 	this.max=1000;
 	this.min=0;
 
+
+
+
 	this.Use = function(gameObject) {
-			this.oldSpeed = gameObject.speed;
-			gameObject.playerSpeed(p);
-			console.log("Shield");
-			
 
-			setTimeout(function() {
-				gameObject.speed = this.oldSpeed;
 
-			}, 10000);
+			var x = gameObject.transform.position.x;
+			var y = gameObject.transform.position.y;
+
+			Scene.addObject(new ShieldBubble(x, y, 64, 64, gameObject));
+
+			this.isUsing = true;
+			console.log("Shield timer: " + this.timer);
 	
 	}
 
@@ -102,12 +106,13 @@ function SpeedPotion(p) {
 
 	this.isUsing = false;
 
+
 	this.icon = document.getElementById("swordIcon");
 	this.type = "HealthPotion";
 
 	this.isActive = false;
-
 	this.oldSpeed = null;
+
 
 	this.Use = function(gameObject) {
 			this.oldSpeed = gameObject.speed;
@@ -130,7 +135,7 @@ function SpeedPotion(p) {
 	
 
 	this.Reset = function(gameObject) {
-		this.isUsing = false;
+		
 	}
 
 
