@@ -16,9 +16,10 @@ var draw = true;
 document.addEventListener('keydown',doKeyDown,false);
 document.addEventListener('keyup',doKeyRelease,false);
 
-function mainLoop() {
 
-  
+
+
+function mainLoop() {
 
     Scene.Update();
     if(draw) Scene.Draw();
@@ -26,6 +27,7 @@ function mainLoop() {
     requestAnimationFrame(mainLoop);
 
 }
+
 
 var input = {
     w: false,

@@ -73,6 +73,58 @@ function ShieldBubble(x, y, width, height, parent) {
 
 }
 
+function Coin(x, y) {
+
+	this.transform = new Transform(this);
+	this.velocity = new Vector2(0, 0);
+	this.type = "Coin";
+    this.transform.position.x = x;
+    this.transform.position.y = y;
+
+    this.components = {};
+
+  	this.img = document.getElementById("coin");
+
+  	this.delete = false;
+
+
+  	this.frame = 0;
+
+    this.onCollide = function(scene, collider) {
+
+
+    	this.delete = true;
+
+
+    	return true;
+    }
+
+	this.Start = function(scene) {
+
+		this.components.boxCollider = new BoxCollider(8, 8, this);
+		this.components.boxCollider.isTrigger = true;
+		this.transform = new Transform(this);
+        this.transform.position.x = x;
+        this.transform.position.y = y;
+
+	}
+
+	this.Update = function(scene) {
+		this.transform.Translate(0, 0, scene);
+
+
+		this.frame += scene.deltaTime*0.01;
+
+		this.frame = this.frame % 4;
+
+	}
+
+	this.Draw = function(scene) {
+    	ctx.drawImage(this.img,Math.floor(this.frame)*8, 0, 8,8, this.transform.position.x - (this.components.boxCollider.width/2),this.transform.position.y - (this.components.boxCollider.height/2), this.components.boxCollider.width, this.components.boxCollider.height);
+	}
+
+}
+
 
 function SwordSlash(x, y, width, height) {
 
