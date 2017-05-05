@@ -120,8 +120,9 @@ function Player() {
     this.inventory[2]= new Bomb(30,30,16);
     this.inventory[3]= new HealthPotion(30);
     this.inventory[4]= new SpeedPotion(0.2);
-    this.inventory[5]= new FlameThrower();
-    this.inventory[6]= new Decoy();
+    this.inventory[5]= new DefensePotion();
+    this.inventory[6]= new FlameThrower();
+    this.inventory[7]= new Decoy();
 
   }
 

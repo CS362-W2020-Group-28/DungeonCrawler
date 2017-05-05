@@ -226,12 +226,12 @@ function DefensePotion(p) {
 	this.Use = function(gameObject) {
 			var oldHealth = 100;
 			gameObject.playerHealth(p);
+			//console.log("defense on");
 
-			
 
 			setTimeout(function() {
 				gameObject.playerHealth(-p);
-
+				//console.log("defense off");
 			}, 10000);
 			
 	}

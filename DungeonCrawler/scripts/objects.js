@@ -1,4 +1,4 @@
-function ArrowProjectile() {
+ ArrowProjectile() {
 	this.transform = new Transform(this);
 
 	this.Start = function(scene) {
