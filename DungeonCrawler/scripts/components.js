@@ -3,18 +3,14 @@ function SpriteRenderer() {
 
     this.Start = function() {
 
-
     }
 
     this.Update = function() {
 
-
-
     }
 
     this.Draw = function() {
-
-
+      
     }
 }
 function MessageHandler(parent) {
@@ -32,7 +28,6 @@ function MessageHandler(parent) {
    this.Pop = function() {
       if(this.messageQueue.length > 0) {
         console.log(this.messageQueue);
-
            var msg = this.messageQueue.shift();
            this.messageQueue.push(msg);
            this.currentMessage = msg;
