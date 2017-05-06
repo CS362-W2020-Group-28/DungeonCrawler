@@ -90,12 +90,20 @@ function Coin(x, y) {
 
   	this.frame = 0;
 
-    this.onCollide = function(scene, collider) {
+  	this.value = 1;
 
-    	console.log("Picking up coin");
+    this.onCollide = function(scene, collider) {	
+
+    	try {
+    		collider.parent.addCoin(this.value);
+    		this.delete = true;
+
+    		console.log("Picking up coin");
 
 
-    	this.delete = true;
+    	} catch(ex) {
+
+    	}
 
 
     	return true;
