@@ -95,6 +95,10 @@ function Player() {
     Scene.Camera.transform.position.y = y;
   }
 
+  this.addCoin = function(value) {
+    this.coin += value;
+  }
+
   this.onCollide = function(scene, collider) {
 
     return true;
