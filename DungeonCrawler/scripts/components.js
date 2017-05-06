@@ -17,26 +17,37 @@ function SpriteRenderer() {
 
     }
 }
-function MessageHandler() {
+function MessageHandler(parent) {
 
+   this.parent = parent;
    this.messageQueue = [];
+   this.currentMessage = "";
 
-   this.showMessage = function(msg) {
+
+   this.Push = function(msg) {
        this.messageQueue.push(msg);
 
    }
 
-   this.Update = function(scene) {
-       if(this.messageQueue.length > 0) {
-           var msg = this.messageQueue.pop();
-           this.Draw(msg);
+   this.Pop = function() {
+      if(this.messageQueue.length > 0) {
+        console.log(this.messageQueue);
+
+           var msg = this.messageQueue.shift();
+           this.messageQueue.push(msg);
+           this.currentMessage = msg;
        }
+   }
+
+   this.Update = function(scene) {
+       
 
    }
 
    this.Draw = function(scene) {
-       ctx.font = "30px Arial";
-       ctx.fillText("Hello World",10,50);   
+        ctx.font = "8px Pixel";
+       ctx.fillStyle= "#FFFFFF";
+       ctx.fillText(this.currentMessage,parent.transform.position.x,parent.transform.position.y - 16);
    }
 
 

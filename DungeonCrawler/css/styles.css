@@ -1,7 +1,8 @@
-@font-face { 
-    font-family: Pixel; 
-    src: url('fonts/Pixeled.ttf'); 
-} 
+
+@font-face {
+    font-family: Pixel;
+    src: url(PressStart2P.ttf);
+}
 
 body,html {
 	width: 100%;

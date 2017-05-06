@@ -193,8 +193,9 @@ this.Start = function() {
 
             this.Camera.translate();
 
-            for(var j = 0; j < this.GameObjects[i].components[j]; j++) {
-                this.GameObjects[i].components[j].Draw(this);
+            //Iterate through components
+            for(var c in this.GameObjects[i].components) {
+                this.GameObjects[i].components[c].Draw(this);
             }
 
             this.GameObjects[i].Draw(this);
