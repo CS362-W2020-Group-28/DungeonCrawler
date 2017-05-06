@@ -52,90 +52,6 @@
                  "y":368
                 }, 
                 {
-                 "gid":84,
-                 "height":16,
-                 "id":11,
-                 "name":"Slime",
-                 "rotation":0,
-                 "type":"Slime",
-                 "visible":true,
-                 "width":16,
-                 "x":134.5,
-                 "y":397
-                }, 
-                {
-                 "gid":84,
-                 "height":16,
-                 "id":15,
-                 "name":"Slime",
-                 "rotation":0,
-                 "type":"Slime",
-                 "visible":true,
-                 "width":16,
-                 "x":120.5,
-                 "y":428.5
-                }, 
-                {
-                 "gid":84,
-                 "height":16,
-                 "id":16,
-                 "name":"Slime",
-                 "rotation":0,
-                 "type":"Slime",
-                 "visible":true,
-                 "width":16,
-                 "x":172.5,
-                 "y":430
-                }, 
-                {
-                 "gid":84,
-                 "height":16,
-                 "id":17,
-                 "name":"Slime",
-                 "rotation":0,
-                 "type":"Slime",
-                 "visible":true,
-                 "width":16,
-                 "x":153,
-                 "y":476.5
-                }, 
-                {
-                 "gid":84,
-                 "height":16,
-                 "id":19,
-                 "name":"Slime",
-                 "rotation":0,
-                 "type":"Slime",
-                 "visible":true,
-                 "width":16,
-                 "x":501.5,
-                 "y":380
-                }, 
-                {
-                 "gid":84,
-                 "height":16,
-                 "id":20,
-                 "name":"Slime",
-                 "rotation":0,
-                 "type":"Slime",
-                 "visible":true,
-                 "width":16,
-                 "x":470,
-                 "y":456
-                }, 
-                {
-                 "gid":84,
-                 "height":16,
-                 "id":21,
-                 "name":"Slime",
-                 "rotation":0,
-                 "type":"Slime",
-                 "visible":true,
-                 "width":16,
-                 "x":547.5,
-                 "y":461
-                }, 
-                {
                  "gid":85,
                  "height":8,
                  "id":22,
@@ -312,6 +228,18 @@
                  "width":31.5,
                  "x":832,
                  "y":87
+                }, 
+                {
+                 "gid":84,
+                 "height":16,
+                 "id":36,
+                 "name":"BRO",
+                 "rotation":0,
+                 "type":"NPC",
+                 "visible":true,
+                 "width":16,
+                 "x":624,
+                 "y":576
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -320,7 +248,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":36,
+ "nextobjectid":37,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,

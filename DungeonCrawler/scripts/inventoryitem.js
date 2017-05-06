@@ -2,7 +2,7 @@ function Shield(p,s) {
 
 	this.isUsing = false;
 
-	this.icon = document.getElementById("shieldIcon");
+	this.icon = document.getElementById("ShieldIcon");
 	this.type = "Shield";
 	this.oldSpeed=null;
 	this.Use = function(gameObject) {
@@ -76,7 +76,7 @@ function Bomb(a,b,d) {
 
 	this.isUsing = false;
 
-	this.icon = document.getElementById("swordIcon");
+	this.icon = document.getElementById("BombIcon");
 	this.type = "Bomb";
 	this.isActive = false;
 	this.timer=1000;
@@ -117,7 +117,7 @@ function HealthPotion(p) {
 
 	this.isUsing = false;
 
-	this.icon = document.getElementById("crossbowIcon");
+	this.icon = document.getElementById("HealthIcon");
 	this.type = "HealthPotion";
 
 	this.isActive = false;

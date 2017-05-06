@@ -120,7 +120,7 @@ function Coin(x, y) {
 	}
 
 	this.Draw = function(scene) {
-    	ctx.drawImage(this.img,Math.floor(this.frame)*8, 0, 8,8, this.transform.position.x - (this.components.boxCollider.width/2),this.transform.position.y - (this.components.boxCollider.height/2), this.components.boxCollider.width, this.components.boxCollider.height);
+    //	ctx.drawImage(this.img,Math.floor(this.frame)*8, 0, 8,8, this.transform.position.x - (this.components.boxCollider.width/2),this.transform.position.y - (this.components.boxCollider.height/2), this.components.boxCollider.width, this.components.boxCollider.height);
 	}
 
 }

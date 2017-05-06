@@ -111,8 +111,10 @@ function TileRenderer() {
 
             } else if(this.map.layers[i].objects[o].type == "Coin"){
               prop = new Coin(this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
-
-            } else {
+            } else if(this.map.layers[i].objects[o].type == "NPC") {
+              prop = new NPC(this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
+            }
+            else {
               prop = new StaticProp(imgBuffer, this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
             }
             

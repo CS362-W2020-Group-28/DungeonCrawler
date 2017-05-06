@@ -14,32 +14,24 @@ function NPC(x, y) {
     this.delete = false;
 
     this.onCollide = function(scene, collider) {
-        MessageHandler();
+       
+       //if(collider.parent == Scene.player) {
+        console.log("NPC test.");
+       //}
         return true;
     }
 
     this.Start = function(scene) {
-  
+         this.components.messageHandler = new MessageHandler();
+   this.components.boxCollider = new BoxCollider(16, 16, this);
+        this.transform = new Transform(this);
+        this.transform.position.x = x;
+        this.transform.position.y = y;
     }
 
     this.Update = function(scene) {
+       this.transform.Translate(this.velocity.x, this.velocity.y, scene);
 
-      /*  this.transform.Translate(this.velocity.x, this.velocity.y, scene);
-
-        if(this.transform.position.x <= Scene.player.transform.position.x) {
-            this.velocity.x = scene.deltaTime * 0.05;
-
-        } else {
-            this.velocity.x = -scene.deltaTime * 0.05;
-
-        }
-        
-        if(this.transform.position.y <= Scene.player.transform.position.y) {
-            this.velocity.y = scene.deltaTime * 0.05;
-
-        } else {
-            this.velocity.y = -scene.deltaTime * 0.05;
-        }*/
     }
 
     this.Draw = function(scene) {
