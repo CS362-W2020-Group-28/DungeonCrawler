@@ -48,7 +48,7 @@ function Slime(x, y) {
             this.transform.Translate(-scene.deltaTime * 0.05, 0, scene);
 
         }
-        
+
         if(this.transform.position.y <= Scene.player.transform.position.y) {
             this.transform.Translate(0, scene.deltaTime * 0.05, scene);
 
@@ -67,5 +67,3 @@ function Slime(x, y) {
 
 
 }
-
-module.export= Slime;

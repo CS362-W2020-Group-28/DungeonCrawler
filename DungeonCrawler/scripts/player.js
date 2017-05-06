@@ -111,7 +111,7 @@ function Player() {
   }
 
   this.Update = function(scene) {
-    
+
 
 
       Scene.Camera.setTarget(this.transform);
@@ -128,9 +128,9 @@ function Player() {
 
           if(this.alive) {
 
-              
+
             this.transform.Translate(0, 0, scene);
-            
+
 
 
             if(input.arrowKeyUp || input.arrowKeyDown || input.arrowKeyLeft || input.arrowKeyRight) {
@@ -228,7 +228,7 @@ function Player() {
 
 
                 ctx.drawImage(this.img, (Math.floor(this.frame + this.frameOffset)*64) + this.sourceOffsetX, this.facing*64 + this.sourceOffsetY, 64 + this.sourceOffsetWidth, 64 + this.sourceOffsetHeight, Math.floor(this.transform.position.x - 32),Math.floor(this.transform.position.y - 32), 64 + this.sourceOffsetWidth, 64 + this.sourceOffsetHeight);
-                
+
                 //Draw rzed dot
                 //ctx.fillStyle = "#FF0000";
                 //ctx.fillRect(this.transform.position.x, this.transform.position.y,2,2);

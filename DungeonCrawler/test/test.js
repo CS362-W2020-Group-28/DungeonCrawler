@@ -1,18 +1,27 @@
 var assert = chai.assert;
 
-// Tests if the testing framework is working properly or not.
-describe('Initial', function(){
-  it('Array should return first element of array', function() {
-    var x = [1];
-    assert.equal(x[0],1);
-  });
-});
+function startGame() {
+  Scene = new Scene();
+  Scene.Start();
+}
 
 describe('Slime', function() {
   // Checks if slime is being read properly by test file
   it('should be of type slime', function() {
-    var testSlime = new Slime(12,12);
-    assert.equal(testSlime.type, "Slime");
+    var slime = new Slime(12,12);
+    assert.equal(slime.type, "Slime");
+  })
+
+  it('should have transform positions initialized properly', function() {
+    var slime = new Slime(12*16,12*16);
+    assert.equal(slime.transform.position.x, 12*16);
+    assert.equal(slime.transform.position.y, 12*16);
+  });
+
+  it('should have doDamage() working properly', function() {
+    var slime = new Slime(12,12);
+    slime.doDamage();
+    assert.equal(slime.alive, false);
   });
 });
 
@@ -48,19 +57,14 @@ describe('Player', function() {
     assert.equal(player.menuIndex, 1);
   });
 
-	
-  it('should have setPosition working properly', function() {
+
+  it('should have Start() working properly', function() {
     var player = new Player();
-		var Scene = new Scene();
 
-		Scene.Start();
-		requestAnimationFrame(mainLoop);
+    player.Start(Scene);
 
-		var scenePosition = Scene.Camera.transform.position;
-
-		player.setPosition(16,16);
-
-    assert.equal(16, scenePosition.y);
+    assert.equal(player.transform.position.x, 496);
+    assert.equal(player.transform.position.y, 576);
   });
 
 });
