@@ -17,7 +17,30 @@ function SpriteRenderer() {
 
     }
 }
+function MessageHandler() {
 
+   this.messageQueue = [];
+
+   this.showMessage = function(msg) {
+       this.messageQueue.push(msg);
+
+   }
+
+   this.Update = function(scene) {
+       if(this.messageQueue.length > 0) {
+           var msg = this.messageQueue.pop();
+           this.Draw(msg);
+       }
+
+   }
+
+   this.Draw = function(scene) {
+       ctx.font = "30px Arial";
+       ctx.fillText("Hello World",10,50);   
+   }
+
+
+}
 function Pathfinder() {
 
     this.easyStar = new EasyStar.js();
