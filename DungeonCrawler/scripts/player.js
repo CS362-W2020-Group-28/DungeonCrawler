@@ -115,7 +115,7 @@ function Player() {
       this.inventory.push(new InventoryItem());
     }
     //intitalizes the players inventory
-    this.inventory[0] = new CrossBow();
+    this.inventory[0]= new CrossBow();
     this.inventory[1]= new Shield();
     this.inventory[2]= new Bomb();
   }
