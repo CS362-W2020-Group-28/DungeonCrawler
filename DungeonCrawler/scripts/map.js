@@ -104,14 +104,18 @@ function TileRenderer() {
 
 
             var prop;
-
+            
             if(this.map.layers[i].objects[o].type == "Slime") {
-              var prop = new Slime(this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
+              prop = new Slime(this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
+              
+
+            } else if(this.map.layers[i].objects[o].type == "Coin"){
+              prop = new Coin(this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
 
             } else {
-              var prop = new StaticProp(imgBuffer, this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
+              prop = new StaticProp(imgBuffer, this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
             }
-
+            
 
   
             prop.Start(scene);
