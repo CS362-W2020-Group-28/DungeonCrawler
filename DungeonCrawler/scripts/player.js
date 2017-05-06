@@ -122,7 +122,7 @@ function Player() {
     this.inventory[4]= new SpeedPotion(0.2);
     this.inventory[5]= new DefensePotion();
     this.inventory[6]= new FlameThrower();
-    this.inventory[7]= new Decoy();
+    //this.inventory[7]= new Decoy();
 
   }
 

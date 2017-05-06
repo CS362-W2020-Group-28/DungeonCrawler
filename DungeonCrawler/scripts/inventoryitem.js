@@ -40,42 +40,7 @@ function Shield(p,s) {
 
 
 }
-function Decoy() {
 
-	this.isUsing = false;
-
-	this.icon = document.getElementById("shieldIcon");
-	this.type = "Decoy";
-
-	this.Use = function(gameObject) {
-
-			/*Draw the decoy*/
-			//var x = gameObject.transform.position.x;
-			//var y = gameObject.transform.position.y;
-			//Scene.addObject(new ShieldBubble(x, y, 20, 20, gameObject));
-			
-			/* Set down the decoy*/
-			
-			/* Take down the decoy*/
-			setTimeout(function() {
-			
-
-			}, 3000);
-	
-	}
-
-
-	
-	this.Update = function(gameObject) {
-
-	}
-
-	this.Reset = function(gameObject) {
-		this.isUsing = false;
-	}
-
-
-}
 function FlameThrower() {
 
 	this.isUsing = false;
