@@ -175,15 +175,18 @@ function BoxCollider(width, height, parent) {
 
                         
                             if(scene.GameObjects[i].components.boxCollider.isTrigger) {
-           
-                                if(scene.GameObjects[i].onCollide) 
-                                scene.GameObjects[i].onCollide(scene, this);
+
+                                if(scene.GameObjects[i].onCollide)  {
+                                    scene.GameObjects[i].onCollide(scene, this);
+
+                                }
 
 
                             }
                             else {
-                                if(scene.GameObjects[i].onCollide) 
-                                scene.GameObjects[i].onCollide(scene, this);
+                                if(scene.GameObjects[i].onCollide) {
+                                    scene.GameObjects[i].onCollide(scene, this);
+                                } 
 
 
 

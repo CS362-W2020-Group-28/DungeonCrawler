@@ -67,7 +67,6 @@ function Slime(x, y) {
     this.onCollide = function(scene, collider) {
 
 
-
         return true;
     }
 

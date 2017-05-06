@@ -115,6 +115,7 @@ function Player() {
       this.inventory.push(new InventoryItem());
     }
     //intitalizes the players inventory
+
     this.inventory[0] = new CrossBow();
     this.inventory[1]= new Shield(300,0.05);
     this.inventory[2]= new Bomb(30,30,16);
@@ -123,7 +124,6 @@ function Player() {
     this.inventory[5]= new DefensePotion();
     this.inventory[6]= new FlameThrower();
     this.inventory[7]= new Decoy();
-
   }
 
   this.Update = function(scene) {

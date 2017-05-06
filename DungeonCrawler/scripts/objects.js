@@ -92,6 +92,8 @@ function Coin(x, y) {
 
     this.onCollide = function(scene, collider) {
 
+    	console.log("Picking up coin");
+
 
     	this.delete = true;
 
@@ -113,7 +115,7 @@ function Coin(x, y) {
 		this.transform.Translate(0, 0, scene);
 
 
-		this.frame += scene.deltaTime*0.01;
+		this.frame += scene.deltaTime*0.02;
 
 		this.frame = this.frame % 4;
 

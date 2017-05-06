@@ -125,7 +125,7 @@ function TileRenderer() {
             prop.components.boxCollider.width = this.map.layers[i].objects[o].width;
             prop.components.boxCollider.height = this.map.layers[i].objects[o].height;
 
-            prop.onCollide = new Function("scene", "collider", "return true;");
+            //prop.onCollide = new Function("scene", "collider", "return true;");
 
             if(this.map.layers[i].objects[o].properties) {
 
