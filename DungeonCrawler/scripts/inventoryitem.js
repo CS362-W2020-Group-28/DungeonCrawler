@@ -123,12 +123,14 @@ function HealthPotion(p) {
 	this.isActive = false;
 
 	this.Use = function(gameObject) {
+		if(!this.isUsing) {
 			gameObject.playerHealth(p);
+			this.isUsing=true;
 			var x = gameObject.transform.position.x;
 			var y = gameObject.transform.position.y;
 			Scene.addObject(new HPotion(x, y, 20, 20, gameObject));
-			console.log("healthPotion");
-
+			console.log(gameObject.health);
+			}
 	}
 
 
@@ -150,7 +152,7 @@ function SpeedPotion(p) {
 	this.isUsing = false;
 
 
-	this.icon = document.getElementById("swordIcon");
+	this.icon = document.getElementById("BootsIcon");
 	this.type = "SpeedPotion";
 
 	this.isActive = false;
@@ -159,14 +161,21 @@ function SpeedPotion(p) {
 
 	this.Use = function(gameObject) {
 			var oldSpeed = 0.1;
+			if(!this.isUsing) {
 			gameObject.playerSpeed(p);
+
 			console.log("SpeedPotion");
+
+			var x = gameObject.transform.position.x;
+			var y = gameObject.transform.position.y;
+			Scene.addObject(new SPotion(x, y, 20, 20, gameObject));
 			
 
-			setTimeout(function() {
+			/*setTimeout(function() {
 				gameObject.speed = oldSpeed;
 
-			}, 10000);
+			}, 10000);*/
+		}
 	}
 
 

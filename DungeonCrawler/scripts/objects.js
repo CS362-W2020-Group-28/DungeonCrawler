@@ -67,9 +67,11 @@ function SPotion(x, y, width, height, parent) {
 
 	this.transform = new Transform(this);
 	this.parent = parent;
-	this.type = "HPotion";
+	this.type = "SPotion";
     this.transform.position.x = x;
     this.transform.position.y = y;
+
+   this.parent.playerSpeed(0.2);
 
     this.components = {};
 
@@ -95,14 +97,15 @@ function SPotion(x, y, width, height, parent) {
 
 		this.transform.position.x = this.parent.transform.position.x;
 		this.transform.position.y = this.parent.transform.position.y;
-
-
+		
 
 
 		this.timer -= scene.deltaTime;
+		//console.log(this.timer);
 
 		if(this.timer <= 0) {
 			this.delete = true;
+			this.parent.playerSpeed(0.1);
 		}
 	}
 

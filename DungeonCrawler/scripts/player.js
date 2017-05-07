@@ -126,11 +126,11 @@ function Player() {
     this.inventory[0] = new CrossBow();
     this.inventory[1]= new Shield(300,0.05);
     this.inventory[2]= new Bomb(30,30,32);
-    this.inventory[3]= new HealthPotion(30);
+    this.inventory[3]= new HealthPotion(20);
     this.inventory[4]= new SpeedPotion(0.2);
-    this.inventory[5]= new DefensePotion();
-    this.inventory[6]= new FlameThrower();
-    this.inventory[7]= new Decoy();
+    //this.inventory[5]= new DefensePotion();
+   // this.inventory[5]= new FlameThrower();
+    //this.inventory[6]= new Decoy();
   }
 
   this.Update = function(scene) {
