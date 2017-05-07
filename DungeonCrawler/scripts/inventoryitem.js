@@ -84,6 +84,8 @@ function Bomb(a,b,d) {
 	{
 		if(!this.isUsing) {
 			this.isUsing = true;
+			Scene.playSound("bombSet");
+
 			var x = gameObject.transform.position.x;
 			var y = gameObject.transform.position.y;
 			Scene.addObject(new BombFunction(x, y, 16, 16));

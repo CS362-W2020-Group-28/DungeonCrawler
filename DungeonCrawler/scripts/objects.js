@@ -206,7 +206,7 @@ function BombExplosion(x, y, width, height) {
 
 		this.components.boxCollider = new BoxCollider(width, height, this);
 		this.components.boxCollider.isTrigger = true;
-		this.components.lightRenderer = new LightRenderer(this, "#111111", 128);
+		this.components.lightRenderer = new LightRenderer(this, "#111111", 512);
 
 		this.transform = new Transform(this);
         this.transform.position.x = x;
@@ -220,6 +220,9 @@ function BombExplosion(x, y, width, height) {
 		this.timer -= scene.deltaTime;
 
 		if(this.timer <= 0) {
+			
+			Scene.playSound("bombExplosion");
+
 			this.delete = true;
 		}
 	}
@@ -328,7 +331,7 @@ function Coin(x, y) {
 
 		this.components.boxCollider = new BoxCollider(8, 8, this);
 		this.components.boxCollider.isTrigger = true;
-		this.components.lightRenderer = new LightRenderer(this, "#0F0F00", 32);
+		this.components.lightRenderer = new LightRenderer(this, "#0F0F00", 256);
 		this.transform = new Transform(this);
         this.transform.position.x = x;
         this.transform.position.y = y;
