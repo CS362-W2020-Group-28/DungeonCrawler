@@ -18,14 +18,13 @@ function NPC(x, y) {
     }
 
     this.Start = function(scene) {
-         this.components.messageHandler = new MessageHandler(this);
-   this.components.boxCollider = new BoxCollider(16, 16, this);
+        this.components.messageHandler = new MessageHandler(this);
+        this.components.boxCollider = new BoxCollider(16, 16, this);
         this.transform = new Transform(this);
         this.transform.position.x = x;
         this.transform.position.y = y;
 
-        this.components.messageHandler.Push("I am not a lemon.");
-        this.components.messageHandler.Push("I'm a lime!");
+        this.components.messageHandler.Push("I am an NPC!");
 
     }
 

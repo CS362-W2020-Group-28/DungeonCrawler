@@ -19,6 +19,8 @@ function MessageHandler(parent) {
    this.messageQueue = [];
    this.currentMessage = "";
 
+   this.timer = 5000;
+
 
    this.Push = function(msg) {
        this.messageQueue.push(msg);
@@ -27,6 +29,7 @@ function MessageHandler(parent) {
 
    this.Pop = function() {
       if(this.messageQueue.length > 0) {
+        this.timer = 5000;
         console.log(this.messageQueue);
            var msg = this.messageQueue.shift();
            this.messageQueue.push(msg);
@@ -35,14 +38,21 @@ function MessageHandler(parent) {
    }
 
    this.Update = function(scene) {
-       
+       this.timer -= Scene.deltaTime;
 
+       if(this.timer <= 0)
+        timer = 0;
    }
 
    this.Draw = function(scene) {
+
+      if(this.timer > 0) {
         ctx.font = "8px Pixel";
        ctx.fillStyle= "#FFFFFF";
        ctx.fillText(this.currentMessage,parent.transform.position.x,parent.transform.position.y - 16);
+
+      }
+        
    }
 
 
