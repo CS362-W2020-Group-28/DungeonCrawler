@@ -83,6 +83,7 @@ function BoxCollider(width, height, parent) {
     this.type = "BoxCollider";
     this.offset = new Vector2();
     this.parent = parent;
+    this.collision = null;
     this.width = width;
     this.height = height;
     this.ignorePlayer = false;
@@ -182,17 +183,16 @@ function BoxCollider(width, height, parent) {
                         
                             if(scene.GameObjects[i].components.boxCollider.isTrigger) {
 
-                                if(scene.GameObjects[i].onCollide)  {
-                                    scene.GameObjects[i].onCollide(scene, this);
+                                this.collision = scene.GameObjects[i].components.boxCollider;
 
-                                }
+                                
 
 
                             }
                             else {
-                                if(scene.GameObjects[i].onCollide) {
-                                    scene.GameObjects[i].onCollide(scene, this);
-                                } 
+                                this.collision = scene.GameObjects[i].components.boxCollider;
+
+                                 
 
 
 

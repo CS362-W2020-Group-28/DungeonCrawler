@@ -247,8 +247,11 @@ function Transform(GameObject) {
 
         
 
-        
+        if(this.collider.collision != null) {
+              this.collider.collision.parent.onCollide(scene, this.collider);
+        }
 
+        this.collider.collision = null;
         
     }
 

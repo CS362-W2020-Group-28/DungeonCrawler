@@ -97,6 +97,8 @@ function Player() {
 
   this.addCoin = function(value) {
     this.coin += value;
+
+    Scene.playSound("coinPickup");
   }
 
   this.onCollide = function(scene, collider) {
@@ -287,6 +289,11 @@ function Player() {
                 //x button icon
                 if(this.xButton.icon)
                   ctx.drawImage(this.xButton.icon,0, 0, 16,16, canvas.width - 32 + 3,canvas.height - 32 + 3 - (this.isMenu ? 24 : 0), 16, 16);
+
+                //Draw coin counter
+                ctx.font = "8px Pixel";
+                 ctx.fillStyle= "#FFFFFF";
+                 ctx.fillText(this.coin,16,canvas.height - 16);
 
 
                 //Draw inventory menu

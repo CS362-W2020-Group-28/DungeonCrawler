@@ -265,6 +265,8 @@ function IronSword() {
 		if(!this.isUsing) {
 			console.log("Using sword...");
 
+			Scene.playSound("swingSound");
+
 			var x = gameObject.transform.position.x;
 			var y = gameObject.transform.position.y;
 			var width = 24;
