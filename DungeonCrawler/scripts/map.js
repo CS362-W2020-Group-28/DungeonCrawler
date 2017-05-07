@@ -1,7 +1,8 @@
 function TileRenderer() {
 	this.transform = new Transform(this);
 
-  this.map = {};
+  this.map = null;
+  this.mapName = null;
   this.img = document.getElementById("basicTiles");
 
   this.tileBuffer = document.createElement('canvas');
@@ -10,6 +11,8 @@ function TileRenderer() {
   this.tileContext = this.tileBuffer.getContext('2d');
   this.floatContext = this.floatBuffer.getContext('2d');
 
+  this.persistenceMemory = {};
+
   this.components = {};
 
   this.destroyOnLoad = false;
@@ -17,6 +20,15 @@ function TileRenderer() {
   this.fadeAlpha = 1.0;
 
   this.loadMap = function(filename, scene) {
+
+    if(this.map) {
+      console.log("There is map data!");
+
+
+
+      //Get gameObjects from scene
+      this.persistenceMemory[this.mapName] = scene.GameObjects;
+    }
 
 		scene.GameObjects = []; //Clear array
 		scene.GameObjects.push(this); //Push this tile renderer back into the list
@@ -41,6 +53,7 @@ function TileRenderer() {
     console.log("after map load");
 
     this.map = mapData;
+    this.mapName = filename;
 
         //For Joey
         //if(typeof this.map.layers == 'undefined') {
@@ -90,7 +103,12 @@ function TileRenderer() {
 
          } else if(this.map.layers[i].type == "objectgroup") {
 
-          for(var o = 0; o < this.map.layers[i].objects.length; o++) {
+          if(this.persistenceMemory[this.mapName] != null) {
+            Scene.GameObjects = this.persistenceMemory[this.mapName];
+
+          } else {
+
+            for(var o = 0; o < this.map.layers[i].objects.length; o++) {
 
             var gID = this.map.layers[i].objects[o].gid - 1;
 
@@ -148,7 +166,16 @@ function TileRenderer() {
 
                               scene.GameObjects.push(prop);
                             }
+
+
+
+          }
+
+          
                           }
+
+
+
                         }
 
                         if(this.map.properties) {

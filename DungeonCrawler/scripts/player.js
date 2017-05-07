@@ -294,9 +294,9 @@ function Player() {
                 //Draw coin counter
                 ctx.font = "8px Pixel";
                  ctx.fillStyle= "#FFFFFF";
-                 ctx.fillText(this.coin,16,canvas.height - 16);
+                 ctx.fillText(this.coin,20,canvas.height - 16);
 
-                 ctx.drawImage(this.coinIcon,0, 0, 8,8, 8,canvas.height-16, 8, 8);
+                 ctx.drawImage(this.coinIcon,0, 0, 8,8, 8,canvas.height-25, 8, 8);
 
 
                 //Draw inventory menu
