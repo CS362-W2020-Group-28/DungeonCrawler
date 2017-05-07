@@ -15,6 +15,7 @@ function Player() {
   this.img = document.getElementById("playerSheet");
   this.button = document.getElementById("button");
   this.rect = document.getElementById("rect");
+  this.coinIcon = document.getElementById("coinIcon");
   this.facing = 0; //0 - down; 1 - left; 2 - right; 3 - up
   this.frame = 0;
   this.frameOffset = 0;
@@ -294,6 +295,8 @@ function Player() {
                 ctx.font = "8px Pixel";
                  ctx.fillStyle= "#FFFFFF";
                  ctx.fillText(this.coin,16,canvas.height - 16);
+
+                 ctx.drawImage(this.coinIcon,0, 0, 8,8, 8,canvas.height-16, 8, 8);
 
 
                 //Draw inventory menu

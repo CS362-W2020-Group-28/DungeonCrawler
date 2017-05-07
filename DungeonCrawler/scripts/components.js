@@ -171,6 +171,8 @@ function BoxCollider(width, height, parent) {
 				if(scene.GameObjects[i] != this.parent) {
 
                     
+                    if(this.ignorePlayer && scene.GameObjects[i] == Scene.player)
+                        continue;
 
                     
 
