@@ -171,10 +171,11 @@ function BoxCollider(width, height, parent) {
 				if(scene.GameObjects[i] != this.parent) {
 
                     
+
              if(scene.GameObjects[i].components.boxCollider.ignorePlayer && this.parent.type == "Player") {
               continue;
              }
-                
+
                     
 
                     if (position.x - (this.width/2) < scene.GameObjects[i].transform.position.x + scene.GameObjects[i].components.boxCollider.width &&
