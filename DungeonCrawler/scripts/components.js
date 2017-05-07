@@ -169,7 +169,7 @@ function BoxCollider(width, height, parent) {
 
 
     this.Draw = function(scene) {
-      //ctx.drawImage(this.rect,0, 0, 16,16, this.parent.transform.position.x - (this.width/2),this.parent.transform.position.y - (this.height/2), this.width, this.height);
+      ctx.drawImage(this.rect,0, 0, 16,16, this.parent.transform.position.x - (this.width/2),this.parent.transform.position.y - (this.height/2), this.width, this.height);
 
 
     }
