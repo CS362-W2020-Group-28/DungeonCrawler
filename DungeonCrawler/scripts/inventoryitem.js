@@ -8,8 +8,8 @@ function Shield(p,s) {
 	this.Use = function(gameObject) {
 
 
-			//var x = gameObject.transform.position.x;
-			//var y = gameObject.transform.position.y;
+			var x = gameObject.transform.position.x;
+			var y = gameObject.transform.position.y;
 
 			//Scene.addObject(new ShieldBubble(x, y, 20, 20, gameObject));
 			var oldSpeed = 0.1;
