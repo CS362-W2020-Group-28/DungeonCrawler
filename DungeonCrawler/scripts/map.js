@@ -171,7 +171,14 @@ function TileRenderer() {
 
             } else if(this.map.layers[i].objects[o].type == "Coin"){
               prop = new Coin(oX, oY);
-            } else if(this.map.layers[i].objects[o].type == "NPC") {
+            } 
+            else if(this.map.layers[i].objects[o].type == "Bird"){
+              prop = new Bird(oX, oY);
+            } 
+            else if(this.map.layers[i].objects[o].type == "Skull"){
+              prop = new Skull(oX, oY);
+            } 
+            else if(this.map.layers[i].objects[o].type == "NPC") {
               prop = new NPC(oX, oY);
             }else if(this.map.layers[i].objects[o].type == "Light") {
               oX = this.map.layers[i].objects[o].x + oWidth/2;
