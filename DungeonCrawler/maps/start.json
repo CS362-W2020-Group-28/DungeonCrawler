@@ -6,7 +6,7 @@
          "name":"Tile Layer 1",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":64,
          "x":0,
          "y":0
@@ -312,6 +312,86 @@
                  "width":16,
                  "x":528,
                  "y":448
+                }, 
+                {
+                 "ellipse":true,
+                 "height":191.581155450508,
+                 "id":49,
+                 "name":"BlueLight",
+                 "properties":
+                    {
+                     "color":"#0011BB"
+                    },
+                 "propertytypes":
+                    {
+                     "color":"string"
+                    },
+                 "rotation":0,
+                 "type":"Light",
+                 "visible":true,
+                 "width":192.278595001138,
+                 "x":279.117166666667,
+                 "y":241.999833333333
+                }, 
+                {
+                 "ellipse":true,
+                 "height":191.581155450508,
+                 "id":51,
+                 "name":"BlueLight",
+                 "properties":
+                    {
+                     "color":"#0011BB"
+                    },
+                 "propertytypes":
+                    {
+                     "color":"string"
+                    },
+                 "rotation":0,
+                 "type":"Light",
+                 "visible":true,
+                 "width":192.278595001138,
+                 "x":541.783833333333,
+                 "y":240.999833333333
+                }, 
+                {
+                 "ellipse":true,
+                 "height":64,
+                 "id":52,
+                 "name":"Light",
+                 "properties":
+                    {
+                     "color":"#111111"
+                    },
+                 "propertytypes":
+                    {
+                     "color":"string"
+                    },
+                 "rotation":0,
+                 "type":"Light",
+                 "visible":true,
+                 "width":64,
+                 "x":436.783833333333,
+                 "y":390.6665
+                }, 
+                {
+                 "ellipse":true,
+                 "height":64,
+                 "id":53,
+                 "name":"Light",
+                 "properties":
+                    {
+                     "color":"#111111"
+                    },
+                 "propertytypes":
+                    {
+                     "color":"string"
+                    },
+                 "rotation":0,
+                 "type":"Light",
+                 "visible":true,
+                 "width":64,
+                 "x":524.117166666667,
+                 "y":388.333166666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -320,7 +400,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":45,
+ "nextobjectid":54,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,

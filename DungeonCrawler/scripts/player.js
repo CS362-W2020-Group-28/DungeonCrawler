@@ -113,6 +113,7 @@ function Player() {
 
 
     this.components.boxCollider = new BoxCollider(14, 14, this);
+    this.components.lightRenderer = new LightRenderer(this, "#202020", 512);
     this.transform = new Transform(this);
     this.transform.position.x = 31*16;
     this.transform.position.y = 36*16;
@@ -267,9 +268,12 @@ function Player() {
               this.Draw = function(scene) {
 
 
-
+                //Draw Player
                 ctx.drawImage(this.img, (Math.floor(this.frame + this.frameOffset)*64) + this.sourceOffsetX, this.facing*64 + this.sourceOffsetY, 64 + this.sourceOffsetWidth, 64 + this.sourceOffsetHeight, Math.floor(this.transform.position.x - 32),Math.floor(this.transform.position.y - 32), 64 + this.sourceOffsetWidth, 64 + this.sourceOffsetHeight);
                 
+
+                
+
                 //Draw rzed dot
                 //ctx.fillStyle = "#FF0000";
                 //ctx.fillRect(this.transform.position.x, this.transform.position.y,2,2);
@@ -278,52 +282,54 @@ function Player() {
 
                 //Buttons
                 //z button
-                ctx.drawImage(this.button,0, 0, 22,22, canvas.width - 64,canvas.height - 32 - (this.isMenu ? 24 : 0), 22, 22);
+                Scene.UIContext.drawImage(this.button,0, 0, 22,22, canvas.width - 64,canvas.height - 32 - (this.isMenu ? 24 : 0), 22, 22);
 
                 //z button icon
                 if(this.zButton.icon)
-                  ctx.drawImage(this.zButton.icon,0, 0, 16,16, canvas.width - 64 + 3,canvas.height - 32 + 3 - (this.isMenu ? 24 : 0), 16, 16);
+                  Scene.UIContext.drawImage(this.zButton.icon,0, 0, 16,16, canvas.width - 64 + 3,canvas.height - 32 + 3 - (this.isMenu ? 24 : 0), 16, 16);
 
                 //x button
-                ctx.drawImage(this.button,0, 0, 22,22, canvas.width - 32,canvas.height - 32 - (this.isMenu ? 24 : 0), 22, 22);
+                Scene.UIContext.drawImage(this.button,0, 0, 22,22, canvas.width - 32,canvas.height - 32 - (this.isMenu ? 24 : 0), 22, 22);
 
                 //x button icon
                 if(this.xButton.icon)
-                  ctx.drawImage(this.xButton.icon,0, 0, 16,16, canvas.width - 32 + 3,canvas.height - 32 + 3 - (this.isMenu ? 24 : 0), 16, 16);
+                  Scene.UIContext.drawImage(this.xButton.icon,0, 0, 16,16, canvas.width - 32 + 3,canvas.height - 32 + 3 - (this.isMenu ? 24 : 0), 16, 16);
 
                 //Draw coin counter
-                ctx.font = "8px Pixel";
-                 ctx.fillStyle= "#FFFFFF";
-                 ctx.fillText(this.coin,20,canvas.height - 16);
+                Scene.UIContext.font = "8px Pixel";
+                 Scene.UIContext.fillStyle= "#FFFFFF";
+                 Scene.UIContext.fillText(this.coin,20,canvas.height - 16 - (this.isMenu ? 24 : 0));
 
-                 ctx.drawImage(this.coinIcon,0, 0, 8,8, 8,canvas.height-25, 8, 8);
+                 Scene.UIContext.drawImage(this.coinIcon,0, 0, 8,8, 8,canvas.height-25 - (this.isMenu ? 24 : 0), 8, 8);
 
 
                 //Draw inventory menu
                 if(this.isMenu) {
 
                   //Draw black background
-                  ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+                  Scene.UIContext.fillStyle = "rgba(0, 0, 0, 0.5)";
 
-                  ctx.fillRect(0,canvas.height - 30,canvas.width,30);
+                  Scene.UIContext.fillRect(0,canvas.height - 30,canvas.width,30);
 
 
                   //Draw selection rectangle
-                  ctx.drawImage(this.rect,0, 0, 16,16, 8+(this.menuIndex*16),canvas.height - 22, 16, 16);
+                  Scene.UIContext.drawImage(this.rect,0, 0, 16,16, 8+(this.menuIndex*16),canvas.height - 22, 16, 16);
 
                   //Draw icons
                   for(var i = 0; i < this.inventory.length; i++) {
                     if(this.inventory && this.inventory[i].icon)
-                      ctx.drawImage(this.inventory[i].icon,0, 0, 16,16, 8+(i*16),canvas.height - 22, 16, 16);
+                      Scene.UIContext.drawImage(this.inventory[i].icon,0, 0, 16,16, 8+(i*16),canvas.height - 22, 16, 16);
                   }
 
 
 
 
-                  ctx.strokeStyle="#000000";
+                  Scene.UIContext.strokeStyle="#000000";
                 }
 
                 Scene.Camera.translate();
+
+                //Lighting here
 
               }
 

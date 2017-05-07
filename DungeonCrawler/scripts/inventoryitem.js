@@ -14,7 +14,7 @@ function Shield(p,s) {
 			var x = gameObject.transform.position.x;
 			var y = gameObject.transform.position.y;
 
-			Scene.addObject(new ShieldBubble(x, y, 20, 20, gameObject));
+			Scene.addObject(new ShieldBubble(x, y, 32, 32, gameObject));
 
 			}
 			
@@ -282,23 +282,23 @@ function IronSword() {
 
 			var x = gameObject.transform.position.x;
 			var y = gameObject.transform.position.y;
-			var width = 24;
-			var height = 24;
+			var width = 28;
+			var height = 28;
 
 			if(gameObject.facing == UP) {
-				y -= 24;
+				y -= 14;
 			}
 
 			else if(gameObject.facing == DOWN) {
-				y += 24;
+				y += 14;
 			}
 
 			else if(gameObject.facing == LEFT) {
-				x -= 24;
+				x -= 14;
 			}
 
 			else if(gameObject.facing == RIGHT) {
-				x += 24;
+				x += 14;
 			}
 
 			Scene.addObject(new SwordSlash(x, y, width, height));

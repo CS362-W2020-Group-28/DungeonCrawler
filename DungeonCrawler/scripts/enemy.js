@@ -21,6 +21,7 @@ function NPC(x, y) {
     this.Start = function(scene) {
         this.components.messageHandler = new MessageHandler(this);
         this.components.boxCollider = new BoxCollider(16, 16, this);
+        this.components.lightRenderer = new LightRenderer(this, "#111111", 32);
         this.transform = new Transform(this);
         this.transform.position.x = x;
         this.transform.position.y = y;
@@ -73,6 +74,8 @@ function Slime(x, y) {
 
     this.Start = function(scene) {
         this.components.boxCollider = new BoxCollider(16, 16, this);
+        this.components.lightRenderer = new LightRenderer(this, "#000800", 32);
+
         this.transform = new Transform(this);
         this.transform.position.x = x;
         this.transform.position.y = y;

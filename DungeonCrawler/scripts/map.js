@@ -3,13 +3,16 @@ function TileRenderer() {
 
   this.map = null;
   this.mapName = null;
-  this.img = document.getElementById("basicTiles");
 
+  this.img = document.getElementById("basicTiles");
   this.tileBuffer = document.createElement('canvas');
   this.floatBuffer = document.createElement('canvas');
+  this.lightBuffer = document.createElement('canvas');
+
 
   this.tileContext = this.tileBuffer.getContext('2d');
   this.floatContext = this.floatBuffer.getContext('2d');
+  this.lightContext = this.floatBuffer.getContext('2d');
 
   this.persistenceMemory = {};
 
@@ -21,20 +24,32 @@ function TileRenderer() {
 
   this.loadMap = function(filename, scene) {
 
+  
+    //Take the objects from our current scene before loading the next one
     if(this.map) {
       console.log("There is map data!");
 
 
 
+
+      console.log(this.mapName);
       //Get gameObjects from scene
       this.persistenceMemory[this.mapName] = [];
 
+      var toDelete = [];
 
       for(var i = 0; i < Scene.GameObjects.length; i++) {
         if(Scene.GameObjects[i].ignoreOnLoad == false) {
           this.persistenceMemory[this.mapName].push(Scene.GameObjects[i]);
+          toDelete.push(i);
         }
 
+      }
+
+      
+      for(var i = 0; i < toDelete.length; i++) {
+        console.log("Deleting " + i);
+        Scene.GameObjects.splice(i, 1);
       }
     }
 
@@ -43,8 +58,10 @@ function TileRenderer() {
   
     this.tileBuffer = document.createElement('canvas');
     this.floatBuffer = document.createElement('canvas');
+    this.lightBuffer = document.createElement('canvas');
     this.tileContext = this.tileBuffer.getContext('2d');
     this.floatContext = this.floatBuffer.getContext('2d');
+    this.lightContext = this.lightBuffer.getContext('2d');
 
     $.ajaxSetup({async: false});
 
@@ -59,7 +76,10 @@ function TileRenderer() {
     console.log("after map load");
 
     this.map = mapData;
+
+    //Use the filename for indexing our hash table
     this.mapName = filename;
+    console.log("new map name: " + this.mapName);
 
         //For Joey
         //if(typeof this.map.layers == 'undefined') {
@@ -75,6 +95,9 @@ function TileRenderer() {
 
         this.floatBuffer.width = this.map.width * 16;
         this.floatBuffer.height = this.map.height * 16;
+
+        this.lightBuffer.width = this.map.width * 16;
+        this.lightBuffer.height = this.map.height * 16;
 
         for(var i = 0; i < this.map.layers.length; i++) {
 
@@ -111,10 +134,11 @@ function TileRenderer() {
 
           if(this.persistenceMemory[this.mapName] != null) {
 
+            //Scene.GameObjects = [];
             Scene.GameObjects = this.persistenceMemory[this.mapName];
 
             //scene.GameObjects.push(this); //Push this tile renderer back into the list
-            scene.GameObjects.push(scene.player); //Push player back into the list
+            //scene.GameObjects.push(scene.player); //Push player back into the list
 
 
 
@@ -134,26 +158,41 @@ function TileRenderer() {
 
 
             var prop;
+
+
+            var oWidth = this.map.layers[i].objects[o].width;
+            var oHeight = this.map.layers[i].objects[o].height;
+            var oX = this.map.layers[i].objects[o].x + oWidth/2;
+            var oY = this.map.layers[i].objects[o].y - oHeight/2;
             
             if(this.map.layers[i].objects[o].type == "Slime") {
-              prop = new Slime(this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
+              prop = new Slime(oX, oY);
               
 
             } else if(this.map.layers[i].objects[o].type == "Coin"){
-              prop = new Coin(this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
+              prop = new Coin(oX, oY);
             } else if(this.map.layers[i].objects[o].type == "NPC") {
-              prop = new NPC(this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
+              prop = new NPC(oX, oY);
+            }else if(this.map.layers[i].objects[o].type == "Light") {
+              oX = this.map.layers[i].objects[o].x + oWidth/2;
+              oY = this.map.layers[i].objects[o].y + oHeight/2;
+
+              prop = new Light(oX, oY, oWidth, this.map.layers[i].objects[o].properties.color);
             }
             else {
-              prop = new StaticProp(imgBuffer, this.map.layers[i].objects[o].x, this.map.layers[i].objects[o].y);
+              prop = new StaticProp(imgBuffer, oX, oY);
             }
             
 
   
             prop.Start(scene);
 
-            prop.components.boxCollider.width = this.map.layers[i].objects[o].width;
-            prop.components.boxCollider.height = this.map.layers[i].objects[o].height;
+
+            if(prop.components.boxCollider) {
+              prop.components.boxCollider.width = oWidth;
+            prop.components.boxCollider.height = oHeight;
+            }
+            
 
             //prop.onCollide = new Function("scene", "collider", "return true;");
 
@@ -233,7 +272,22 @@ function TileRenderer() {
                     }
 
                     this.DrawTopLayer = function(scene) {
-                     ctx.drawImage(this.floatBuffer, this.transform.position.x,this.transform.position.y, this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
+                     ctx.drawImage(this.floatBuffer, 0,0, this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
+                   }
+
+                   this.ClearLightLayer = function() {
+
+                       this.lightContext.fillStyle = "#111111";
+        this.lightContext.fillRect(0, 0, this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
+
+                   }
+
+                   this.DrawLightLayer = function(scene) {
+
+                    
+
+
+                     ctx.drawImage(this.lightBuffer, 0,0, this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
                    }
 
                  }

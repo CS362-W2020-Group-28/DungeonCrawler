@@ -13,6 +13,52 @@ function SpriteRenderer() {
       
     }
 }
+
+
+function LightRenderer(parent, color, radius) {
+
+    this.parent = parent;
+    this.radius = radius;
+
+    this.color = color;
+
+
+    this.Start = function() {
+
+    }
+
+    this.Update = function() {
+
+    }
+
+    this.Draw = function() {
+
+      Scene.tileRenderer.lightContext.globalCompositeOperation = "lighter";
+
+
+      for(var i = 1; i < 8; i++) {
+
+
+
+        Scene.tileRenderer.lightContext.fillStyle = this.color;
+        Scene.tileRenderer.lightContext.beginPath();
+      Scene.tileRenderer.lightContext.arc(this.parent.transform.position.x, this.parent.transform.position.y, this.radius/i, 0, 2 * Math.PI, false);
+      Scene.tileRenderer.lightContext.fill();
+
+      }
+      
+
+
+
+
+
+
+
+      Scene.tileRenderer.lightContext.globalCompositeOperation = "source-over";
+      
+    }
+}
+
 function MessageHandler(parent) {
 
    this.parent = parent;
@@ -47,6 +93,7 @@ function MessageHandler(parent) {
    this.Draw = function(scene) {
 
       if(this.timer > 0) {
+        ctx.textAlign = "center";
         ctx.font = "8px Pixel";
        ctx.fillStyle= "#FFFFFF";
        ctx.fillText(this.currentMessage,parent.transform.position.x,parent.transform.position.y - 16);
@@ -99,6 +146,7 @@ function BoxCollider(width, height, parent) {
     this.ignorePlayer = false;
     this.isTrigger = false;
     this.phase = 0;
+    this.rect = document.getElementById("rect");
 
 
     this.Start = function() {
@@ -113,6 +161,7 @@ function BoxCollider(width, height, parent) {
 
 
     this.Draw = function(scene) {
+      ctx.drawImage(this.rect,0, 0, 16,16, this.parent.transform.position.x - (this.width/2),this.parent.transform.position.y - (this.height/2), this.width, this.height);
 
 
     }
@@ -188,10 +237,10 @@ function BoxCollider(width, height, parent) {
 
                     
 
-                    if (position.x - (this.width/2) < scene.GameObjects[i].transform.position.x + scene.GameObjects[i].components.boxCollider.width &&
-                     position.x + (this.width/2) > scene.GameObjects[i].transform.position.x &&
-                     position.y - (this.height/2) < scene.GameObjects[i].transform.position.y + scene.GameObjects[i].components.boxCollider.height &&
-                     (this.height/2) + position.y > scene.GameObjects[i].transform.position.y) {
+                    if (position.x - (this.width/2) < scene.GameObjects[i].transform.position.x + scene.GameObjects[i].components.boxCollider.width/2 &&
+                     position.x + (this.width/2) > scene.GameObjects[i].transform.position.x - scene.GameObjects[i].components.boxCollider.width/2  &&
+                     position.y - (this.height/2) < scene.GameObjects[i].transform.position.y + scene.GameObjects[i].components.boxCollider.height/2 &&
+                     (this.height/2) + position.y > scene.GameObjects[i].transform.position.y - scene.GameObjects[i].components.boxCollider.height/2) {
 
 
                         
