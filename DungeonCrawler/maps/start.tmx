@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="16" tileheight="16" nextobjectid="22">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="16" tileheight="16" nextobjectid="36">
  <tileset firstgid="1" name="Tileset" tilewidth="16" tileheight="16" tilecount="512" columns="8">
   <image source="../img/basictiles.png" width="128" height="1024"/>
   <tile id="9">
@@ -181,7 +181,28 @@
  </layer>
  <objectgroup name="Object Layer 1">
   <object id="5" name="Chest" gid="37" x="576.667" y="368" width="16" height="16"/>
-  <object id="6" name="Door(to dungeon1)" gid="85" x="832" y="87" width="32" height="19">
+  <object id="10" name="Chest" gid="37" x="576.667" y="368" width="16" height="16"/>
+  <object id="11" name="Slime" type="Slime" gid="84" x="134.5" y="397" width="16" height="16"/>
+  <object id="15" name="Slime" type="Slime" gid="84" x="120.5" y="428.5" width="16" height="16"/>
+  <object id="16" name="Slime" type="Slime" gid="84" x="172.5" y="430" width="16" height="16"/>
+  <object id="17" name="Slime" type="Slime" gid="84" x="153" y="476.5" width="16" height="16"/>
+  <object id="19" name="Slime" type="Slime" gid="84" x="501.5" y="380" width="16" height="16"/>
+  <object id="20" name="Slime" type="Slime" gid="84" x="470" y="456" width="16" height="16"/>
+  <object id="21" name="Slime" type="Slime" gid="84" x="547.5" y="461" width="16" height="16"/>
+  <object id="22" name="Coin" type="Coin" gid="85" x="668.5" y="633" width="8" height="8"/>
+  <object id="23" name="Coin" type="Coin" gid="85" x="750.5" y="572.5" width="8" height="8"/>
+  <object id="24" name="Coin" type="Coin" gid="85" x="716.5" y="606.5" width="8" height="8"/>
+  <object id="25" name="Coin" type="Coin" gid="85" x="778" y="535.5" width="8" height="8"/>
+  <object id="26" name="Coin" type="Coin" gid="85" x="806" y="486" width="8" height="8"/>
+  <object id="27" name="Coin" type="Coin" gid="85" x="824.5" y="445.5" width="8" height="8"/>
+  <object id="28" name="Coin" type="Coin" gid="85" x="855.5" y="341.5" width="8" height="8"/>
+  <object id="29" name="Coin" type="Coin" gid="85" x="840.5" y="393" width="8" height="8"/>
+  <object id="30" name="Coin" type="Coin" gid="85" x="828" y="278.5" width="8" height="8"/>
+  <object id="31" name="Coin" type="Coin" gid="85" x="838" y="232.5" width="8" height="8"/>
+  <object id="32" name="Coin" type="Coin" gid="85" x="852" y="196.5" width="8" height="8"/>
+  <object id="33" name="Coin" type="Coin" gid="85" x="860.5" y="158.5" width="8" height="8"/>
+  <object id="34" name="Coin" type="Coin" gid="85" x="853.5" y="131.5" width="8" height="8"/>
+  <object id="35" gid="145" x="832" y="87" width="31.5" height="16">
    <properties>
     <property name="isTrigger" type="bool" value="true"/>
     <property name="onCollide">console.log(&quot;door collision!&quot;);
@@ -191,37 +212,5 @@ Scene.loadMap(&quot;dungeon1/entrance/entrance&quot;);
 </property>
    </properties>
   </object>
-  <object id="7" name="Door(to dungeon2)" gid="85" x="960" y="789.5" width="32" height="19">
-   <properties>
-    <property name="isTrigger" type="bool" value="true"/>
-    <property name="onCollide">Scene.player.setPosition(9*16, 13*16);
-Scene.loadMap(&quot;dungeon2/entrance/entrance&quot;);
-Scene.playSound(&quot;doorSound&quot;);</property>
-   </properties>
-  </object>
-  <object id="8" name="Door(to dungeon3)" gid="85" x="127" y="836.5" width="32" height="19">
-   <properties>
-    <property name="isTrigger" type="bool" value="true"/>
-    <property name="onCollide">Scene.player.setPosition(9*16, 13*16);
-Scene.loadMap(&quot;dungeon3/entrance/entrance&quot;);
-Scene.playSound(&quot;doorSound&quot;);</property>
-   </properties>
-  </object>
-  <object id="9" name="Door(to dungeon4)" gid="85" x="127.926" y="85.4259" width="32" height="19">
-   <properties>
-    <property name="isTrigger" type="bool" value="true"/>
-    <property name="onCollide">Scene.player.setPosition(9*16, 13*16);
-Scene.loadMap(&quot;dungeon4/entrance/entrance&quot;);
-Scene.playSound(&quot;doorSound&quot;);</property>
-   </properties>
-  </object>
-  <object id="10" name="Chest" gid="37" x="576.667" y="368" width="16" height="16"/>
-  <object id="11" name="Slime" type="Slime" gid="84" x="134.5" y="397" width="16" height="16"/>
-  <object id="15" name="Slime" type="Slime" gid="84" x="120.5" y="428.5" width="16" height="16"/>
-  <object id="16" name="Slime" type="Slime" gid="84" x="172.5" y="430" width="16" height="16"/>
-  <object id="17" name="Slime" type="Slime" gid="84" x="153" y="476.5" width="16" height="16"/>
-  <object id="19" name="Slime" type="Slime" gid="84" x="501.5" y="380" width="16" height="16"/>
-  <object id="20" name="Slime" type="Slime" gid="84" x="470" y="456" width="16" height="16"/>
-  <object id="21" name="Slime" type="Slime" gid="84" x="547.5" y="461" width="16" height="16"/>
  </objectgroup>
 </map>

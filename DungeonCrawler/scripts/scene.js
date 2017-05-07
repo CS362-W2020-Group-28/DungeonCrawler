@@ -142,10 +142,12 @@ this.Start = function() {
         canvas.width = window.innerWidth/3;
         canvas.height = window.innerHeight/3;
 
-  //ctx.scale(2,2);
+        //ctx.scale(2,2);
 
 
-  this.Camera.Update(this);
+        this.Camera.Update(this);
+
+        var newList = [];
 
         //Iterate through game objects
         for(var i = 0; i < this.GameObjects.length; i++) {
@@ -153,13 +155,25 @@ this.Start = function() {
 
             this.GameObjects[i].Update(this);
 
+
             //Iterate through components
             for(var c in this.GameObjects[i].components) {
                 this.GameObjects[i].components[c].Update(this);
             }
 
+            //Check if this object is to be deleted
+            if(!this.GameObjects[i].delete) {
+                newList.push(this.GameObjects[i]);
+            }
+
 
         }
+
+
+        //"Delete" marked objects
+        this.GameObjects = newList;
+
+            
 
         this.deltaTime = new Date() - startTime;
         startTime = new Date();

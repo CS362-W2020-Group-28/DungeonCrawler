@@ -6,7 +6,9 @@ var UP = 3;
 
 function Player() {
   this.transform = null;
+  this.velocity = new Vector2(0,0);
   this.type = "Player";
+  this.delete = false;
   //this.boxCollider = new BoxCollider(14, 14, this);
 
   this.health = 100;
@@ -43,6 +45,13 @@ function Player() {
   this.zButton = new InventoryItem();
   this.xButton = new IronSword();
 
+  this.playerHealth= function(p){
+    this.health+=p;
+  }
+  this.playerSpeed= function(p){
+    this.speed=p;
+  }
+  
   this.menuIndex = 0;
 
   this.menuGoLeft = function() {
@@ -88,12 +97,12 @@ function Player() {
 
   this.onCollide = function(scene, collider) {
 
-        return true;
-    }
+    return true;
+  }
 
-
+  //intializes the player class
   this.Start = function(scene) {
-
+  
 
 
     this.components.boxCollider = new BoxCollider(14, 14, this);
@@ -105,16 +114,27 @@ function Player() {
     for(var i = 0; i < this.maxInventorySize; i++) {
       this.inventory.push(new InventoryItem());
     }
-
+    //intitalizes the players inventory
     this.inventory[0] = new CrossBow();
+    this.inventory[1]= new Shield(300,0.05);
+    this.inventory[2]= new Bomb(30,30,16);
+    this.inventory[3]= new HealthPotion(30);
+    this.inventory[4]= new SpeedPotion(0.2);
+    this.inventory[5]= new DefensePotion();
+    this.inventory[6]= new FlameThrower();
+    this.inventory[7]= new Decoy();
 
   }
 
   this.Update = function(scene) {
+<<<<<<< HEAD
+
+=======
+>>>>>>> ce4d22355d05266416011d5045b2e7fd51f157c2
 
 
 
-      Scene.Camera.setTarget(this.transform);
+    Scene.Camera.setTarget(this.transform);
 
         //Store previous values of X and Y (for collisions)
         this.prevX = this.transform.position.x;
@@ -129,8 +149,29 @@ function Player() {
           if(this.alive) {
 
 
+<<<<<<< HEAD
             this.transform.Translate(0, 0, scene);
 
+=======
+            this.transform.Translate(this.velocity.x, this.velocity.y, scene);
+            
+            //this.velocity.x -= scene.deltaTime*0.01;
+            //this.velocity.y -= scene.deltaTime*0.01;
+            this.velocity.x *= 0.8;
+            this.velocity.y *= 0.8;
+
+            /*
+
+            if(this.velocity.x <= 0) {
+              this.velocity.x = 0;
+            }
+
+            if(this.velocity.y <= 0) {
+              this.velocity.y = 0;
+            }
+
+            */
+>>>>>>> ce4d22355d05266416011d5045b2e7fd51f157c2
 
 
             if(input.arrowKeyUp || input.arrowKeyDown || input.arrowKeyLeft || input.arrowKeyRight) {
@@ -157,7 +198,8 @@ function Player() {
 
             if(input.arrowKeyUp) {
 
-              this.transform.Translate(0, -(scene.deltaTime * newSpeed), scene);
+              this.velocity.y = -(scene.deltaTime * newSpeed);
+
                         this.facing = 3; //Up
                       }
 
@@ -165,13 +207,15 @@ function Player() {
 
 
                       if(input.arrowKeyDown) {
-                        this.transform.Translate(0, (scene.deltaTime * newSpeed), scene);
+
+                        this.velocity.y = (scene.deltaTime * newSpeed);
+
                         this.facing = 0; //Down
                       }
                     }
                     if(input.arrowKeyLeft || input.arrowKeyRight) {
 
-                                  var newSpeed = this.speed;
+                      var newSpeed = this.speed;
 
                       if(input.shift) {
                         newSpeed = this.speed *2;
@@ -180,37 +224,36 @@ function Player() {
 
 
                       if(input.arrowKeyLeft) {
-                        this.transform.Translate(-(scene.deltaTime * newSpeed), 0, scene);
+                        this.velocity.x = -(scene.deltaTime * newSpeed);
                         this.facing = 1; //Left
                       }
 
                       if(input.arrowKeyRight) {
-                        this.transform.Translate((scene.deltaTime * newSpeed), 0, scene);
+                        this.velocity.x = (scene.deltaTime * newSpeed);
                         this.facing = 2; //Right
-
                       }
                     }
 
 
 
                     //Action buttons
-            if(input.z) {
-              this.zButton.Use(this);
-            } else if(input.x) {
-              this.xButton.Use(this);
 
-            }
+                    if(input.z) {
+                      this.zButton.Use(this);
+                    } else if(input.x) {
+                      this.xButton.Use(this);
+                    }
 
-            this.zButton.Update(this);
-            this.xButton.Update(this);
+                    this.zButton.Update(this);
+                    this.xButton.Update(this);
 
-            if(!input.z) {
-              this.zButton.Reset(this);
-            }
+                    if(!input.z) {
+                      this.zButton.Reset(this);
+                    }
 
-            if(!input.x) {
-              this.xButton.Reset(this);
-            }
+                    if(!input.x) {
+                      this.xButton.Reset(this);
+                    }
 
                   }
 
