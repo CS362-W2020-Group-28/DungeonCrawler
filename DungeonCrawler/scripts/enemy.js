@@ -11,35 +11,28 @@ function NPC(x, y) {
 
     this.alive = true;
 
+    this.ignoreOnLoad = false;
     this.delete = false;
 
     this.onCollide = function(scene, collider) {
-        MessageHandler();
         return true;
     }
 
     this.Start = function(scene) {
-  
+        this.components.messageHandler = new MessageHandler(this);
+        this.components.boxCollider = new BoxCollider(16, 16, this);
+        this.components.lightRenderer = new LightRenderer(this, "#111111", 32);
+        this.transform = new Transform(this);
+        this.transform.position.x = x;
+        this.transform.position.y = y;
+
+        this.components.messageHandler.Push("I am an NPC!");
+
     }
 
     this.Update = function(scene) {
+       this.transform.Translate(this.velocity.x, this.velocity.y, scene);
 
-      /*  this.transform.Translate(this.velocity.x, this.velocity.y, scene);
-
-        if(this.transform.position.x <= Scene.player.transform.position.x) {
-            this.velocity.x = scene.deltaTime * 0.05;
-
-        } else {
-            this.velocity.x = -scene.deltaTime * 0.05;
-
-        }
-        
-        if(this.transform.position.y <= Scene.player.transform.position.y) {
-            this.velocity.y = scene.deltaTime * 0.05;
-
-        } else {
-            this.velocity.y = -scene.deltaTime * 0.05;
-        }*/
     }
 
     this.Draw = function(scene) {
@@ -63,6 +56,7 @@ function Slime(x, y) {
 
     this.alive = true;
 
+    this.ignoreOnLoad = false;
     this.delete = false;
 
     this.doDamage = function() {
@@ -75,12 +69,13 @@ function Slime(x, y) {
     this.onCollide = function(scene, collider) {
 
 
-
         return true;
     }
 
     this.Start = function(scene) {
         this.components.boxCollider = new BoxCollider(16, 16, this);
+        this.components.lightRenderer = new LightRenderer(this, "#000800", 32);
+
         this.transform = new Transform(this);
         this.transform.position.x = x;
         this.transform.position.y = y;

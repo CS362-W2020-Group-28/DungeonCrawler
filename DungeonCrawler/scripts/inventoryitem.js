@@ -2,35 +2,32 @@ function Shield(p,s) {
 
 	this.isUsing = false;
 
-	this.icon = document.getElementById("shieldIcon");
+	this.icon = document.getElementById("ShieldIcon");
 	this.type = "Shield";
 	this.oldSpeed=null;
+
+	this.timer = 0;
 	this.Use = function(gameObject) {
 
+			if(this.timer <= 0) {
+			this.timer = 5500;
+			var x = gameObject.transform.position.x;
+			var y = gameObject.transform.position.y;
 
-			//var x = gameObject.transform.position.x;
-			//var y = gameObject.transform.position.y;
+			Scene.addObject(new ShieldBubble(x, y, 32, 32, gameObject));
 
-			//Scene.addObject(new ShieldBubble(x, y, 20, 20, gameObject));
-			var oldSpeed = 0.1;
-			console.log(oldSpeed);
-			var oldHealth= gameObject.health;
-			gameObject.playerSpeed(s);
-			gameObject.playerHealth(p);
+			}
 			
-
-			setTimeout(function() {
-				console.log(oldSpeed);
-				gameObject.playerSpeed(oldSpeed);
-				gameObject.playerHealth(-p);
-				console.log("Shield");
-			}, 3000);
-	
 	}
 
 
 	
 	this.Update = function(gameObject) {
+		this.timer -= Scene.deltaTime;
+
+		if(this.timer <= 0) {
+			this.timer = 0;
+		}
 
 	}
 
@@ -76,7 +73,7 @@ function Bomb(a,b,d) {
 
 	this.isUsing = false;
 
-	this.icon = document.getElementById("swordIcon");
+	this.icon = document.getElementById("BombIcon");
 	this.type = "Bomb";
 	this.isActive = false;
 	this.timer=1000;
@@ -85,14 +82,18 @@ function Bomb(a,b,d) {
 
 	this.Use = function(gameObject) 
 	{
-			var x = gameObject.transform.position.x+d;
+		if(!this.isUsing) {
+			this.isUsing = true;
+			Scene.playSound("bombSet");
+
+			var x = gameObject.transform.position.x;
 			var y = gameObject.transform.position.y;
+			Scene.addObject(new BombFunction(x, y, 16, 16));
 
-			setTimeout(function() {
+		}
+			
 
-			console.log("bomb");
-			Scene.addObject(new SwordSlash(x, y, a, b));
-			}, 3000);
+			
 	}
 
 
@@ -109,6 +110,7 @@ function Bomb(a,b,d) {
 	this.Reset = function(gameObject) 
 	{
 		this.isUsing = false;
+
 	}
 
 
@@ -117,14 +119,20 @@ function HealthPotion(p) {
 
 	this.isUsing = false;
 
-	this.icon = document.getElementById("crossbowIcon");
+	this.icon = document.getElementById("HealthIcon");
 	this.type = "HealthPotion";
 
 	this.isActive = false;
 
 	this.Use = function(gameObject) {
+		if(!this.isUsing) {
 			gameObject.playerHealth(p);
-			console.log("healthPotion");
+			this.isUsing=true;
+			var x = gameObject.transform.position.x;
+			var y = gameObject.transform.position.y;
+			Scene.addObject(new HPotion(x, y, 20, 20, gameObject));
+			console.log(gameObject.health);
+			}
 	}
 
 
@@ -146,7 +154,7 @@ function SpeedPotion(p) {
 	this.isUsing = false;
 
 
-	this.icon = document.getElementById("swordIcon");
+	this.icon = document.getElementById("BootsIcon");
 	this.type = "SpeedPotion";
 
 	this.isActive = false;
@@ -155,14 +163,21 @@ function SpeedPotion(p) {
 
 	this.Use = function(gameObject) {
 			var oldSpeed = 0.1;
+			if(!this.isUsing) {
 			gameObject.playerSpeed(p);
+
 			console.log("SpeedPotion");
+
+			var x = gameObject.transform.position.x;
+			var y = gameObject.transform.position.y;
+			Scene.addObject(new SPotion(x, y, 20, 20, gameObject));
 			
 
-			setTimeout(function() {
+			/*setTimeout(function() {
 				gameObject.speed = oldSpeed;
 
-			}, 10000);
+			}, 10000);*/
+		}
 	}
 
 
@@ -265,25 +280,27 @@ function IronSword() {
 		if(!this.isUsing) {
 			console.log("Using sword...");
 
+			Scene.playSound("swingSound");
+
 			var x = gameObject.transform.position.x;
 			var y = gameObject.transform.position.y;
-			var width = 24;
-			var height = 24;
+			var width = 28;
+			var height = 28;
 
 			if(gameObject.facing == UP) {
-				y -= 24;
+				y -= 14;
 			}
 
 			else if(gameObject.facing == DOWN) {
-				y += 24;
+				y += 14;
 			}
 
 			else if(gameObject.facing == LEFT) {
-				x -= 24;
+				x -= 14;
 			}
 
 			else if(gameObject.facing == RIGHT) {
-				x += 24;
+				x += 14;
 			}
 
 			Scene.addObject(new SwordSlash(x, y, width, height));

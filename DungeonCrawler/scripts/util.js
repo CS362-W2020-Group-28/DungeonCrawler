@@ -247,8 +247,11 @@ function Transform(GameObject) {
 
         
 
-        
+        if(this.collider.collision != null) {
+              this.collider.collision.parent.onCollide(scene, this.collider);
+        }
 
+        this.collider.collision = null;
         
     }
 
@@ -270,6 +273,10 @@ function GameObject() {
     this.components = [];
 
 
+    this.delete = false;
+    this.ignoreOnLoad = false;
+
+
     this.Start = function(scene) {
 
 
@@ -283,7 +290,51 @@ function GameObject() {
 
 }
 
-function StaticProp(buffer, x, y) {
+
+function Light(x, y, radius, color) {
+
+  this.transform = new Transform(this);
+  this.type = "Light";
+    this.transform.position.x = x;
+    this.transform.position.y = y;
+
+    this.components = {};
+
+    this.ignoreOnLoad = false;
+    this.delete = false;
+
+
+
+    this.onCollide = function(scene, collider) {  
+
+      
+
+      return true;
+    }
+
+  this.Start = function(scene) {
+
+
+    this.components.lightRenderer = new LightRenderer(this, color, radius);
+    this.transform = new Transform(this);
+        this.transform.position.x = x;
+        this.transform.position.y = y;
+
+  }
+
+  this.Update = function(scene) {
+
+
+
+  }
+
+  this.Draw = function(scene) {
+
+  }
+
+}
+
+function StaticProp(buffer, x, y, width, height) {
     this.transform = new Transform(this);
     this.transform.position.x = x;
     this.transform.position.y = y;
@@ -298,8 +349,7 @@ function StaticProp(buffer, x, y) {
 
     this.components = {}; //making this a hash table (so we don't have to do searches)
 
-    this.destroyOnLoad = true; //If true, this will be cleared on map load
-
+    this.ignoreOnLoad = false;
     this.delete = false;
 
     this.onCollide = function(scene, collider) {
@@ -321,7 +371,7 @@ function StaticProp(buffer, x, y) {
     }
 
     this.Draw = function(scene) {
-        ctx.drawImage(this.img, 0, 0, 16, 16, Math.floor(this.transform.position.x),Math.floor(this.transform.position.y), 16, 16);
+        ctx.drawImage(this.img, 0, 0, 16, 16, Math.floor(this.transform.position.x - (this.components.boxCollider.width/2)),Math.floor(this.transform.position.y - (this.components.boxCollider.height/2)), 16, 16);
     }
 
 

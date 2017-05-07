@@ -69,6 +69,7 @@ function Camera() {
 
     this.resetTransform = function() {
         ctx.setTransform(1, 0, 0, 1, 0, 0);
+
     }
 }
 
@@ -84,6 +85,12 @@ function Scene() {
     this.tileBuffer.width = 1024;
     this.tileBuffer.height = 1024;
     this.tileContext = this.tileBuffer.getContext('2d');
+
+
+    this.UIBuffer = document.createElement('canvas');
+    this.UIBuffer.width = canvas.width;
+    this.UIBuffer.height = canvas.height;
+    this.UIContext = this.UIBuffer.getContext('2d');
 
     this.tileRenderer = new TileRenderer();
     this.player = new Player();
@@ -136,11 +143,20 @@ this.Start = function() {
 			//this.GameObjects[i].Start(this);
 
 		//}
+
+
+        this.tileRenderer.ClearLightLayer();
+
 	}
 
 	this.Update = function() {
         canvas.width = window.innerWidth/3;
         canvas.height = window.innerHeight/3;
+
+        this.UIBuffer.width = canvas.width;
+        this.UIBuffer.height = canvas.height;
+
+
 
         //ctx.scale(2,2);
 
@@ -181,29 +197,68 @@ this.Start = function() {
 
     this.Draw = function() {
 
+     
+
+        ctx.globalCompositeOperation = "source-over";
+
+        this.tileRenderer.ClearLightLayer();
+
         ctx.scale(1, 1);
         ctx.fillStyle = "#000000";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         //ctx.clearRect(0, 0, width, height);
 
+
+        this.Camera.translate();
         //Iterate through GameObject components
         for(var i = 0; i < this.GameObjects.length; i++) {
 
 
-            this.Camera.translate();
+            
 
-            for(var j = 0; j < this.GameObjects[i].components[j]; j++) {
-                this.GameObjects[i].components[j].Draw(this);
+            //Iterate through components
+            for(var c in this.GameObjects[i].components) {
+                this.GameObjects[i].components[c].Draw(this);
             }
 
             this.GameObjects[i].Draw(this);
 
-            ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+            
 
         }
 
+        ctx.globalCompositeOperation = "multiply";
+
+
+            this.tileRenderer.DrawLightLayer(this);
+
+
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+
+
+
+
+
+        
+
         //this.tileRenderer.DrawTopLayer(this);
+
+
+        //Draw lighting here
+
+        
+
+
+
+        ctx.globalCompositeOperation = "source-over";
+
+
+        ctx.drawImage(this.UIBuffer, 0, 0);
+
+
 
     }
 
