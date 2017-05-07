@@ -157,7 +157,7 @@ function BombFunction(x, y, width, height) {
 
 		if(this.timer <= 0) {
 			this.delete = true;
-			Scene.addObject(new BombExplosion(this.transform.position.x, this.transform.position.y, 32, 32));
+			Scene.addObject(new BombExplosion(this.transform.position.x, this.transform.position.y, 64, 64));
 		}
 		
 	}
