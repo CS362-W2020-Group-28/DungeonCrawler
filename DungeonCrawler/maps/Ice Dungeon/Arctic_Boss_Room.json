@@ -35,7 +35,7 @@
         }, 
         {
          "draworder":"topdown",
-         "height":100,
+         "height":0,
          "name":"Object Layer ",
          "objects":[
                 {
@@ -47,8 +47,8 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":816.333333333333,
-                 "y":496.666666666667
+                 "x":816.333,
+                 "y":496.667
                 }, 
                 {
                  "gid":85,
@@ -203,13 +203,13 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":818.666666666667,
+                 "x":818.667,
                  "y":610
                 }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":100,
+         "width":0,
          "x":0,
          "y":0
         }],
@@ -221,11 +221,11 @@
         {
          "columns":8,
          "firstgid":1,
-         "image":"..\/img\/basictiles-sheet-sheet.png",
+         "image":"..\/img\/basictiles.png",
          "imageheight":1024,
          "imagewidth":128,
          "margin":0,
-         "name":"basictiles-sheet-sheet",
+         "name":"basictiles",
          "spacing":0,
          "tilecount":512,
          "tileheight":16,
