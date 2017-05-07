@@ -25,7 +25,7 @@ function HPotion(x, y, width, height, parent) {
 
     this.components = {};
 
-    this.timer = 5000;
+    this.timer = 2000;
 
   	this.img = document.getElementById("playerShield");
 
@@ -48,7 +48,53 @@ function HPotion(x, y, width, height, parent) {
 		this.transform.position.x = this.parent.transform.position.x;
 		this.transform.position.y = this.parent.transform.position.y;
 
-		this.transform.Translate(0, 0, scene);
+
+
+
+		this.timer -= scene.deltaTime;
+
+		if(this.timer <= 0) {
+			this.delete = true;
+		}
+	}
+
+	this.Draw = function(scene) {
+    	ctx.drawImage(this.img,0, 0, 32,32, this.transform.position.x - (width/2),this.transform.position.y - (height/2), width, height);
+	}
+
+}
+function SPotion(x, y, width, height, parent) {
+
+	this.transform = new Transform(this);
+	this.parent = parent;
+	this.type = "HPotion";
+    this.transform.position.x = x;
+    this.transform.position.y = y;
+
+    this.components = {};
+
+    this.timer = 10000;
+
+  	this.img = document.getElementById("playerShield");
+
+  	this.delete = false;
+
+
+    this.onCollide = function(scene, collider) {
+
+
+    	return true;
+    }
+
+	this.Start = function(scene) {
+
+
+	}
+
+	this.Update = function(scene) {
+
+		this.transform.position.x = this.parent.transform.position.x;
+		this.transform.position.y = this.parent.transform.position.y;
 
 
 
@@ -61,7 +107,7 @@ function HPotion(x, y, width, height, parent) {
 	}
 
 	this.Draw = function(scene) {
-    	ctx.drawImage(this.img,0, 0, 32,32, this.transform.position.x - (this.components.boxCollider.width/2),this.transform.position.y - (this.components.boxCollider.height/2), this.components.boxCollider.width, this.components.boxCollider.height);
+    	ctx.drawImage(this.img,0, 0, 32,32, this.transform.position.x - (width/2),this.transform.position.y - (height/2), width, height);
 	}
 
 }

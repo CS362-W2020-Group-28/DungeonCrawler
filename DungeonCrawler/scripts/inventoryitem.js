@@ -124,7 +124,11 @@ function HealthPotion(p) {
 
 	this.Use = function(gameObject) {
 			gameObject.playerHealth(p);
+			var x = gameObject.transform.position.x;
+			var y = gameObject.transform.position.y;
+			Scene.addObject(new HPotion(x, y, 20, 20, gameObject));
 			console.log("healthPotion");
+
 	}
 
 
