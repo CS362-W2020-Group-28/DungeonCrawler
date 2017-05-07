@@ -33,7 +33,7 @@ function Player() {
 
   this.components = {};
 
-  this.destroyOnLoad = false;
+  this.ignoreOnLoad = true;
 
   this.isMenu = false;
   this.coin = 0;
@@ -303,7 +303,7 @@ function Player() {
                 if(this.isMenu) {
 
                   //Draw black background
-                  ctx.fillStyle = "#000000";
+                  ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
 
                   ctx.fillRect(0,canvas.height - 30,canvas.width,30);
 

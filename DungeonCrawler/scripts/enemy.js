@@ -11,6 +11,7 @@ function NPC(x, y) {
 
     this.alive = true;
 
+    this.ignoreOnLoad = false;
     this.delete = false;
 
     this.onCollide = function(scene, collider) {
@@ -54,6 +55,7 @@ function Slime(x, y) {
 
     this.alive = true;
 
+    this.ignoreOnLoad = false;
     this.delete = false;
 
     this.doDamage = function() {

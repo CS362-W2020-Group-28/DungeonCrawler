@@ -15,7 +15,7 @@ function TileRenderer() {
 
   this.components = {};
 
-  this.destroyOnLoad = false;
+  //this.ignoreOnLoad = true;
 
   this.fadeAlpha = 1.0;
 
@@ -27,12 +27,18 @@ function TileRenderer() {
 
 
       //Get gameObjects from scene
-      this.persistenceMemory[this.mapName] = scene.GameObjects;
+      this.persistenceMemory[this.mapName] = [];
+
+
+      for(var i = 0; i < Scene.GameObjects.length; i++) {
+        if(Scene.GameObjects[i].ignoreOnLoad == false) {
+          this.persistenceMemory[this.mapName].push(Scene.GameObjects[i]);
+        }
+
+      }
     }
 
-		scene.GameObjects = []; //Clear array
-		scene.GameObjects.push(this); //Push this tile renderer back into the list
-		scene.GameObjects.push(scene.player); //Push player back into the list
+
 
   
     this.tileBuffer = document.createElement('canvas');
@@ -104,7 +110,13 @@ function TileRenderer() {
          } else if(this.map.layers[i].type == "objectgroup") {
 
           if(this.persistenceMemory[this.mapName] != null) {
+
             Scene.GameObjects = this.persistenceMemory[this.mapName];
+
+            //scene.GameObjects.push(this); //Push this tile renderer back into the list
+            scene.GameObjects.push(scene.player); //Push player back into the list
+
+
 
           } else {
 

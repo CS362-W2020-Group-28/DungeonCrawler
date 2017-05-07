@@ -30,6 +30,7 @@ function HPotion(x, y, width, height, parent) {
   	this.img = document.getElementById("playerShield");
 
   	this.delete = false;
+  	this.ignoreOnLoad = false;
 
 
     this.onCollide = function(scene, collider) {
@@ -80,6 +81,7 @@ function SPotion(x, y, width, height, parent) {
   	this.img = document.getElementById("playerShield");
 
   	this.delete = false;
+  	this.ignoreOnLoad = false;
 
 
     this.onCollide = function(scene, collider) {
@@ -130,6 +132,7 @@ function BombFunction(x, y, width, height) {
   	this.img = document.getElementById("BombIcon");
 
   	this.delete = false;
+  	this.ignoreOnLoad = false;
 
 
     this.onCollide = function(scene, collider) {
@@ -179,6 +182,7 @@ function BombExplosion(x, y, width, height) {
   	this.rect = document.getElementById("Bomb");
 
   	this.delete = false;
+  	this.ignoreOnLoad = false;
 
 
     this.onCollide = function(scene, collider) {
@@ -238,6 +242,7 @@ function ShieldBubble(x, y, width, height, parent) {
   	this.img = document.getElementById("playerShield");
 
   	this.delete = false;
+  	this.ignoreOnLoad = true;
 
 
     this.onCollide = function(scene, collider) {
@@ -292,6 +297,7 @@ function Coin(x, y) {
 
   	this.img = document.getElementById("coin");
 
+  	this.ignoreOnLoad = false;
   	this.delete = false;
 
 

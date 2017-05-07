@@ -273,6 +273,10 @@ function GameObject() {
     this.components = [];
 
 
+    this.delete = false;
+    this.ignoreOnLoad = false;
+
+
     this.Start = function(scene) {
 
 
