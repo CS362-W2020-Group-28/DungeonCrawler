@@ -21,6 +21,7 @@ function LightRenderer(parent, color, radius) {
     this.radius = radius;
 
     this.color = color;
+    this.img = document.getElementById("light");
 
 
     this.Start = function() {
@@ -35,6 +36,8 @@ function LightRenderer(parent, color, radius) {
 
       Scene.tileRenderer.lightContext.globalCompositeOperation = "lighter";
 
+      /*
+
 
       for(var i = 1; i < 8; i++) {
 
@@ -46,6 +49,11 @@ function LightRenderer(parent, color, radius) {
       Scene.tileRenderer.lightContext.fill();
 
       }
+
+      */
+
+
+        Scene.tileRenderer.lightContext.drawImage(this.img,0, 0, 128,128, this.parent.transform.position.x - (radius/2),this.parent.transform.position.y - (radius/2), radius, radius);
       
 
 
@@ -161,7 +169,7 @@ function BoxCollider(width, height, parent) {
 
 
     this.Draw = function(scene) {
-      ctx.drawImage(this.rect,0, 0, 16,16, this.parent.transform.position.x - (this.width/2),this.parent.transform.position.y - (this.height/2), this.width, this.height);
+      //ctx.drawImage(this.rect,0, 0, 16,16, this.parent.transform.position.x - (this.width/2),this.parent.transform.position.y - (this.height/2), this.width, this.height);
 
 
     }

@@ -113,7 +113,7 @@ function Player() {
 
 
     this.components.boxCollider = new BoxCollider(14, 14, this);
-    this.components.lightRenderer = new LightRenderer(this, "#202020", 512);
+    this.components.lightRenderer = new LightRenderer(this, "#202020", 1024);
     this.transform = new Transform(this);
     this.transform.position.x = 31*16;
     this.transform.position.y = 36*16;

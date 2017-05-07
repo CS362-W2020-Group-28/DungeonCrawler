@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="16" tileheight="16" nextobjectid="63">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="16" tileheight="16" nextobjectid="69">
  <tileset firstgid="1" name="Tileset" tilewidth="16" tileheight="16" tilecount="512" columns="8">
   <image source="../img/basictiles.png" width="128" height="1024"/>
   <tile id="9">
@@ -139,7 +139,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,29,30,38,0,0,0,0,0,0,0,0,0,0,0,0,37,38,37,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,37,38,29,0,0,0,0,0,0,0,0,21,0,0,0,37,29,37,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,29,30,29,0,0,0,0,0,0,0,0,0,12,0,0,29,30,30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,29,30,0,0,0,12,12,12,12,12,12,12,0,0,37,38,30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,117,0,0,0,0,0,0,0,30,29,30,0,0,0,12,12,12,12,12,12,12,0,0,37,38,30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,29,38,0,0,13,12,12,12,12,12,12,12,0,0,29,30,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,37,30,0,0,0,0,0,0,12,0,0,0,0,0,29,29,30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,38,38,0,0,0,0,0,0,0,0,0,0,0,0,29,37,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -209,7 +209,7 @@ Scene.loadMap(&quot;dungeon1/entrance/entrance&quot;);
   <object id="42" name="Slime" type="Slime" gid="84" x="693" y="864" width="16" height="16"/>
   <object id="43" name="Slime" type="Slime" gid="84" x="656" y="847" width="16" height="16"/>
   <object id="44" gid="72" x="528" y="448" width="16" height="16"/>
-  <object id="49" name="BlueLight" type="Light" x="279.117" y="242" width="192.279" height="191.581">
+  <object id="49" name="BlueLight" type="Light" x="295.117" y="252" width="192.279" height="191.581">
    <properties>
     <property name="color" value="#0011BB"/>
    </properties>
@@ -221,15 +221,39 @@ Scene.loadMap(&quot;dungeon1/entrance/entrance&quot;);
    </properties>
    <ellipse/>
   </object>
-  <object id="52" name="Light" type="Light" x="812.784" y="38.666" width="64" height="64">
+  <object id="63" name="BlueLight" type="Light" x="287.861" y="385.209" width="192.279" height="191.581">
    <properties>
-    <property name="color" value="#111111"/>
+    <property name="color" value="#0011BB"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="53" name="Light" type="Light" x="479.117" y="230.833" width="64" height="64">
+  <object id="64" name="BlueLight" type="Light" x="538.861" y="382.209" width="192.279" height="191.581">
    <properties>
-    <property name="color" value="#111111"/>
+    <property name="color" value="#0011BB"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="65" name="BlueLight" type="Light" x="412.861" y="145.209" width="192.279" height="191.581">
+   <properties>
+    <property name="color" value="#0011BB"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="66" name="BlueLight" type="Light" x="745.861" y="-10.7905" width="192.279" height="191.581">
+   <properties>
+    <property name="color" value="#0011BB"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="67" name="BlueLight" type="Light" x="536.861" y="104.209" width="192.279" height="191.581">
+   <properties>
+    <property name="color" value="#0011BB"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="68" name="BlueLight" type="Light" x="279.861" y="112.209" width="192.279" height="191.581">
+   <properties>
+    <property name="color" value="#0011BB"/>
    </properties>
    <ellipse/>
   </object>
