@@ -5,32 +5,29 @@ function Shield(p,s) {
 	this.icon = document.getElementById("ShieldIcon");
 	this.type = "Shield";
 	this.oldSpeed=null;
+
+	this.timer = 0;
 	this.Use = function(gameObject) {
 
-
+			if(this.timer <= 0) {
+			this.timer = 5500;
 			var x = gameObject.transform.position.x;
 			var y = gameObject.transform.position.y;
 
-			//Scene.addObject(new ShieldBubble(x, y, 20, 20, gameObject));
-			var oldSpeed = 0.1;
-			console.log(oldSpeed);
-			var oldHealth= gameObject.health;
-			gameObject.playerSpeed(s);
-			gameObject.playerHealth(p);
-			
+			Scene.addObject(new ShieldBubble(x, y, 20, 20, gameObject));
 
-			setTimeout(function() {
-				console.log(oldSpeed);
-				gameObject.playerSpeed(oldSpeed);
-				gameObject.playerHealth(-p);
-				console.log("Shield");
-			}, 3000);
-	
+			}
+			
 	}
 
 
 	
 	this.Update = function(gameObject) {
+		this.timer -= Scene.deltaTime;
+
+		if(this.timer <= 0) {
+			this.timer = 0;
+		}
 
 	}
 
@@ -85,14 +82,16 @@ function Bomb(a,b,d) {
 
 	this.Use = function(gameObject) 
 	{
-			var x = gameObject.transform.position.x+d;
+		if(!this.isUsing) {
+			this.isUsing = true;
+			var x = gameObject.transform.position.x;
 			var y = gameObject.transform.position.y;
+			Scene.addObject(new BombFunction(x, y, 16, 16));
 
-			setTimeout(function() {
+		}
+			
 
-			console.log("bomb");
-			Scene.addObject(new SwordSlash(x, y, a, b));
-			}, 3000);
+			
 	}
 
 
@@ -109,6 +108,7 @@ function Bomb(a,b,d) {
 	this.Reset = function(gameObject) 
 	{
 		this.isUsing = false;
+
 	}
 
 

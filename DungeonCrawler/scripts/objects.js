@@ -15,7 +15,114 @@ function ArrowProjectile() {
 	}
 
 }
+function BombFunction(x, y, width, height) {
 
+	this.transform = new Transform(this);
+	this.parent = parent;
+	this.type = "Bomb";
+    this.transform.position.x = x;
+    this.transform.position.y = y;
+
+    this.components = {};
+
+    this.timer = 3000;
+
+  	this.img = document.getElementById("BombIcon");
+
+  	this.delete = false;
+
+
+    this.onCollide = function(scene, collider) {
+
+
+    	return true;
+    }
+
+	this.Start = function(scene) {
+
+		this.components.boxCollider = new BoxCollider(width, height, this);
+		this.components.boxCollider.isTrigger = true;
+		this.components.boxCollider.ignorePlayer = true;
+		this.transform = new Transform(this);
+        this.transform.position.x = x;
+        this.transform.position.y = y;
+
+	}
+
+	this.Update = function(scene) {
+		this.timer -= Scene.deltaTime;
+
+		if(this.timer <= 0) {
+			this.delete = true;
+			Scene.addObject(new BombExplosion(this.transform.position.x, this.transform.position.y, 32, 32));
+		}
+		
+	}
+
+	this.Draw = function(scene) {
+    	ctx.drawImage(this.img,0, 0, 16,16, this.transform.position.x - (this.components.boxCollider.width/2),this.transform.position.y - (this.components.boxCollider.height/2), this.components.boxCollider.width, this.components.boxCollider.height);
+	}
+
+}
+function BombExplosion(x, y, width, height) {
+
+	this.transform = new Transform(this);
+	this.velocity = new Vector2(0, 0);
+	this.type = "BombExplosion";
+    this.transform.position.x = x;
+    this.transform.position.y = y;
+
+    this.components = {};
+
+    this.timer = 100;
+
+  	this.rect = document.getElementById("Bomb");
+
+  	this.delete = false;
+
+
+    this.onCollide = function(scene, collider) {
+
+
+    	try {
+    	collider.parent.doDamage();
+    	console.log("Doing damage on " + collider.parent.type);
+
+
+    	} catch(ex) {
+
+    	}
+
+
+    	this.delete=true;
+    	return true;
+    }
+
+	this.Start = function(scene) {
+
+		this.components.boxCollider = new BoxCollider(width, height, this);
+		this.components.boxCollider.isTrigger = true;
+		this.transform = new Transform(this);
+        this.transform.position.x = x;
+        this.transform.position.y = y;
+
+	}
+
+	this.Update = function(scene) {
+		this.transform.Translate(0, 0, scene);
+
+		this.timer -= scene.deltaTime;
+
+		if(this.timer <= 0) {
+			this.delete = true;
+		}
+	}
+
+	this.Draw = function(scene) {
+    	ctx.drawImage(this.rect,16*5, 0, 16,16, this.transform.position.x - (this.components.boxCollider.width/2),this.transform.position.y - (this.components.boxCollider.height/2), this.components.boxCollider.width, this.components.boxCollider.height);
+	}
+
+}
 function ShieldBubble(x, y, width, height, parent) {
 
 	this.transform = new Transform(this);
@@ -26,7 +133,7 @@ function ShieldBubble(x, y, width, height, parent) {
 
     this.components = {};
 
-    this.timer = 100;
+    this.timer = 5000;
 
   	this.img = document.getElementById("playerShield");
 
@@ -63,7 +170,7 @@ function ShieldBubble(x, y, width, height, parent) {
 		this.timer -= scene.deltaTime;
 
 		if(this.timer <= 0) {
-			//this.delete = true;
+			this.delete = true;
 		}
 	}
 
