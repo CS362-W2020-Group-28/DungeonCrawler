@@ -206,6 +206,12 @@ function Player() {
         this.prevX = this.transform.position.x;
         this.prevY = this.transform.position.y;
 
+
+        this.transform.Translate(this.velocity.x, this.velocity.y, scene);
+
+        this.velocity.x *= 0.8;
+        this.velocity.y *= 0.8;
+
         if(this.isMenu) {
 
 
@@ -217,10 +223,7 @@ function Player() {
 
           if(this.health > 0) {
 
-            this.transform.Translate(this.velocity.x, this.velocity.y, scene);
-
-            this.velocity.x *= 0.8;
-            this.velocity.y *= 0.8;
+            
 
 
             //this.velocity.x -= scene.deltaTime*0.01;
