@@ -24,7 +24,7 @@
         }, 
         {
          "draworder":"topdown",
-         "height":100,
+         "height":0,
          "name":"Object Layer 1",
          "objects":[
                 {
@@ -33,16 +33,16 @@
                  "id":2,
                  "name":"Door",
                  "rotation":0,
-                 "type":"",
+                 "type":"Door",
                  "visible":true,
                  "width":16,
-                 "x":806.666666666667,
+                 "x":806.667,
                  "y":1232
                 }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":100,
+         "width":0,
          "x":0,
          "y":0
         }],
@@ -54,11 +54,11 @@
         {
          "columns":8,
          "firstgid":1,
-         "image":"..\/img\/basictiles-sheet-sheet.png",
+         "image":"..\/img\/basictiles.png",
          "imageheight":1024,
          "imagewidth":128,
          "margin":0,
-         "name":"basictiles-sheet-sheet",
+         "name":"basictiles",
          "spacing":0,
          "tilecount":512,
          "tileheight":16,
