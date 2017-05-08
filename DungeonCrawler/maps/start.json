@@ -275,6 +275,10 @@
                 {
                  "isSolid":true
                 },
+             "22":
+                {
+                 "isSolid":true
+                },
              "23":
                 {
                  "isSolid":true
@@ -315,6 +319,10 @@
                  "isSolid":"bool"
                 },
              "21":
+                {
+                 "isSolid":"bool"
+                },
+             "22":
                 {
                  "isSolid":"bool"
                 },
