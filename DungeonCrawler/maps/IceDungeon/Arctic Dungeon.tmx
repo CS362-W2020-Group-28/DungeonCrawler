@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" nextobjectid="166">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" nextobjectid="167">
  <tileset firstgid="1" name="basictiles" tilewidth="16" tileheight="16" tilecount="512" columns="8">
   <image source="../../img/basictiles.png" width="128" height="1024"/>
+  <tile id="9">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
   <tile id="14">
    <properties>
     <property name="isSolid" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="15">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="21">
    <properties>
     <property name="isSolid" type="bool" value="true"/>
    </properties>
@@ -47,12 +57,27 @@
     <property name="isSolid" type="bool" value="true"/>
    </properties>
   </tile>
+  <tile id="45">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
   <tile id="46">
    <properties>
     <property name="isSolid" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="47">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="53">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="54">
    <properties>
     <property name="isSolid" type="bool" value="true"/>
    </properties>
@@ -98,6 +123,11 @@
    </properties>
   </tile>
   <tile id="158">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="160">
    <properties>
     <property name="isSolid" type="bool" value="true"/>
    </properties>
@@ -309,7 +339,7 @@
 30,151,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,30,0,28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32,28,0,0,0,30,30,
 30,151,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,30,28,28,28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,28,0,30,30,
 30,151,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,30,28,28,28,28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,28,28,28,0,30,30,
-30,30,30,30,30,30,30,30,30,30,38,38,38,38,38,38,38,38,38,38,38,38,38,38,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,38,38,38,38,38,38,38,97,38,38,38,38,38,38,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
 30,30,30,30,30,30,30,30,30,30,30,38,38,38,38,38,38,38,38,38,38,38,38,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
 30,30,30,30,30,30,30,30,30,30,30,30,38,38,38,38,38,38,38,38,38,30,38,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30
 </data>
@@ -424,5 +454,16 @@
   <object id="145" name="coin" type="Coin" gid="85" x="1225.33" y="254" width="8" height="8"/>
   <object id="146" name="coin" type="Coin" gid="85" x="1224.67" y="192" width="8" height="8"/>
   <object id="147" name="coin" type="Coin" gid="85" x="1222" y="136" width="8" height="8"/>
+  <object id="166" name="Door to Start" gid="186" x="268.409" y="1557.89" width="23.9561" height="16">
+   <properties>
+    <property name="onCollide">if(collider.parent.type == &quot;Player&quot;) {
+Scene.player.setPosition(31*16, 19*16);
+Scene.playSound(&quot;doorSound&quot;);
+Scene.loadMap(&quot;start&quot;);
+
+
+}</property>
+   </properties>
+  </object>
  </objectgroup>
 </map>

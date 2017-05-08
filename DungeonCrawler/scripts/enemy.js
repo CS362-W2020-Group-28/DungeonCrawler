@@ -310,6 +310,12 @@ function Slime(x, y) {
 
     this.onCollide = function(scene, collider) {
 
+        if(collider.parent.type == "SwordSlash") {
+
+            this.velocity.x += collider.parent.velocity.x*4;
+            this.velocity.y += collider.parent.velocity.y*4;
+        }
+
 
         return true;
     }
@@ -331,19 +337,23 @@ function Slime(x, y) {
 
         this.transform.Translate(this.velocity.x, this.velocity.y, scene);
 
+
+        this.velocity.x *= 0.8;
+        this.velocity.y *= 0.8;
+
         if(this.transform.position.x <= Scene.player.transform.position.x) {
-            this.velocity.x = scene.deltaTime * 0.05;
+            this.velocity.x += scene.deltaTime * 0.01;
 
         } else {
-            this.velocity.x = -scene.deltaTime * 0.05;
+            this.velocity.x += -scene.deltaTime * 0.01;
 
         }
         
         if(this.transform.position.y <= Scene.player.transform.position.y) {
-            this.velocity.y = scene.deltaTime * 0.05;
+            this.velocity.y += scene.deltaTime * 0.01;
 
         } else {
-            this.velocity.y = -scene.deltaTime * 0.05;
+            this.velocity.y += -scene.deltaTime * 0.01;
         }
     }
 

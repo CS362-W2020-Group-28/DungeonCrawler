@@ -112,6 +112,14 @@ function Player() {
 
   this.onCollide = function(scene, collider) {
 
+    if(collider.parent.type == "Slime") {
+
+      this.velocity.x += collider.parent.velocity.x*8;
+      this.velocity.y += collider.parent.velocity.y*8;
+
+      this.doDamage(5);
+    }
+
     if(collider.parent.type == "Skull") {
 
       this.velocity.x += collider.parent.velocity.x*8;
@@ -306,6 +314,9 @@ function Player() {
 
               this.Draw = function(scene) {
 
+                 Scene.UIContext.textAlign = "left";
+
+
 
                 //Draw Player
                 if(this.health>0)
@@ -349,6 +360,20 @@ function Player() {
                  Scene.UIContext.fillText(this.health,60,canvas.height - 16 - (this.isMenu ? 24 : 0));
                  Scene.UIContext.drawImage(this.healthIcon,0, 0, 8,8, 48,canvas.height-25 - (this.isMenu ? 24 : 0), 8, 8);
 
+                 if(this.health <= 0) {
+                 Scene.UIContext.fillStyle= "#000000";
+                 Scene.UIContext.textAlign = "center";
+
+                  Scene.UIContext.fillText("YOU ARE DEAD",canvas.width/2,canvas.height/2 + 1);
+
+
+                 Scene.UIContext.fillStyle= "#FFFFFF";
+
+                  Scene.UIContext.fillText("YOU ARE DEAD",canvas.width/2,canvas.height/2);
+
+
+                 }
+
 
                 //Draw inventory menu
                 if(this.isMenu) {
@@ -376,7 +401,7 @@ function Player() {
 
                 Scene.Camera.translate();
 
-                //Lighting here
+                
 
               }
 
