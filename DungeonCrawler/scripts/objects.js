@@ -343,7 +343,6 @@ function Coin(x, y) {
 
 
 		this.frame += scene.deltaTime*0.02;
-
 		this.frame = this.frame % 4;
 
 	}
@@ -426,3 +425,5 @@ function SwordSlash(x, y, width, height, velocity) {
 	}
 
 }
+
+

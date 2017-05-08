@@ -204,7 +204,7 @@ Scene.loadMap(&quot;dungeon1/entrance/entrance&quot;);
    </properties>
   </object>
   <object id="62" name="BRO2" type="NPC" gid="84" x="416" y="576" width="16" height="16"/>
-  <object id="63" name="Bird Dude" type="Bird" gid="84" x="769" y="225" width="32" height="32"/>
+  <object id="63" name="Bird Dude" type="Bird" gid="84" x="767.035" y="223.035" width="32" height="32"/>
   <object id="64" name="Skull" type="Skull" gid="84" x="512" y="336" width="30" height="30"/>
   <object id="66" gid="84" x="624" y="576" width="16" height="16"/>
   <object id="67" gid="84" x="624" y="576" width="16" height="16"/>

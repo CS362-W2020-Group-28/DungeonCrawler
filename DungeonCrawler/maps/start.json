@@ -191,11 +191,7 @@
                  "properties":
                     {
                      "isTrigger":true,
-<<<<<<< HEAD
                      "onCollide":"console.log(\"door collision!\");\nScene.player.setPosition(9*16, 12*16);\nScene.playSound(\"doorSound\");\nScene.loadMap(\"dungeon1\/entrance\/entrance\");\n"
-=======
-                     "onCollide":"console.log(\"door collision!\");\nScene.player.setPosition(17*16, 95*16);\nScene.playSound(\"doorSound\");\nScene.loadMap(\"IceDungeon\/Artic_Dungeon\");\n"
->>>>>>> origin/master
                     },
                  "propertytypes":
                     {
@@ -230,8 +226,8 @@
                  "type":"Bird",
                  "visible":true,
                  "width":32,
-                 "x":769,
-                 "y":225
+                 "x":767.03536345776,
+                 "y":223.03536345776
                 }, 
                 {
                  "gid":84,
