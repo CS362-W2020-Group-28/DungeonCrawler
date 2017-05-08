@@ -48,7 +48,7 @@ function Camera() {
 
     }
 
-    this.translate = function() {
+    this.translate = function(context) {
 
 
 
@@ -64,11 +64,11 @@ function Camera() {
 
         //}
 
-        ctx.translate(Math.floor(-this.vPosX), Math.floor(-this.vPosY));
+        context.translate(Math.floor(-this.vPosX), Math.floor(-this.vPosY));
     }
 
-    this.resetTransform = function() {
-        ctx.setTransform(1, 0, 0, 1, 0, 0);
+    this.resetTransform = function(context) {
+        context.setTransform(1, 0, 0, 1, 0, 0);
 
     }
 }
@@ -150,8 +150,8 @@ this.Start = function() {
 	}
 
 	this.Update = function() {
-        canvas.width = window.innerWidth/3;
-        canvas.height = window.innerHeight/3;
+        canvas.width = window.innerWidth/4;
+        canvas.height = window.innerHeight/4;
 
         this.UIBuffer.width = canvas.width;
         this.UIBuffer.height = canvas.height;
@@ -211,7 +211,7 @@ this.Start = function() {
         //ctx.clearRect(0, 0, width, height);
 
 
-        this.Camera.translate();
+        this.Camera.translate(ctx);
         //Iterate through GameObject components
         for(var i = 0; i < this.GameObjects.length; i++) {
 
@@ -235,6 +235,12 @@ this.Start = function() {
 
             this.tileRenderer.DrawLightLayer(this);
 
+            
+        ctx.globalCompositeOperation = "source-over";
+
+        this.tileRenderer.DrawTopLayer(this);
+
+
 
             ctx.setTransform(1, 0, 0, 1, 0, 0);
 
@@ -245,7 +251,7 @@ this.Start = function() {
 
         
 
-        //this.tileRenderer.DrawTopLayer(this);
+        //
 
 
         //Draw lighting here
@@ -253,8 +259,6 @@ this.Start = function() {
         
 
 
-
-        ctx.globalCompositeOperation = "source-over";
 
 
         ctx.drawImage(this.UIBuffer, 0, 0);

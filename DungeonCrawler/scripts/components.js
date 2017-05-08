@@ -86,7 +86,7 @@ function MessageHandler(parent) {
         this.timer = 5000;
         console.log(this.messageQueue);
            var msg = this.messageQueue.shift();
-           this.messageQueue.push(msg);
+           //this.messageQueue.push(msg);
            this.currentMessage = msg;
        }
    }
@@ -101,12 +101,16 @@ function MessageHandler(parent) {
    this.Draw = function(scene) {
 
       if(this.timer > 0) {
-        ctx.textAlign = "center";
-        ctx.font = "8px Pixel";
-       ctx.fillStyle= "#000000";
-       ctx.fillText(this.currentMessage,parent.transform.position.x,parent.transform.position.y - 14);
-       ctx.fillStyle= "#FFFFFF";
-       ctx.fillText(this.currentMessage,parent.transform.position.x,parent.transform.position.y - 16);
+
+        Scene.Camera.translate(Scene.UIContext);
+        Scene.UIContext.textAlign = "center";
+        Scene.UIContext.font = "8px Pixel";
+       Scene.UIContext.fillStyle= "#000000";
+       Scene.UIContext.fillText(this.currentMessage,parent.transform.position.x,parent.transform.position.y - 22);
+       Scene.UIContext.fillStyle= "#FFFFFF";
+       Scene.UIContext.fillText(this.currentMessage,parent.transform.position.x,parent.transform.position.y - 24);
+
+       Scene.Camera.resetTransform(Scene.UIContext);
 
       }
         

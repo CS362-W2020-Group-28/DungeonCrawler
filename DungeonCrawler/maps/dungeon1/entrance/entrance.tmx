@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" nextobjectid="3">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" nextobjectid="9">
  <tileset firstgid="1" name="tileset" tilewidth="16" tileheight="16" tilecount="512" columns="8">
   <image source="../../../img/basictiles.png" width="128" height="1024"/>
   <tile id="14">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="16">
    <properties>
     <property name="isSolid" type="bool" value="true"/>
    </properties>
@@ -12,7 +17,22 @@
     <property name="isSolid" type="bool" value="true"/>
    </properties>
   </tile>
+  <tile id="55">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
   <tile id="81">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="88">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="89">
    <properties>
     <property name="isSolid" type="bool" value="true"/>
    </properties>
@@ -48,29 +68,33 @@
 0,0,92,0,0,0,0,0,0,49,0,0,0,0,0,0,0,92,0,0,
 0,0,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,100,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,90,90,90,90,90,90,90,90,90,90,90,0,0,0,0,0,
+0,0,0,0,17,17,17,17,17,17,17,17,17,17,17,0,0,0,0,0,
+0,89,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,89,0,
+0,89,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,89,0,
+0,89,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,89,0,
+0,89,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,89,0,
+0,89,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,89,0,
+0,89,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,89,0,
+0,17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,17,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,34,34,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
  <objectgroup name="Object Layer 1">
-  <object id="1" name="Exit" gid="85" x="143.5" y="235.417" width="32.25" height="16">
+  <object id="3" name="Door to Start" gid="187" x="143" y="235.25" width="35" height="16">
    <properties>
     <property name="isTrigger" type="bool" value="true"/>
     <property name="onCollide">if(collider.parent.type == &quot;Player&quot;) {
 console.log(&quot;door collision!&quot;);
-Scene.player.setPosition(52*16, 8*16);
+Scene.player.setPosition(84*16, 39*16);
 Scene.loadMap(&quot;start&quot;);
 }</property>
    </properties>
   </object>
+  <object id="5" name="Harambe" type="Harambe" gid="84" x="125" y="78" width="64" height="64"/>
+  <object id="6" gid="56" x="78.5" y="41.75" width="16" height="16"/>
+  <object id="7" gid="56" x="210" y="40" width="16" height="16"/>
+  <object id="8" name="Key Spawner" type="KeyItem" gid="36" x="151.75" y="161.5" width="16" height="16"/>
  </objectgroup>
 </map>

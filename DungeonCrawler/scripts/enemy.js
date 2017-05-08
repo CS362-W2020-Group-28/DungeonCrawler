@@ -1,3 +1,81 @@
+function Harambe(x, y) {
+    this.transform = new Transform(this);
+    this.velocity = new Vector2(0, 0);
+    this.type = "NPC";
+    this.transform.position.x = x;
+    this.transform.position.y = y;
+
+    this.img = document.getElementById("Harambe");
+
+    this.components = {};
+
+    this.alive = true;
+
+    this.ignoreOnLoad = false;
+    this.delete = false;
+
+    this.messages = { 
+            "data" : [
+            "Feel free to take this key.  It may help you.", 
+            "Otherwise, welcome to Gorilla Goods!",
+            "You look like a mighty warrior.",
+            "We haven't officially opened yet...",
+            "Please come by when we're open!",
+            "I was a big name up in Cincinnati.",
+            "Sadly, fate forced me here.",
+            "I do find solace in this line of work."
+            ] 
+    };
+
+
+
+
+    this.timer = 1000;
+
+
+    this.onCollide = function(scene, collider) {
+        return true;
+    }
+
+    this.Start = function(scene) {
+        this.components.messageHandler = new MessageHandler(this);
+        this.components.boxCollider = new BoxCollider(64, 64, this);
+        this.transform = new Transform(this);
+        this.transform.position.x = x;
+        this.transform.position.y = y;
+
+        for(var i = 0; i < this.messages.data.length; i++) {
+            this.components.messageHandler.Push(this.messages.data[i]);
+        }
+
+
+    }
+
+    this.Update = function(scene) {
+       this.transform.Translate(this.velocity.x, this.velocity.y, scene);
+
+
+       this.timer -= Scene.deltaTime;
+
+       if(this.timer <= 0) {
+        this.components.messageHandler.Pop();
+        this.timer = 10000;
+       }
+
+
+    }
+
+    this.Draw = function(scene) {
+        if(this.alive)
+            ctx.drawImage(this.img, 0, 0, 64, 64, Math.floor(this.transform.position.x - (this.components.boxCollider.width/2)),Math.floor(this.transform.position.y - (this.components.boxCollider.height/2)), 64, 64);
+    }
+
+
+}
+
+
+
+
 function NPC(x, y) {
     this.transform = new Transform(this);
     this.velocity = new Vector2(0, 0);
@@ -14,8 +92,21 @@ function NPC(x, y) {
     this.ignoreOnLoad = false;
     this.delete = false;
 
+    this.messages = { 
+            "data" : [ "I'm an NPC!" ] 
+    };
+
+
     this.onCollide = function(scene, collider) {
         return true;
+    }
+
+    this.onInteract = function() {
+
+        this.components.messageHandler.Pop();
+
+
+
     }
 
     this.Start = function(scene) {
@@ -26,7 +117,10 @@ function NPC(x, y) {
         this.transform.position.x = x;
         this.transform.position.y = y;
 
-        this.components.messageHandler.Push("I am an NPC!");
+        for(var m in this.messages.data) {
+            this.components.messageHandler.Push(m);
+        }
+
 
     }
 
@@ -171,6 +265,21 @@ function Bird(x, y) {
 
         if(this.health <= 0) {
             this.delete = true;
+
+
+            //Randomly drop coins
+            var c = Math.floor(getRandomArbitrary(128, 256));
+
+            for(var i = 0; i < c; i++) {
+
+                var o = new Coin(this.transform.position.x, this.transform.position.y);
+                o.velocity.x = getRandomArbitrary(-4, 4);
+                o.velocity.y = getRandomArbitrary(-4, 4);
+
+                
+
+                Scene.addObject(o);
+            }
         }
 
         this.transform.Translate(this.velocity.x, this.velocity.y, scene);
@@ -333,6 +442,20 @@ function Slime(x, y) {
 
         if(this.health <= 0) {
             this.delete = true;
+
+            //Randomly drop coins
+            var c = Math.floor(getRandomArbitrary(1, 16));
+
+            for(var i = 0; i < c; i++) {
+
+                var o = new Coin(this.transform.position.x, this.transform.position.y);
+                o.velocity.x = getRandomArbitrary(-2, 2);
+                o.velocity.y = getRandomArbitrary(-2, 2);
+
+
+
+                Scene.addObject(o);
+            }
         }
 
         this.transform.Translate(this.velocity.x, this.velocity.y, scene);

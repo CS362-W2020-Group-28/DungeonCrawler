@@ -1,3 +1,6 @@
+
+
+
 function TileRenderer() {
 	this.transform = new Transform(this);
 
@@ -12,7 +15,7 @@ function TileRenderer() {
 
   this.tileContext = this.tileBuffer.getContext('2d');
   this.floatContext = this.floatBuffer.getContext('2d');
-  this.lightContext = this.floatBuffer.getContext('2d');
+  this.lightContext = this.lightBuffer.getContext('2d');
 
   this.persistenceMemory = {};
 
@@ -193,9 +196,15 @@ function TileRenderer() {
               } 
               else if(this.map.layers[i].objects[o].type == "NPC") {
                 prop = new NPC(oX, oY);
+              } else if(this.map.layers[i].objects[o].type == "KeyItem") {
+                prop = new KeyItem(oX, oY);
+              }else if(this.map.layers[i].objects[o].type == "KeySpawner") {
+                prop = new KeyItem(oX, oY);
               }
               else if(this.map.layers[i].objects[o].type == "Wizerd") {
                 prop = new Wizerd(oX, oY);
+              } else if(this.map.layers[i].objects[o].type == "Harambe") {
+                prop = new Harambe(oX, oY);
               }
               else if(this.map.layers[i].objects[o].type == "Light") {
                 oX = this.map.layers[i].objects[o].x + oWidth/2;
@@ -291,12 +300,12 @@ function TileRenderer() {
                     ctx.drawImage(this.tileBuffer, 0,0, this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
                       //ctx.drawImage(this.tileBuffer, Scene.Camera.transform.position.x - Scene.Camera.offset.x,Scene.Camera.transform.position.y - Scene.Camera.offset.y, canvas.width, canvas.height,Scene.Camera.transform.position.x - Scene.Camera.offset.x,Scene.Camera.transform.position.y - Scene.Camera.offset.y, canvas.width, canvas.height);
 
-                      Scene.Camera.resetTransform();
+                      Scene.Camera.resetTransform(ctx);
 
                       ctx.fillStyle = "rgba(0,0,0,"+ this.fadeAlpha.toFixed(2) +")";
                       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                      Scene.Camera.translate();
+                      Scene.Camera.translate(ctx);
                     }
 
                     this.DrawTopLayer = function(scene) {
