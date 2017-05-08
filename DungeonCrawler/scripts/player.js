@@ -138,23 +138,23 @@ function Player() {
 
     if(collider.parent.type == "Slime") {
 
-      this.velocity.x += collider.parent.velocity.x*8;
-      this.velocity.y += collider.parent.velocity.y*8;
+      this.velocity.x += collider.parent.velocity.x*2;
+      this.velocity.y += collider.parent.velocity.y*2;
 
       this.doDamage(5);
     }
 
     if(collider.parent.type == "Skull") {
 
-      this.velocity.x += collider.parent.velocity.x*8;
-      this.velocity.y += collider.parent.velocity.y*8;
+      this.velocity.x += collider.parent.velocity.x*2;
+      this.velocity.y += collider.parent.velocity.y*2;
 
       this.doDamage(25);
     }
   if(collider.parent.type == "Wizerd") {
 
-      this.velocity.x += collider.parent.velocity.x*8;
-      this.velocity.y += collider.parent.velocity.y*8;
+      this.velocity.x += collider.parent.velocity.x*2;
+      this.velocity.y += collider.parent.velocity.y*2;
 
       this.doDamage(35);
     }
