@@ -191,7 +191,7 @@
                  "properties":
                     {
                      "isTrigger":true,
-                     "onCollide":"console.log(\"door collision!\");\nScene.player.setPosition(9*16, 13*16);\nScene.playSound(\"doorSound\");\nScene.loadMap(\"dungeon1\/entrance\/entrance\");\n"
+                     "onCollide":"if(collider.parent.type == \"Player\") {\nconsole.log(\"door collision!\");\nScene.player.setPosition(9*16, 13*16);\nScene.playSound(\"doorSound\");\nScene.loadMap(\"dungeon1\/entrance\/entrance\");\n}\n"
                     },
                  "propertytypes":
                     {
@@ -249,7 +249,7 @@
                  "properties":
                     {
                      "isTrigger":true,
-                     "onCollide":"Scene.player.setPosition(17*16, 94*16);\nScene.playSound(\"doorSound\");\nScene.loadMap(\"IceDungeon\/Arctic Dungeon\");\n"
+                     "onCollide":"if(collider.parent.type == \"Player\") {\nScene.player.setPosition(17*16, 94*16);\nScene.playSound(\"doorSound\");\nScene.loadMap(\"IceDungeon\/Arctic Dungeon\");\n\n\n}"
                     },
                  "propertytypes":
                     {

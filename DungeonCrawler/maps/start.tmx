@@ -196,10 +196,12 @@
   <object id="35" gid="145" x="832" y="87" width="31.5" height="16">
    <properties>
     <property name="isTrigger" type="bool" value="true"/>
-    <property name="onCollide">console.log(&quot;door collision!&quot;);
+    <property name="onCollide">if(collider.parent.type == &quot;Player&quot;) {
+console.log(&quot;door collision!&quot;);
 Scene.player.setPosition(9*16, 13*16);
 Scene.playSound(&quot;doorSound&quot;);
 Scene.loadMap(&quot;dungeon1/entrance/entrance&quot;);
+}
 </property>
    </properties>
   </object>
@@ -209,10 +211,13 @@ Scene.loadMap(&quot;dungeon1/entrance/entrance&quot;);
   <object id="75" name="Door to Ice Dungeon" gid="193" x="487.088" y="287.961" width="40.558" height="31.7171">
    <properties>
     <property name="isTrigger" type="bool" value="true"/>
-    <property name="onCollide">Scene.player.setPosition(17*16, 94*16);
+    <property name="onCollide">if(collider.parent.type == &quot;Player&quot;) {
+Scene.player.setPosition(17*16, 94*16);
 Scene.playSound(&quot;doorSound&quot;);
 Scene.loadMap(&quot;IceDungeon/Arctic Dungeon&quot;);
-</property>
+
+
+}</property>
    </properties>
   </object>
   <object id="63" name="Bird Dude" type="Bird" gid="84" x="768" y="224" width="30" height="80"/>
