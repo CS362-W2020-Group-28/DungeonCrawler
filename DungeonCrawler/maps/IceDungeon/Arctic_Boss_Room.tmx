@@ -1,8 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" nextobjectid="20">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" nextobjectid="25">
  <tileset firstgid="1" name="basictiles" tilewidth="16" tileheight="16" tilecount="512" columns="8">
   <image source="../../img/basictiles.png" width="128" height="1024"/>
+  <tile id="9">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
   <tile id="21">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="36">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="37">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="45">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="46">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="47">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="53">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="54">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="55">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="60">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="61">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="91">
+   <properties>
+    <property name="abovePlayer" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="99">
    <properties>
     <property name="isSolid" type="bool" value="true"/>
    </properties>
@@ -13,6 +113,21 @@
    </properties>
   </tile>
   <tile id="156">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="157">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="158">
+   <properties>
+    <property name="isSolid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="160">
    <properties>
     <property name="isSolid" type="bool" value="true"/>
    </properties>
@@ -332,19 +447,33 @@
  </layer>
  <objectgroup name="Object Layer ">
   <object id="2" name="DoorOut" gid="126" x="816.333" y="496.667" width="16" height="16"/>
-  <object id="3" name="Coin" gid="85" x="784" y="1200.5" width="16" height="16"/>
-  <object id="4" name="Coin" gid="85" x="849" y="1201" width="16" height="16"/>
-  <object id="5" name="Coin" gid="85" x="784.5" y="1264.5" width="16" height="16"/>
-  <object id="6" name="Coin" gid="85" x="848.5" y="1266" width="16" height="16"/>
-  <object id="7" name="Coin" gid="85" x="784.5" y="1327" width="16" height="16"/>
-  <object id="8" name="Coin" gid="85" x="848" y="1329" width="16" height="16"/>
-  <object id="9" name="Coin" gid="85" x="784" y="1391.5" width="16" height="16"/>
-  <object id="10" name="Coin" gid="85" x="848" y="1392.5" width="16" height="16"/>
-  <object id="11" name="Coin" gid="85" x="784" y="1456.5" width="16" height="16"/>
-  <object id="12" name="Coin" gid="85" x="848" y="1456.5" width="16" height="16"/>
-  <object id="13" name="Coin" gid="85" x="800.5" y="1105" width="16" height="16"/>
-  <object id="14" name="Coin" gid="85" x="816.5" y="1105" width="16" height="16"/>
-  <object id="17" name="Boss" gid="84" x="818.667" y="610" width="16" height="16"/>
-  <object id="18" name="DoorIn" gid="83" x="816" y="1569.33" width="16" height="16"/>
+  <object id="3" name="Coin" type="Coin" gid="85" x="784" y="1200.5" width="8" height="8"/>
+  <object id="4" name="Coin" type="Coin" gid="85" x="849" y="1201" width="8" height="8"/>
+  <object id="5" name="Coin" type="Coin" gid="85" x="784.5" y="1264.5" width="8" height="8"/>
+  <object id="6" name="Coin" type="Coin" gid="85" x="848.5" y="1266" width="8" height="8"/>
+  <object id="7" name="Coin" type="Coin" gid="85" x="784.5" y="1327" width="8" height="8"/>
+  <object id="8" name="Coin" type="Coin" gid="85" x="848" y="1329" width="8" height="8"/>
+  <object id="9" name="Coin" type="Coin" gid="85" x="784" y="1391.5" width="8" height="8"/>
+  <object id="10" name="Coin" type="Coin" gid="85" x="848" y="1392.5" width="8" height="8"/>
+  <object id="11" name="Coin" type="Coin" gid="85" x="784" y="1456.5" width="8" height="8"/>
+  <object id="12" name="Coin" type="Coin" gid="85" x="848" y="1456.5" width="8" height="8"/>
+  <object id="13" name="Coin" type="Coin" gid="85" x="800.5" y="1105" width="8" height="8"/>
+  <object id="14" name="Coin" type="Coin" gid="85" x="816.5" y="1105" width="8" height="8"/>
+  <object id="17" name="Boss" type="Bird" gid="84" x="818.667" y="610" width="32" height="32"/>
+  <object id="20" name="Door to Dungeon" gid="186" x="812.355" y="1564.33" width="23.9561" height="16">
+   <properties>
+    <property name="onCollide">if(collider.parent.type == &quot;Player&quot;) {
+Scene.player.setPosition(76*16, 6*16);
+Scene.playSound(&quot;doorSound&quot;);
+Scene.loadMap(&quot;IceDungeon/Arctic Dungeon&quot;);
+
+
+}</property>
+   </properties>
+  </object>
+  <object id="21" name="Wizerd" type="Wizerd" gid="84" x="705.333" y="547.667" width="32" height="32"/>
+  <object id="22" name="Wizerd" type="Wizerd" gid="84" x="939.667" y="541.333" width="32" height="32"/>
+  <object id="23" name="Wizerd" type="Wizerd" gid="84" x="509.333" y="603.667" width="32" height="32"/>
+  <object id="24" name="Wizerd" type="Wizerd" gid="84" x="1112.67" y="613" width="32" height="32"/>
  </objectgroup>
 </map>

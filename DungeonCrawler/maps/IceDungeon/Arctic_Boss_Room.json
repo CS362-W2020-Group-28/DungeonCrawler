@@ -52,181 +52,227 @@
                 }, 
                 {
                  "gid":85,
-                 "height":16,
+                 "height":8,
                  "id":3,
                  "name":"Coin",
                  "rotation":0,
-                 "type":"",
+                 "type":"Coin",
                  "visible":true,
-                 "width":16,
+                 "width":8,
                  "x":784,
                  "y":1200.5
                 }, 
                 {
                  "gid":85,
-                 "height":16,
+                 "height":8,
                  "id":4,
                  "name":"Coin",
                  "rotation":0,
-                 "type":"",
+                 "type":"Coin",
                  "visible":true,
-                 "width":16,
+                 "width":8,
                  "x":849,
                  "y":1201
                 }, 
                 {
                  "gid":85,
-                 "height":16,
+                 "height":8,
                  "id":5,
                  "name":"Coin",
                  "rotation":0,
-                 "type":"",
+                 "type":"Coin",
                  "visible":true,
-                 "width":16,
+                 "width":8,
                  "x":784.5,
                  "y":1264.5
                 }, 
                 {
                  "gid":85,
-                 "height":16,
+                 "height":8,
                  "id":6,
                  "name":"Coin",
                  "rotation":0,
-                 "type":"",
+                 "type":"Coin",
                  "visible":true,
-                 "width":16,
+                 "width":8,
                  "x":848.5,
                  "y":1266
                 }, 
                 {
                  "gid":85,
-                 "height":16,
+                 "height":8,
                  "id":7,
                  "name":"Coin",
                  "rotation":0,
-                 "type":"",
+                 "type":"Coin",
                  "visible":true,
-                 "width":16,
+                 "width":8,
                  "x":784.5,
                  "y":1327
                 }, 
                 {
                  "gid":85,
-                 "height":16,
+                 "height":8,
                  "id":8,
                  "name":"Coin",
                  "rotation":0,
-                 "type":"",
+                 "type":"Coin",
                  "visible":true,
-                 "width":16,
+                 "width":8,
                  "x":848,
                  "y":1329
                 }, 
                 {
                  "gid":85,
-                 "height":16,
+                 "height":8,
                  "id":9,
                  "name":"Coin",
                  "rotation":0,
-                 "type":"",
+                 "type":"Coin",
                  "visible":true,
-                 "width":16,
+                 "width":8,
                  "x":784,
                  "y":1391.5
                 }, 
                 {
                  "gid":85,
-                 "height":16,
+                 "height":8,
                  "id":10,
                  "name":"Coin",
                  "rotation":0,
-                 "type":"",
+                 "type":"Coin",
                  "visible":true,
-                 "width":16,
+                 "width":8,
                  "x":848,
                  "y":1392.5
                 }, 
                 {
                  "gid":85,
-                 "height":16,
+                 "height":8,
                  "id":11,
                  "name":"Coin",
                  "rotation":0,
-                 "type":"",
+                 "type":"Coin",
                  "visible":true,
-                 "width":16,
+                 "width":8,
                  "x":784,
                  "y":1456.5
                 }, 
                 {
                  "gid":85,
-                 "height":16,
+                 "height":8,
                  "id":12,
                  "name":"Coin",
                  "rotation":0,
-                 "type":"",
+                 "type":"Coin",
                  "visible":true,
-                 "width":16,
+                 "width":8,
                  "x":848,
                  "y":1456.5
                 }, 
                 {
                  "gid":85,
-                 "height":16,
+                 "height":8,
                  "id":13,
                  "name":"Coin",
                  "rotation":0,
-                 "type":"",
+                 "type":"Coin",
                  "visible":true,
-                 "width":16,
+                 "width":8,
                  "x":800.5,
                  "y":1105
                 }, 
                 {
                  "gid":85,
-                 "height":16,
+                 "height":8,
                  "id":14,
                  "name":"Coin",
                  "rotation":0,
-                 "type":"",
+                 "type":"Coin",
                  "visible":true,
-                 "width":16,
+                 "width":8,
                  "x":816.5,
                  "y":1105
                 }, 
                 {
                  "gid":84,
-                 "height":16,
+                 "height":32,
                  "id":17,
                  "name":"Boss",
                  "rotation":0,
-                 "type":"",
+                 "type":"Bird",
                  "visible":true,
-                 "width":16,
+                 "width":32,
                  "x":818.667,
                  "y":610
                 }, 
                 {
-                 "gid":83,
+                 "gid":186,
                  "height":16,
-                 "id":18,
-                 "name":"DoorIn",
+                 "id":20,
+                 "name":"Door to Dungeon",
                  "properties":
                     {
-                     "isTrigger":true,
-                     "onCollide":"console.log(\"door collision!\");\nScene.player.setPosition(76*16, 5*16);\nScene.playSound(\"doorSound\");\nScene.loadMap(\"IceDungeon\/Artic_Dungeon\");\n"
+                     "onCollide":"if(collider.parent.type == \"Player\") {\nScene.player.setPosition(76*16, 6*16);\nScene.playSound(\"doorSound\");\nScene.loadMap(\"IceDungeon\/Arctic Dungeon\");\n\n\n}"
                     },
                  "propertytypes":
                     {
-                     "isTrigger":"bool",
                      "onCollide":"string"
-                    }
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":16,
-                 "x":816,
-                 "y":1569.33333333333
+                 "width":23.9561,
+                 "x":812.355283333333,
+                 "y":1564.33333333333
+                }, 
+                {
+                 "gid":84,
+                 "height":32,
+                 "id":21,
+                 "name":"Wizerd",
+                 "rotation":0,
+                 "type":"Wizerd",
+                 "visible":true,
+                 "width":32,
+                 "x":705.333333333333,
+                 "y":547.666666666667
+                }, 
+                {
+                 "gid":84,
+                 "height":32,
+                 "id":22,
+                 "name":"Wizerd",
+                 "rotation":0,
+                 "type":"Wizerd",
+                 "visible":true,
+                 "width":32,
+                 "x":939.666666666667,
+                 "y":541.333333333333
+                }, 
+                {
+                 "gid":84,
+                 "height":32,
+                 "id":23,
+                 "name":"Wizerd",
+                 "rotation":0,
+                 "type":"Wizerd",
+                 "visible":true,
+                 "width":32,
+                 "x":509.333333333333,
+                 "y":603.666666666667
+                }, 
+                {
+                 "gid":84,
+                 "height":32,
+                 "id":24,
+                 "name":"Wizerd",
+                 "rotation":0,
+                 "type":"Wizerd",
+                 "visible":true,
+                 "width":32,
+                 "x":1112.66666666667,
+                 "y":613
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -235,7 +281,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":20,
+ "nextobjectid":25,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,
@@ -253,6 +299,14 @@
          "tileheight":16,
          "tileproperties":
             {
+             "14":
+                {
+                 "isSolid":true
+                },
+             "15":
+                {
+                 "isSolid":true
+                },
              "152":
                 {
                  "isSolid":true
@@ -261,13 +315,105 @@
                 {
                  "isSolid":true
                 },
+             "157":
+                {
+                 "isSolid":true
+                },
+             "158":
+                {
+                 "isSolid":true
+                },
+             "160":
+                {
+                 "isSolid":true
+                },
              "21":
+                {
+                 "isSolid":true
+                },
+             "22":
+                {
+                 "isSolid":true
+                },
+             "23":
+                {
+                 "isSolid":true
+                },
+             "27":
+                {
+                 "isSolid":true
+                },
+             "28":
+                {
+                 "isSolid":true
+                },
+             "29":
+                {
+                 "isSolid":true
+                },
+             "36":
+                {
+                 "isSolid":true
+                },
+             "37":
+                {
+                 "isSolid":true
+                },
+             "45":
+                {
+                 "isSolid":true
+                },
+             "46":
+                {
+                 "isSolid":true
+                },
+             "47":
+                {
+                 "isSolid":true
+                },
+             "53":
+                {
+                 "isSolid":true
+                },
+             "54":
+                {
+                 "isSolid":true
+                },
+             "55":
+                {
+                 "isSolid":true
+                },
+             "60":
+                {
+                 "isSolid":true
+                },
+             "61":
+                {
+                 "isSolid":true
+                },
+             "9":
+                {
+                 "isSolid":true
+                },
+             "91":
+                {
+                 "abovePlayer":true
+                },
+             "99":
                 {
                  "isSolid":true
                 }
             },
          "tilepropertytypes":
             {
+             "14":
+                {
+                 "isSolid":"bool"
+                },
+             "15":
+                {
+                 "isSolid":"bool"
+                },
              "152":
                 {
                  "isSolid":"bool"
@@ -276,7 +422,91 @@
                 {
                  "isSolid":"bool"
                 },
+             "157":
+                {
+                 "isSolid":"bool"
+                },
+             "158":
+                {
+                 "isSolid":"bool"
+                },
+             "160":
+                {
+                 "isSolid":"bool"
+                },
              "21":
+                {
+                 "isSolid":"bool"
+                },
+             "22":
+                {
+                 "isSolid":"bool"
+                },
+             "23":
+                {
+                 "isSolid":"bool"
+                },
+             "27":
+                {
+                 "isSolid":"bool"
+                },
+             "28":
+                {
+                 "isSolid":"bool"
+                },
+             "29":
+                {
+                 "isSolid":"bool"
+                },
+             "36":
+                {
+                 "isSolid":"bool"
+                },
+             "37":
+                {
+                 "isSolid":"bool"
+                },
+             "45":
+                {
+                 "isSolid":"bool"
+                },
+             "46":
+                {
+                 "isSolid":"bool"
+                },
+             "47":
+                {
+                 "isSolid":"bool"
+                },
+             "53":
+                {
+                 "isSolid":"bool"
+                },
+             "54":
+                {
+                 "isSolid":"bool"
+                },
+             "55":
+                {
+                 "isSolid":"bool"
+                },
+             "60":
+                {
+                 "isSolid":"bool"
+                },
+             "61":
+                {
+                 "isSolid":"bool"
+                },
+             "9":
+                {
+                 "isSolid":"bool"
+                },
+             "91":
+                {
+                 "abovePlayer":"bool"
+                },
+             "99":
                 {
                  "isSolid":"bool"
                 }

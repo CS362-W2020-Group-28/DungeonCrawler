@@ -359,6 +359,65 @@ function ShieldBubble(x, y, width, height, parent) {
 
 }
 
+function KeyItem(x, y) {
+
+	this.transform = new Transform(this);
+	this.velocity = new Vector2(0, 0);
+	this.type = "KeyItem";
+    this.transform.position.x = x;
+    this.transform.position.y = y;
+
+    this.components = {};
+
+  	this.img = document.getElementById("keyIcon");
+
+  	this.ignoreOnLoad = false;
+  	this.delete = false;
+
+
+    this.onCollide = function(scene, collider) {	
+
+
+    		if(Scene.player.addItemToInventory(new Key())) {
+    			this.delete = true;
+
+
+    		} else {
+
+
+    		}
+
+
+    
+
+
+    	return true;
+    }
+
+	this.Start = function(scene) {
+
+		this.components.boxCollider = new BoxCollider(16, 16, this);
+		this.components.boxCollider.isTrigger = true;
+		//this.components.lightRenderer = new LightRenderer(this, "#0F0F00", 64);
+		this.transform = new Transform(this);
+        this.transform.position.x = x;
+        this.transform.position.y = y;
+
+	}
+
+	this.Update = function(scene) {
+		this.transform.Translate(0, 0, scene);
+
+
+
+	}
+
+	this.Draw = function(scene) {
+    	ctx.drawImage(this.img,0, 0, 16,16, this.transform.position.x - (this.components.boxCollider.width/2),this.transform.position.y - (this.components.boxCollider.height/2), this.components.boxCollider.width, this.components.boxCollider.height);
+	}
+
+}
+
 function Coin(x, y) {
 
 	this.transform = new Transform(this);
@@ -408,7 +467,10 @@ function Coin(x, y) {
 	}
 
 	this.Update = function(scene) {
-		this.transform.Translate(0, 0, scene);
+		this.transform.Translate(this.velocity.x, this.velocity.y, scene);
+
+		 this.velocity.x *= 0.8;
+         this.velocity.y *= 0.8;
 
 
 		this.frame += scene.deltaTime*0.02;
@@ -458,7 +520,7 @@ function SwordSlash(x, y, width, height, velocity) {
     	}
 
     	try {
-    	collider.parent.components.messageHandler.Pop();
+    	//collider.parent.components.messageHandler.Pop();
 
 
     	} catch(ex) {

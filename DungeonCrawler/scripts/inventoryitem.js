@@ -371,6 +371,33 @@ function IronSword() {
 
 }
 
+function Key() {
+
+
+	this.icon = document.getElementById("keyIcon");
+	this.type = "Key";
+
+
+
+	this.Use = function(gameObject) {
+
+
+
+	}
+
+	this.Update = function(gameObject) {
+
+
+
+	}
+
+	this.Reset = function() {
+		
+	}
+
+
+}
+
 function CrossBow() {
 
 	this.isUsing = false;
