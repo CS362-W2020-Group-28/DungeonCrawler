@@ -322,7 +322,7 @@ function Slime(x, y) {
 
     this.Start = function(scene) {
         this.components.boxCollider = new BoxCollider(16, 16, this);
-        this.components.lightRenderer = new LightRenderer(this, "#000800", 32);
+        //this.components.lightRenderer = new LightRenderer(this, "#000800", 32);
 
         this.transform = new Transform(this);
         this.transform.position.x = x;
