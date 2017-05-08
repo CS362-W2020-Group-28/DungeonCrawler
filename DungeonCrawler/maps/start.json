@@ -191,7 +191,7 @@
                  "properties":
                     {
                      "isTrigger":true,
-                     "onCollide":"console.log(\"door collision!\");\nScene.player.setPosition(9*16, 12*16);\nScene.playSound(\"doorSound\");\nScene.loadMap(\"dungeon1\/entrance\/entrance\");\n"
+                     "onCollide":"console.log(\"door collision!\");\nScene.player.setPosition(9*16, 13*16);\nScene.playSound(\"doorSound\");\nScene.loadMap(\"dungeon1\/entrance\/entrance\");\n"
                     },
                  "propertytypes":
                     {
@@ -219,15 +219,15 @@
                 }, 
                 {
                  "gid":84,
-                 "height":32,
+                 "height":80,
                  "id":63,
                  "name":"Bird Dude",
                  "rotation":0,
                  "type":"Bird",
                  "visible":true,
-                 "width":32,
-                 "x":767.035,
-                 "y":223.035
+                 "width":30,
+                 "x":768,
+                 "y":224
                 }, 
                 {
                  "gid":84,
@@ -238,8 +238,8 @@
                  "type":"Skull",
                  "visible":true,
                  "width":30,
-                 "x":512,
-                 "y":336
+                 "x":112,
+                 "y":208
                 }, 
                 {
                  "gid":84,
@@ -300,6 +300,18 @@
                  "width":16,
                  "x":624,
                  "y":576
+                }, 
+                {
+                 "gid":84,
+                 "height":32,
+                 "id":74,
+                 "name":"",
+                 "rotation":0,
+                 "type":"Wizerd",
+                 "visible":true,
+                 "width":32,
+                 "x":80,
+                 "y":912
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -319,7 +331,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":74,
+ "nextobjectid":75,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,
