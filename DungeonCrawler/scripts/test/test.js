@@ -30,6 +30,7 @@ describe('NPC', function() {
 		assert.equal(npc.transform.position.y, 12*16);
 	});
 
+	// Example of Blackbox testing
 	it('should have onCollide return true', function() {
 		var npc = new NPC(12*16,12*16);
 		assert.equal(npc.onCollide(), true);
@@ -41,6 +42,45 @@ describe('NPC', function() {
 		assert.equal(npc.transform.position.x, 14*16);
 		assert.equal(npc.transform.position.y, 14*16);
 	});
+});
+
+describe('Harambe', function() {
+	it('should initialize properly', function() {
+		var harambe = new Harambe(12*16, 12*16);
+		assert.equal(harambe.type, "NPC");
+    assert.equal(harambe.transform.position.x, 12*16);
+    assert.equal(harambe.transform.position.y, 12*16);
+    assert.equal(harambe.alive, true);
+    assert.equal(harambe.ignoreOnLoad, false);
+    assert.equal(harambe.delete, false);
+		assert.equal(harambe.timer, 1000);
+	});
+
+	it('should return have onCollide return true', function() {
+		var harambe = new Harambe(12*16, 12*16);
+		assert.equal(harambe.onCollide(), true);
+	});
+
+	it('should have Start() working properly', function() {
+		var harambe = new Harambe(12*16, 12*16);
+		harambe.Start();
+		assert.equal(harambe.transform.position.x, 12*16);
+		assert.equal(harambe.transform.position.y, 12*16);
+	});
+
+	it('should have Update() working properly', function () {
+		var harambe = new Harambe(12*16, 12*16);
+		harambe.Start();
+		harambe.timer = 0;
+		harambe.Update(Scene);
+		assert.equal(harambe.timer, 10000);
+	});
+
+	// it('should have Draw() working properly', function() {
+	// 	var harambe = new Harambe(12*16, 12*16);
+	// 	harambe.Start();
+	// 	harambe.Draw();
+	// });
 });
 
 describe('Skull', function() {

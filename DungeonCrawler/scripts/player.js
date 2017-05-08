@@ -78,7 +78,7 @@ function Player() {
   this.playerSpeed= function(p){
     this.speed=p;
   }
-  
+
   this.menuIndex = 0;
 
   this.menuGoLeft = function() {
@@ -171,7 +171,7 @@ function Player() {
 
   //intializes the player class
   this.Start = function(scene) {
-  
+
 
 
     this.components.boxCollider = new BoxCollider(14, 14, this);
@@ -222,7 +222,7 @@ function Player() {
             this.velocity.x *= 0.8;
             this.velocity.y *= 0.8;
 
-            
+
             //this.velocity.x -= scene.deltaTime*0.01;
             //this.velocity.y -= scene.deltaTime*0.01;
 
@@ -349,7 +349,7 @@ function Player() {
                 ctx.drawImage(this.dead, 0, 0, 16, 16, Math.floor(this.transform.position.x - 8),Math.floor(this.transform.position.y - 8), 16 + this.sourceOffsetWidth, 16 + this.sourceOffsetHeight);
 
 
-                
+
 
                 //Draw rzed dot
                 //ctx.fillStyle = "#FF0000";
@@ -425,7 +425,7 @@ function Player() {
 
                 Scene.Camera.translate(ctx);
 
-                
+
 
               }
 
