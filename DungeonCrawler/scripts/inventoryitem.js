@@ -213,6 +213,85 @@ function SpeedPotion(p) {
 
 
 }
+function Cheat(p) {
+
+	this.isUsing = false;
+
+	this.icon = document.getElementById("Cheat");
+	this.type = "Cheat";
+
+	this.isActive = false;
+
+	this.Use = function(gameObject) {
+		if(!this.isUsing) {
+			gameObject.playerHealth(p);
+			this.isUsing=true;
+			var x = gameObject.transform.position.x;
+			var y = gameObject.transform.position.y;
+			Scene.addObject(new HPotion(x, y, 20, 20, gameObject));
+			console.log(gameObject.health);
+			}
+	}
+
+
+	
+	this.Update = function(gameObject) {
+
+	}
+
+	
+
+	this.Reset = function(gameObject) {
+		this.isUsing = false;
+	}
+
+
+}
+function SpeedPotion(p) {
+
+	this.isUsing = false;
+
+
+	this.icon = document.getElementById("BootsIcon");
+	this.type = "SpeedPotion";
+
+	this.isActive = false;
+	this.oldSpeed = null;
+
+
+	this.Use = function(gameObject) {
+			var oldSpeed = 0.1;
+			if(!this.isUsing) {
+			gameObject.playerSpeed(p);
+
+			console.log("SpeedPotion");
+
+			var x = gameObject.transform.position.x;
+			var y = gameObject.transform.position.y;
+			Scene.addObject(new SPotion(x, y, 20, 20, gameObject));
+			
+
+			/*setTimeout(function() {
+				gameObject.speed = oldSpeed;
+
+			}, 10000);*/
+		}
+	}
+
+
+	
+	this.Update = function(gameObject) {
+
+	}
+
+	
+
+	this.Reset = function(gameObject) {
+		
+	}
+
+
+}
 function DefensePotion(p) {
 
 	this.isUsing = false;
