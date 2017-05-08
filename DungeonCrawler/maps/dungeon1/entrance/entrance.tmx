@@ -65,9 +65,11 @@
   <object id="1" name="Exit" gid="85" x="143.5" y="235.417" width="32.25" height="16">
    <properties>
     <property name="isTrigger" type="bool" value="true"/>
-    <property name="onCollide">console.log(&quot;door collision!&quot;);
+    <property name="onCollide">if(collider.parent.type == &quot;Player&quot;) {
+console.log(&quot;door collision!&quot;);
 Scene.player.setPosition(52*16, 8*16);
-Scene.loadMap(&quot;start&quot;);</property>
+Scene.loadMap(&quot;start&quot;);
+}</property>
    </properties>
   </object>
  </objectgroup>

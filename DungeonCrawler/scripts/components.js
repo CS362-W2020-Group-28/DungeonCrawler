@@ -105,9 +105,6 @@ function MessageHandler(parent) {
         ctx.font = "8px Pixel";
        ctx.fillStyle= "#000000";
        ctx.fillText(this.currentMessage,parent.transform.position.x,parent.transform.position.y - 14);
-       ctx.fillText(this.currentMessage,parent.transform.position.x,parent.transform.position.y - 18);
-       ctx.fillText(this.currentMessage,parent.transform.position.x - 2,parent.transform.position.y - 18);
-       ctx.fillText(this.currentMessage,parent.transform.position.x + 2,parent.transform.position.y - 18);
        ctx.fillStyle= "#FFFFFF";
        ctx.fillText(this.currentMessage,parent.transform.position.x,parent.transform.position.y - 16);
 

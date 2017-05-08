@@ -193,7 +193,11 @@ function TileRenderer() {
               } 
               else if(this.map.layers[i].objects[o].type == "NPC") {
                 prop = new NPC(oX, oY);
-              }else if(this.map.layers[i].objects[o].type == "Light") {
+              }
+              else if(this.map.layers[i].objects[o].type == "Wizerd") {
+                prop = new Wizerd(oX, oY);
+              }
+              else if(this.map.layers[i].objects[o].type == "Light") {
                 oX = this.map.layers[i].objects[o].x + oWidth/2;
                 oY = this.map.layers[i].objects[o].y + oHeight/2;
 
@@ -259,6 +263,8 @@ function TileRenderer() {
                     }
 
                     this.fadeAlpha = 1;
+
+                    console.log("map load complete");
 
                   }
 
