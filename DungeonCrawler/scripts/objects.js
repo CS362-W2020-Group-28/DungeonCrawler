@@ -60,7 +60,7 @@ function HPotion(x, y, width, height, parent) {
 	}
 
 	this.Draw = function(scene) {
-    	ctx.drawImage(this.img,0, 0, 16,16, this.transform.position.x - (width/2),this.transform.position.y - (height/2), width/2, height/2);
+    	ctx.drawImage(this.img,0, 0, 16,16, this.transform.position.x - (width/2),this.transform.position.y - (height/2), width, height);
 	}
 
 }
