@@ -92,19 +92,19 @@ function Bomb(a,b,d) {
 
 
 			if(gameObject.facing == UP) {
-				y -= 16;
-			}
-
-			else if(gameObject.facing == DOWN) {
 				y += 16;
 			}
 
+			else if(gameObject.facing == DOWN) {
+				y -= 16;
+			}
+
 			else if(gameObject.facing == LEFT) {
-				x -= 16;
+				x += 16;
 			}
 
 			else if(gameObject.facing == RIGHT) {
-				x += 16;
+				x -= 16;
 			}
 
 			Scene.addObject(new BombFunction(x, y, 16, 16));
