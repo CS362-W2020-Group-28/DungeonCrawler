@@ -191,7 +191,7 @@
                  "properties":
                     {
                      "isTrigger":true,
-                     "onCollide":"console.log(\"door collision!\");\nScene.player.setPosition(9*16, 13*16);\nScene.playSound(\"doorSound\");\nScene.loadMap(\"dungeon1\/entrance\/entrance\");\n"
+                     "onCollide":"console.log(\"door collision!\");\nScene.player.setPosition(17*16, 95*16);\nScene.playSound(\"doorSound\");\nScene.loadMap(\"IceDungeon\/Artic_Dungeon\");\n"
                     },
                  "propertytypes":
                     {
