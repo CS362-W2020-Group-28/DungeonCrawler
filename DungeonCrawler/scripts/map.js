@@ -260,6 +260,8 @@ function TileRenderer() {
 
                     this.fadeAlpha = 1;
 
+                    console.log("map load complete");
+
                   }
 
 
