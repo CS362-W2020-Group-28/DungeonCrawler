@@ -3,34 +3,95 @@
 <head>
   <meta charset="utf-8">
   <title>Tests Cases</title> <link rel="stylesheet" media="all" href="css/mocha.css"> </head>
-<body>
-  <div id="mocha"><p><a href=".">Index</a></p></div>
-  <div id="messages"></div>
-  <div id="fixtures"></div>
+  <body>
+    <div id="mocha"><p><a href=".">Index</a></p></div>
+    <div id="messages"></div>
+    <div id="fixtures"></div>
 
-  <div id="test-div">
-    
-  </div>
+    <div id="test-div">
 
-  <script src="../node_modules/mocha/mocha.js"></script>
-  <script src="../node_modules/chai/chai.js"></script>
-  <script src="./scripts/blanket.min.js" data-cover-adapter="./scripts/mocha-blanket.js"></script>
+    </div>
 
-  <script>mocha.setup('bdd')</script>
+    <canvas id="canvas" width="320" height="240" style="display:none"></canvas>
 
-  <script type="text/javascript" src="./scripts/jquery-3.1.1.min.js"></script>
-  <script type="text/javascript" src="./scripts/util.js"></script>
-  <script type="text/javascript" src="./scripts/components.js"></script>
-  <script type="text/javascript" src="./scripts/enemy.js" data-cover></script>
-  <script type="text/javascript" src="./scripts/objects.js"></script>
-	<script type="text/javascript" src="./scripts/player.js"></script>
-	<script type="text/javascript" src="./scripts/map.js"></script>
-  <script type="text/javascript" src="./scripts/scene.js"></script>
-  <script type="text/javascript" src="./scripts/inventoryitem.js"></script>
+    <div style="display:none;">
+      <img id="basicTiles" src="img/basictiles.png" />
+      <img id="characters" src="img/characters.png" />
+      <img id="playerSheet" src="img/player.png" />
+      <img id="button" src="img/button.png" />
+      <img id="swordIcon" src="img/swordIcon.png" />
+      <img id="Bird" src="img/Bird.png" />
+      <img id="Wizerd" src="img/wizerd.png" />
+      <img id="Skull" src="img/Skull.png" />
+      <img id="ShieldIcon" src="img/ShieldIcon.png"/>
+      <img id="BombIcon" src= "img/BombIcon.png"/>
+      <img id="HealthIcon" src= "img/HealthIcon.png"/>
+      <img id="healthMeterIcon" src= "img/healthMeterIcon.png"/>
+      <img id="BootsIcon" src= "img/BootsIcon.png"/>
+      <img id="HealthFX" src= "img/healthfx.png"/>
+      <img id="coin" src="img/coin.png" />
+      <img id="shieldIcon" src="img/shieldIcon.png" />
+      <img id="SpeedFX" src= "img/speedfx.png"/>
+      <img id="Bomb" src="img/Bomb.png" />
 
-  <!-- Testing script -->
-  <script type="text/javascript" src="./scripts/test/test.js"></script>
+      <img id="coinIcon" src="img/coinIcon.png" />
 
-	<script>mocha.run();</script>
-</body>
-</html>
+
+      <img id="crossbowIcon" src="img/CrossbowIcon.png" />
+      <img id="rect" src="img/rect.png" />
+      <img id="explosion" src="img/explosion.png" />
+      <img id="light" src="img/light.png" />
+      <img id="playerShield" src="img/playerShield.png" />
+      <img id="charactersRed" src="img/charactersRed.png" />
+      <img id="charactersWhite" src="img/charactersWhite.png" />
+      <img id="weapon" src="img/weapon.png" />
+      <img id="weaponboss" src="img/weaponboss.png" />
+      <img id="arrow" src="img/arrow.png" />
+      <img id="slash" src="img/slash.png" />
+      <img id="dead" src="img/dead.png" />
+      <img id="barrier" src="img/barrier.png" />
+      <audio id="doorSound" src="sounds/door.wav" preload="auto"></audio>
+      <audio id="swingSound" src="sounds/swing.wav" preload="auto"></audio>
+      <audio id="coinPickup" src="sounds/coin-pickup.wav" preload="auto"></audio>
+      <audio id="bombExplosion" src="sounds/bomb-explosion.wav" preload="auto"></audio>
+      <audio id="bombSet" src="sounds/bomb-set.wav" preload="auto"></audio>
+      <audio id="music" title="music-dungeon" src="sounds/music-dungeon.mp3" preload="auto" loop></audio>
+      <audio id="music" title="music-boss" src="sounds/music-boss.mp3" preload="auto" loop></audio>
+      <audio id="music" title="music-savepoint" src="sounds/music-savepoint.mp3" preload="auto" loop></audio>
+    </div>
+
+    <script src="../node_modules/mocha/mocha.js"></script>
+    <script src="../node_modules/chai/chai.js"></script>
+    <script src="./scripts/blanket.min.js" data-cover-adapter="./scripts/mocha-blanket.js"></script>
+
+    <script>mocha.setup('bdd')</script>
+
+    <script type="text/javascript" src="./scripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="./scripts/util.js"></script>
+    <script type="text/javascript" src="./scripts/components.js"></script>
+    <script type="text/javascript" src="./scripts/enemy.js" data-cover></script>
+    <script type="text/javascript" src="./scripts/objects.js"></script>
+    <script type="text/javascript" src="./scripts/player.js" data-cover></script>
+    <script type="text/javascript" src="./scripts/map.js"></script>
+    <script type="text/javascript" src="./scripts/scene.js"></script>
+    <script type="text/javascript" src="./scripts/inventoryitem.js"></script>
+
+    <!-- Testing script -->
+    <script type="text/javascript" src="./scripts/test/test.js"></script>
+
+    <script>
+
+    $(function() {
+
+      Scene = new Scene();
+      tileImage = document.getElementById("basicTiles");
+      Scene.Start();
+      requestAnimationFrame(mainLoop);
+
+    });
+
+    </script>
+
+    <script>mocha.run();</script>
+  </body>
+  </html>

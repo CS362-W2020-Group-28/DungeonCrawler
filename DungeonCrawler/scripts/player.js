@@ -4,6 +4,8 @@ var RIGHT = 2;
 var UP = 3;
 
 
+
+
 function Player() {
   this.transform = null;
   this.velocity = new Vector2(0,0);
@@ -47,6 +49,28 @@ function Player() {
 
   this.zButton = new InventoryItem();
   this.xButton = new IronSword();
+
+  this.hasInventoryItem = function(type) {
+
+  for(var i = 0; i < this.inventory.length; i++) {
+    if(this.inventory[i].type == type)
+      return true;
+    }
+
+    return false;
+  }
+
+  this.addItemToInventory = function (item) {
+    //Find empty spot in inventory
+    for(var i = 0; i < 10; i++) {
+      if(this.inventory[i].type == "Empty") {
+        this.inventory[i] = item;
+        return true;
+      }
+    }
+
+    return false;
+  }
 
   this.playerHealth= function(p){
     this.health+=p;
@@ -153,8 +177,8 @@ function Player() {
     this.components.boxCollider = new BoxCollider(14, 14, this);
     this.components.lightRenderer = new LightRenderer(this, "#202020", 1024);
     this.transform = new Transform(this);
-    this.transform.position.x = 31*16;
-    this.transform.position.y = 36*16;
+    this.transform.position.x = 64*16;
+    this.transform.position.y = 71*16;
 
     //Initialize inventory
     for(var i = 0; i < this.maxInventorySize; i++) {
@@ -331,7 +355,7 @@ function Player() {
                 //ctx.fillStyle = "#FF0000";
                 //ctx.fillRect(this.transform.position.x, this.transform.position.y,2,2);
 
-                Scene.Camera.resetTransform();
+                Scene.Camera.resetTransform(ctx);
 
                 //Buttons
                 //z button
@@ -399,7 +423,7 @@ function Player() {
                   Scene.UIContext.strokeStyle="#000000";
                 }
 
-                Scene.Camera.translate();
+                Scene.Camera.translate(ctx);
 
                 
 

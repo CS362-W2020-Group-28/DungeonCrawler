@@ -10,7 +10,8 @@ function testCode() {
 // returns ctx
 function createCanvas() {
 	var canvas = document.createElement("canvas");
-	var testDiv = document.getElementById("test-div"); var ctx = canvas.getContext("2d");
+	var testDiv = document.getElementById("test-div");
+  var ctx = canvas.getContext("2d");
 	return ctx;
 }
 
@@ -56,14 +57,16 @@ describe('Skull', function() {
 
 	it('should have doDamage() working properly', function() {
 		var skull = new Skull(12*16, 12*16);
-		skull.doDamage();
-		assert.equal(skull.alive, false);
-		assert.equal(skull.delete, true);
+		skull.doDamage(20);
+		assert.equal(skull.health, 180);
 	});
 
 	it('should have onCollide() return true', function() {
 		var skull = new Skull(12*16, 12*16);
-		assert.equal(skull.onCollide(), true);
+    var swordSlash = new SwordSlash(200,200,28, 28, new Vector2(0, 0));
+    var boxCollider = new BoxCollider(200,200, swordSlash);
+		var result = skull.onCollide(Scene, boxCollider);
+		assert.equal(result, true);
 	});
 
 	it('should have Start() working properly', function() {
@@ -72,6 +75,13 @@ describe('Skull', function() {
 		assert.equal(skull.transform.position.x, 12*16);
 		assert.equal(skull.transform.position.y, 12*16);
 	});
+
+  it('should have Update() working properly', function() {
+		var skull = new Skull(12*16, 12*16);
+    skull.Start();
+    skull.doDamage(200);
+    skull.Update(Scene);
+  });
 });
 
 describe('Bird', function() {
@@ -81,29 +91,81 @@ describe('Bird', function() {
 	});
 
 	it('should have transform positions initialized properly', function() {
-		var bird = new Skull(12*16,12*16);
+		var bird = new Bird(12*16,12*16);
 		assert.equal(bird.transform.position.x, 12*16);
 		assert.equal(bird.transform.position.y, 12*16);
 	});
 
 	it('should have doDamage() working properly', function() {
-		var bird = new Skull(12*16, 12*16);
-		bird.doDamage();
-		assert.equal(bird.alive, false);
-		assert.equal(bird.delete, true);
+    var bird = new Bird(12*16, 12*16);
+		bird.doDamage(20);
+		assert.equal(bird.health, 480);
 	});
 
 	it('should have onCollide() return true', function() {
-		var bird = new Skull(12*16, 12*16);
-		assert.equal(bird.onCollide(), true);
+		var bird = new Bird(12*16, 12*16);
+    var swordSlash = new SwordSlash(200,200,28, 28, new Vector2(0, 0));
+    var boxCollider = new BoxCollider(200,200, swordSlash);
+		var result = bird.onCollide(Scene, boxCollider);
+		assert.equal(result, true);
 	});
 
 	it('should have Start() working properly', function() {
-		var bird = new Skull(12*16, 12*16);
+		var bird = new Bird(12*16, 12*16);
 		bird.Start();
 		assert.equal(bird.transform.position.x, 12*16);
 		assert.equal(bird.transform.position.y, 12*16);
 	});
+
+  it('should have Update() working properly', function() {
+    var bird = new Bird(12*16, 12*16);
+    bird.Start();
+    bird.doDamage(500);
+    bird.Update(Scene);
+  });
+
+});
+
+describe('Wizerd', function() {
+	it('should be of type Wizerd', function() {
+		var wizerd = new Wizerd(12*16, 12*16);
+		assert.equal(wizerd.type, "Wizerd");
+	});
+
+	it('should have transform positions initialized properly', function() {
+		var wizerd = new Wizerd(12*16,12*16);
+		assert.equal(wizerd.transform.position.x, 12*16);
+		assert.equal(wizerd.transform.position.y, 12*16);
+	});
+
+	it('should have doDamage() working properly', function() {
+    var wizerd = new Wizerd(12*16, 12*16);
+		wizerd.doDamage(20);
+		assert.equal(wizerd.health, 30);
+	});
+
+	it('should have onCollide() return true', function() {
+		var wizerd = new Wizerd(12*16, 12*16);
+    var swordSlash = new SwordSlash(200,200,28, 28, new Vector2(0, 0));
+    var boxCollider = new BoxCollider(200,200, swordSlash);
+		var result = wizerd.onCollide(Scene, boxCollider);
+		assert.equal(result, true);
+	});
+
+	it('should have Start() working properly', function() {
+		var wizerd = new Wizerd(12*16, 12*16);
+		wizerd.Start();
+		assert.equal(wizerd.transform.position.x, 12*16);
+		assert.equal(wizerd.transform.position.y, 12*16);
+	});
+
+  it('should have Update() working properly', function() {
+    var wizerd = new Wizerd(12*16, 12*16);
+    wizerd.Start();
+    wizerd.doDamage(500);
+    wizerd.Update(Scene);
+  });
+
 });
 
 describe('Slime', function() {
@@ -119,15 +181,17 @@ describe('Slime', function() {
 	});
 
 	it('should have doDamage() working properly', function() {
-		var slime = new Slime(12*16, 12*16);
-		slime.doDamage();
-		assert.equal(slime.alive, false);
-		assert.equal(slime.delete, true);
+    var slime = new Slime(12*16, 12*16);
+		slime.doDamage(20);
+		assert.equal(slime.health, 80);
 	});
 
 	it('should have onCollide() return true', function() {
 		var slime = new Slime(12*16, 12*16);
-		assert.equal(slime.onCollide(), true);
+    var swordSlash = new SwordSlash(200,200,28, 28, new Vector2(0, 0));
+    var boxCollider = new BoxCollider(200,200, swordSlash);
+		var result = slime.onCollide(Scene, boxCollider);
+		assert.equal(result, true);
 	});
 
 	it('should have Start() working properly', function() {
@@ -136,6 +200,14 @@ describe('Slime', function() {
 		assert.equal(slime.transform.position.x, 12*16);
 		assert.equal(slime.transform.position.y, 12*16);
 	});
+
+  it('should have Update() working properly', function() {
+    var slime = new Slime(12*16, 12*16);
+    slime.Start();
+    slime.doDamage(500);
+    slime.Update(Scene);
+  });
+
 });
 
 describe('Player', function() {
@@ -186,8 +258,149 @@ describe('Player', function() {
 
 		assert.equal(player.transform.position.x, 496);
 		assert.equal(player.transform.position.y, 576);
-		assert.equal(player.inventory[0].type, "CrossBow");
+		assert.equal(player.inventory[0].type, "Shield");
 	});
+
+  it('should have setPosition() working properly', function() {
+		var player = new Player();
+
+		player.Start(Scene);
+
+    player.setPosition(500,500);
+
+    assert.equal(player.transform.position.x, 500);
+    assert.equal(player.transform.position.y, 500);
+    assert.equal(player.prevX, 500);
+    assert.equal(player.prevY, 500);
+  });
+
+  it('should have addCoin() working properly', function() {
+		var player = new Player();
+
+		player.Start(Scene);
+    player.addCoin(20);
+
+    assert.equal(player.coin, 20);
+  });
+
+  it('should have doDamage() working properly', function() {
+		var player = new Player();
+
+		player.Start(Scene);
+    player.doDamage(20);
+
+    assert.equal(player.health, 80);
+  });
+
+  it('should have onCollide() working properly', function() {
+    var player = new Player();
+    var slime = new Slime();
+    var skull =  new Skull();
+    var wizerd = new Wizerd();
+    var bird = new Bird();
+    var boxCollider = new BoxCollider(200,200, slime);
+
+    player.Start(Scene);
+    var result = player.onCollide(Scene, boxCollider);
+
+    assert.equal(player.health, 95);
+    assert.equal(result, true);
+
+    boxCollider = new BoxCollider(200,200, skull);
+    player.onCollide(Scene, boxCollider);
+    assert.equal(player.health, 70);
+
+    boxCollider = new BoxCollider(200,200, wizerd);
+    player.onCollide(Scene, boxCollider);
+    assert.equal(player.health, 35);
+
+    boxCollider = new BoxCollider(200,200, bird);
+    player.onCollide(Scene, boxCollider);
+    assert.equal(player.health, -10);
+  });
+
+  it('should have Update() cover input.arrowKeyUp', function() {
+    var player = new Player();
+
+    player.Start(Scene);
+    var tempFrame = player.frame;
+
+    input.arrowKeyUp = true;
+
+    player.Update(Scene);
+    tempFrame += Scene.deltaTime*0.01;
+    tempFrame = tempFrame % 3;
+    assert.equal(player.frame, tempFrame);
+  });
+
+  it('should have shift key working', function() {
+    var player = new Player();
+
+    player.Start(Scene);
+
+    input.arrowKeyUp = true;
+    input.arrowKeyLeft = true;
+    input.shift = true;
+
+    player.Update(Scene);
+
+    assert.equal(player.speed, 0.1);
+  });
+
+  it('should face left when arrowKeyLeft is true', function() {
+    var player = new Player();
+
+    player.Start(Scene);
+
+    input.arrowKeyUp = true;
+    input.arrowKeyLeft = true;
+
+    player.Update(Scene);
+
+    assert.equal(player.facing, 1);
+  });
+
+  it('should face right when arrowKeyRight is true', function() {
+    var player = new Player();
+
+    player.Start(Scene);
+
+    input.arrowKeyUp = true;
+    input.arrowKeyRight = true;
+
+    player.Update(Scene);
+
+    assert.equal(player.facing, 2);
+  });
+
+  it('should face down when arrowKeyDown is true', function() {
+    var player = new Player();
+
+    player.Start(Scene);
+
+    input.arrowKeyUp = true;
+    input.arrowKeyDown = true;
+
+    player.Update(Scene);
+
+    assert.equal(player.facing, 2);
+  });
+
+  it('should cover more when Draw() is called', function(){
+    var player = new Player();
+
+    player.Start(Scene);
+    player.Draw(Scene);
+  });
+
+  it('should cover more when Draw() is called and there is item', function(){
+    var player = new Player();
+
+    player.Start(Scene);
+    player.Draw(Scene);
+    player.menuAssignZ;
+
+  });
 });
 
 describe('LightRenderer', function() {
