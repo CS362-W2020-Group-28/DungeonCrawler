@@ -13,9 +13,11 @@ function Player() {
 
   this.health = 100;
   this.img = document.getElementById("playerSheet");
+  this.dead = document.getElementById("dead");
   this.button = document.getElementById("button");
   this.rect = document.getElementById("rect");
   this.coinIcon = document.getElementById("coinIcon");
+  this.healthIcon = document.getElementById("healthMeterIcon");
   this.facing = 0; //0 - down; 1 - left; 2 - right; 3 - up
   this.frame = 0;
   this.frameOffset = 0;
@@ -102,7 +104,29 @@ function Player() {
     Scene.playSound("coinPickup");
   }
 
+  this.doDamage = function(value) {
+    if(this.health > 0)
+        this.health -= value;
+  }
+
+
   this.onCollide = function(scene, collider) {
+
+    if(collider.parent.type == "Skull") {
+
+      this.velocity.x += collider.parent.velocity.x*8;
+      this.velocity.y += collider.parent.velocity.y*8;
+
+      this.doDamage(25);
+    }
+
+    if(collider.parent.type == "Bird") {
+
+      this.velocity.x += collider.parent.velocity.x*4;
+      this.velocity.y += collider.parent.velocity.y*4;
+
+      this.doDamage(40);
+    }
 
     return true;
   }
@@ -150,7 +174,7 @@ function Player() {
 
         } else {
 
-          if(this.alive) {
+          if(this.health > 0) {
 
 
             this.transform.Translate(this.velocity.x, this.velocity.y, scene);
@@ -254,6 +278,10 @@ function Player() {
                       this.xButton.Reset(this);
                     }
 
+                  } else {
+
+                    //Player is dead
+
                   }
 
 
@@ -269,8 +297,11 @@ function Player() {
 
 
                 //Draw Player
+                if(this.health>0)
                 ctx.drawImage(this.img, (Math.floor(this.frame + this.frameOffset)*64) + this.sourceOffsetX, this.facing*64 + this.sourceOffsetY, 64 + this.sourceOffsetWidth, 64 + this.sourceOffsetHeight, Math.floor(this.transform.position.x - 32),Math.floor(this.transform.position.y - 32), 64 + this.sourceOffsetWidth, 64 + this.sourceOffsetHeight);
-                
+                else
+                ctx.drawImage(this.dead, 0, 0, 16, 16, Math.floor(this.transform.position.x - 8),Math.floor(this.transform.position.y - 8), 16 + this.sourceOffsetWidth, 16 + this.sourceOffsetHeight);
+
 
                 
 
@@ -298,9 +329,14 @@ function Player() {
                 //Draw coin counter
                 Scene.UIContext.font = "8px Pixel";
                  Scene.UIContext.fillStyle= "#FFFFFF";
-                 Scene.UIContext.fillText(this.coin,20,canvas.height - 16 - (this.isMenu ? 24 : 0));
 
+
+                 Scene.UIContext.fillText(this.coin,20,canvas.height - 16 - (this.isMenu ? 24 : 0));
                  Scene.UIContext.drawImage(this.coinIcon,0, 0, 8,8, 8,canvas.height-25 - (this.isMenu ? 24 : 0), 8, 8);
+
+                 //Draw health counter
+                 Scene.UIContext.fillText(this.health,60,canvas.height - 16 - (this.isMenu ? 24 : 0));
+                 Scene.UIContext.drawImage(this.healthIcon,0, 0, 8,8, 48,canvas.height-25 - (this.isMenu ? 24 : 0), 8, 8);
 
 
                 //Draw inventory menu

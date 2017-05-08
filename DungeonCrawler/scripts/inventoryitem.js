@@ -88,6 +88,25 @@ function Bomb(a,b,d) {
 
 			var x = gameObject.transform.position.x;
 			var y = gameObject.transform.position.y;
+
+
+
+			if(gameObject.facing == UP) {
+				y -= 16;
+			}
+
+			else if(gameObject.facing == DOWN) {
+				y += 16;
+			}
+
+			else if(gameObject.facing == LEFT) {
+				x -= 16;
+			}
+
+			else if(gameObject.facing == RIGHT) {
+				x += 16;
+			}
+
 			Scene.addObject(new BombFunction(x, y, 16, 16));
 
 		}
@@ -286,24 +305,29 @@ function IronSword() {
 			var y = gameObject.transform.position.y;
 			var width = 28;
 			var height = 28;
+			var v = new Vector2(0, 0);
 
 			if(gameObject.facing == UP) {
 				y -= 14;
+				v.y = -5;
 			}
 
 			else if(gameObject.facing == DOWN) {
 				y += 14;
+				v.y = 5;
 			}
 
 			else if(gameObject.facing == LEFT) {
 				x -= 14;
+				v.x = -5;
 			}
 
 			else if(gameObject.facing == RIGHT) {
 				x += 14;
+				v.x = 5;
 			}
 
-			Scene.addObject(new SwordSlash(x, y, width, height));
+			Scene.addObject(new SwordSlash(x, y, width, height, v));
 			this.frame = 3;
 
 

@@ -103,6 +103,11 @@ function MessageHandler(parent) {
       if(this.timer > 0) {
         ctx.textAlign = "center";
         ctx.font = "8px Pixel";
+       ctx.fillStyle= "#000000";
+       ctx.fillText(this.currentMessage,parent.transform.position.x,parent.transform.position.y - 14);
+       ctx.fillText(this.currentMessage,parent.transform.position.x,parent.transform.position.y - 18);
+       ctx.fillText(this.currentMessage,parent.transform.position.x - 2,parent.transform.position.y - 18);
+       ctx.fillText(this.currentMessage,parent.transform.position.x + 2,parent.transform.position.y - 18);
        ctx.fillStyle= "#FFFFFF";
        ctx.fillText(this.currentMessage,parent.transform.position.x,parent.transform.position.y - 16);
 
@@ -169,7 +174,7 @@ function BoxCollider(width, height, parent) {
 
 
     this.Draw = function(scene) {
-      ctx.drawImage(this.rect,0, 0, 16,16, this.parent.transform.position.x - (this.width/2),this.parent.transform.position.y - (this.height/2), this.width, this.height);
+      //ctx.drawImage(this.rect,0, 0, 16,16, this.parent.transform.position.x - (this.width/2),this.parent.transform.position.y - (this.height/2), this.width, this.height);
 
 
     }
@@ -179,6 +184,7 @@ function BoxCollider(width, height, parent) {
     		var tileID;
 
             var collision = false;
+
 
     		for(var i = 0; i < scene.tileRenderer.map.layers.length; i++) {
 

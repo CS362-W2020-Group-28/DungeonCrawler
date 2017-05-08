@@ -185,9 +185,10 @@ this.Start = function() {
 
         }
 
-
         //"Delete" marked objects
         this.GameObjects = newList;
+
+
 
             
 

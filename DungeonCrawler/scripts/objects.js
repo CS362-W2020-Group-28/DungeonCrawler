@@ -144,8 +144,8 @@ function BombFunction(x, y, width, height) {
 	this.Start = function(scene) {
 
 		this.components.boxCollider = new BoxCollider(width, height, this);
-		this.components.boxCollider.isTrigger = true;
-		this.components.boxCollider.ignorePlayer = true;
+		this.components.boxCollider.isTrigger = false;
+		this.components.boxCollider.ignorePlayer = false;
 		this.transform = new Transform(this);
         this.transform.position.x = x;
         this.transform.position.y = y;
@@ -189,7 +189,7 @@ function BombExplosion(x, y, width, height) {
 
 
     	try {
-    	collider.parent.doDamage();
+    	collider.parent.doDamage(100);
     	console.log("Doing damage on " + collider.parent.type);
 
 
@@ -331,7 +331,7 @@ function Coin(x, y) {
 
 		this.components.boxCollider = new BoxCollider(8, 8, this);
 		this.components.boxCollider.isTrigger = true;
-		this.components.lightRenderer = new LightRenderer(this, "#0F0F00", 256);
+		//this.components.lightRenderer = new LightRenderer(this, "#0F0F00", 64);
 		this.transform = new Transform(this);
         this.transform.position.x = x;
         this.transform.position.y = y;
@@ -355,10 +355,10 @@ function Coin(x, y) {
 }
 
 
-function SwordSlash(x, y, width, height) {
+function SwordSlash(x, y, width, height, velocity) {
 
 	this.transform = new Transform(this);
-	this.velocity = new Vector2(0, 0);
+	this.velocity = velocity;
 	this.type = "SwordSlash";
     this.transform.position.x = x;
     this.transform.position.y = y;
@@ -376,8 +376,13 @@ function SwordSlash(x, y, width, height) {
 
 
     	try {
-    	collider.parent.doDamage();
+    	//collider.parent.velocity.x 
+    	if(collider.parent.type != "Player") {
+    		    	collider.parent.doDamage(25);
     	console.log("Doing damage on " + collider.parent.type);
+
+    	}
+
 
 
     	} catch(ex) {
@@ -417,7 +422,7 @@ function SwordSlash(x, y, width, height) {
 	}
 
 	this.Draw = function(scene) {
-    	ctx.drawImage(this.rect,0, 0, 16,16, this.transform.position.x - (this.components.boxCollider.width/2),this.transform.position.y - (this.components.boxCollider.height/2), this.components.boxCollider.width, this.components.boxCollider.height);
+    	//ctx.drawImage(this.rect,0, 0, 16,16, this.transform.position.x - (this.components.boxCollider.width/2),this.transform.position.y - (this.components.boxCollider.height/2), this.components.boxCollider.width, this.components.boxCollider.height);
 	}
 
 }
