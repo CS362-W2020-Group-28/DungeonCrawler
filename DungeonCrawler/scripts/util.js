@@ -219,9 +219,9 @@ function Transform(GameObject) {
         
 
         this.position.x += x;
-        
 
-        // X-Axis collision check
+
+              // X-Axis collision check
         if(this.collider) {
             if(this.collider.checkCollision(scene, this.position)) {
                 //this.position.x = this.prevPosition.x;
@@ -233,7 +233,8 @@ function Transform(GameObject) {
         }
         
         
-        this.position.y += y;      
+        this.position.y += y; 
+             
 
         // Y-Axis collision check
         if(this.collider) {
@@ -245,18 +246,30 @@ function Transform(GameObject) {
             }
         }
 
-        
 
-        if(this.collider.collision != null) {
+        
+        if(this.collider) {
+                  if(this.collider.collision != null) {
               this.collider.collision.parent.onCollide(scene, this.collider);
         }
+        }
 
+        if(this.collider)
         this.collider.collision = null;
+
+        
+
+        
         
     }
 
 
     this.doCollisionCheck = function(scene) {
+
+
+
+
+        
 
       
 

@@ -39,9 +39,9 @@
                  "gid":146,
                  "height":16,
                  "id":3,
-                 "name":"",
+                 "name":"DoorIn",
                  "rotation":0,
-                 "type":"",
+                 "type":"Door",
                  "visible":false,
                  "width":16,
                  "x":1218,
@@ -51,9 +51,19 @@
                  "gid":146,
                  "height":16,
                  "id":4,
-                 "name":"",
+                 "name":"DoorIn",
+                 "properties":
+                    {
+                     "isTrigger":true,
+                     "onCollide":"console.log(\"door collision!\");\nScene.player.setPosition(31*16, 18*16);\nScene.playSound(\"doorSound\");\nScene.loadMap(\"start\");\n"
+                    },
+                 "propertytypes":
+                    {
+                     "isTrigger":"bool",
+                     "onCollide":"string"
+                    },
                  "rotation":0,
-                 "type":"",
+                 "type":"Door",
                  "visible":false,
                  "width":16,
                  "x":1217.67,
@@ -64,6 +74,16 @@
                  "height":16,
                  "id":5,
                  "name":"Door To Boss",
+                 "properties":
+                    {
+                     "isTrigger":true,
+                     "onCollide":"console.log(\"door collision!\");\nScene.player.setPosition(51*16, 95*16);\nScene.playSound(\"doorSound\");\nScene.loadMap(\"IceDungeon\/Artic_Boss_Room\");\n"
+                    },
+                 "propertytypes":
+                    {
+                     "isTrigger":"bool",
+                     "onCollide":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -1399,6 +1419,54 @@
                  "width":16,
                  "x":1285,
                  "y":1379
+                }, 
+                {
+                 "gid":1073741921,
+                 "height":16,
+                 "id":162,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":273,
+                 "y":1567
+                }, 
+                {
+                 "gid":97,
+                 "height":16,
+                 "id":163,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":290,
+                 "y":1566
+                }, 
+                {
+                 "gid":1073741921,
+                 "height":16,
+                 "id":164,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":289,
+                 "y":1568
+                }, 
+                {
+                 "gid":97,
+                 "height":16,
+                 "id":165,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":148,
+                 "y":1492
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1407,7 +1475,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":159,
+ "nextobjectid":166,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,
@@ -1415,7 +1483,7 @@
         {
          "columns":8,
          "firstgid":1,
-         "image":"..\/img\/basictiles.png",
+         "image":"..\/..\/img\/basictiles.png",
          "imageheight":1024,
          "imagewidth":128,
          "margin":0,

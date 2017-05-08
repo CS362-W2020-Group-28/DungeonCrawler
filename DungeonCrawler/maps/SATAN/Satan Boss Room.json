@@ -33,7 +33,7 @@
                  "id":2,
                  "name":"Door",
                  "rotation":0,
-                 "type":"",
+                 "type":"Door",
                  "visible":true,
                  "width":16,
                  "x":806.667,

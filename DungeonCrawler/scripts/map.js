@@ -18,13 +18,13 @@ function TileRenderer() {
 
   this.components = {};
 
-  //this.ignoreOnLoad = true;
+  this.ignoreOnLoad = true;
 
   this.fadeAlpha = 1.0;
 
   this.loadMap = function(filename, scene) {
 
-  
+
     //Take the objects from our current scene before loading the next one
     if(this.map) {
       console.log("There is map data!");
@@ -36,26 +36,22 @@ function TileRenderer() {
       //Get gameObjects from scene
       this.persistenceMemory[this.mapName] = [];
 
-      var toDelete = [];
 
       for(var i = 0; i < Scene.GameObjects.length; i++) {
         if(Scene.GameObjects[i].ignoreOnLoad == false) {
           this.persistenceMemory[this.mapName].push(Scene.GameObjects[i]);
-          toDelete.push(i);
         }
 
       }
 
-      
-      for(var i = 0; i < toDelete.length; i++) {
-        console.log("Deleting " + i);
-        Scene.GameObjects.splice(i, 1);
-      }
+
+
+
     }
 
 
 
-  
+
     this.tileBuffer = document.createElement('canvas');
     this.floatBuffer = document.createElement('canvas');
     this.lightBuffer = document.createElement('canvas');
@@ -133,73 +129,90 @@ function TileRenderer() {
          } else if(this.map.layers[i].type == "objectgroup") {
 
           if(this.persistenceMemory[this.mapName] != null) {
+            console.log("There is stuff for this map");
 
-            //Scene.GameObjects = [];
-            Scene.GameObjects = this.persistenceMemory[this.mapName];
+            Scene.GameObjects = [];
 
+            var arr = this.persistenceMemory[this.mapName];
             //scene.GameObjects.push(this); //Push this tile renderer back into the list
+            
+            scene.GameObjects.push(this); //Push this tile renderer back into the list
+            scene.GameObjects.push(scene.player); //Push player back into the list
+
+            for(var pe = 0; pe < arr.length; pe++) {
+              Scene.GameObjects.push(arr[pe]);
+            }
+
             //scene.GameObjects.push(scene.player); //Push player back into the list
 
 
 
           } else {
 
+            console.log("There is no stuff for this map");
+
+
+            Scene.GameObjects = [];
+            scene.GameObjects.push(this); //Push this tile renderer back into the list
+            scene.GameObjects.push(scene.player); //Push player back into the list
+
+
             for(var o = 0; o < this.map.layers[i].objects.length; o++) {
 
-            var gID = this.map.layers[i].objects[o].gid - 1;
+              var gID = this.map.layers[i].objects[o].gid - 1;
 
-            var tX = gID % 8;
-            var tY = Math.floor(gID / 8);
+              var tX = gID % 8;
+              var tY = Math.floor(gID / 8);
 
-            var imgBuffer = document.createElement('canvas');
-            var imgCtx = imgBuffer.getContext('2d');
+              var imgBuffer = document.createElement('canvas');
+              var imgCtx = imgBuffer.getContext('2d');
 
-            imgCtx.drawImage(this.img, tX * 16, tY * 16, 16, 16, 0, 0, 16, 16);
-
-
-            var prop;
+              imgCtx.drawImage(this.img, tX * 16, tY * 16, 16, 16, 0, 0, 16, 16);
 
 
-            var oWidth = this.map.layers[i].objects[o].width;
-            var oHeight = this.map.layers[i].objects[o].height;
-            var oX = this.map.layers[i].objects[o].x + oWidth/2;
-            var oY = this.map.layers[i].objects[o].y - oHeight/2;
-            
-            if(this.map.layers[i].objects[o].type == "Slime") {
-              prop = new Slime(oX, oY);
-              
-
-            } else if(this.map.layers[i].objects[o].type == "Coin"){
-              prop = new Coin(oX, oY);
-            } 
-            else if(this.map.layers[i].objects[o].type == "Bird"){
-              prop = new Bird(oX, oY);
-            } 
-            else if(this.map.layers[i].objects[o].type == "Skull"){
-              prop = new Skull(oX, oY);
-            } 
-            else if(this.map.layers[i].objects[o].type == "NPC") {
-              prop = new NPC(oX, oY);
-            }else if(this.map.layers[i].objects[o].type == "Light") {
-              oX = this.map.layers[i].objects[o].x + oWidth/2;
-              oY = this.map.layers[i].objects[o].y + oHeight/2;
-
-              prop = new Light(oX, oY, oWidth, this.map.layers[i].objects[o].properties.color);
-            }
-            else {
-              prop = new StaticProp(imgBuffer, oX, oY);
-            }
-            
-
-  
-            prop.Start(scene);
+              var prop;
 
 
-            if(prop.components.boxCollider) {
-              prop.components.boxCollider.width = oWidth;
-            prop.components.boxCollider.height = oHeight;
-            }
-            
+              var oWidth = this.map.layers[i].objects[o].width;
+              var oHeight = this.map.layers[i].objects[o].height;
+              var oX = this.map.layers[i].objects[o].x + oWidth/2;
+              var oY = this.map.layers[i].objects[o].y - oHeight/2;
+
+              if(this.map.layers[i].objects[o].type == "Slime") {
+                prop = new Slime(oX, oY);
+
+
+              } else if(this.map.layers[i].objects[o].type == "Coin"){
+                prop = new Coin(oX, oY);
+              } 
+              else if(this.map.layers[i].objects[o].type == "Bird"){
+                prop = new Bird(oX, oY);
+              } 
+              else if(this.map.layers[i].objects[o].type == "Skull"){
+                prop = new Skull(oX, oY);
+              } 
+              else if(this.map.layers[i].objects[o].type == "NPC") {
+                prop = new NPC(oX, oY);
+              }else if(this.map.layers[i].objects[o].type == "Light") {
+                oX = this.map.layers[i].objects[o].x + oWidth/2;
+                oY = this.map.layers[i].objects[o].y + oHeight/2;
+
+                prop = new Light(oX, oY, oWidth, this.map.layers[i].objects[o].properties.color);
+              }
+              else {
+                prop = new StaticProp(imgBuffer, oX, oY);
+              }
+
+
+
+              prop.Start(scene);
+
+
+              if(prop.components.boxCollider) {
+                prop.components.boxCollider.width = oWidth;
+                prop.components.boxCollider.height = oHeight;
+              }
+
 
             //prop.onCollide = new Function("scene", "collider", "return true;");
 
@@ -227,47 +240,49 @@ function TileRenderer() {
 
 
 
-          }
-
-          
                           }
 
 
 
+
                         }
 
-                        if(this.map.properties) {
 
-                         if(this.map.properties.backgroundMusic) {
-                          Scene.playMusic(this.map.properties.backgroundMusic);
-                        }
+
                       }
 
-                      this.fadeAlpha = 1;
+                      if(this.map.properties) {
 
-                    }
-
-
-                    this.Start = function(scene) {
-
-                      this.loadMap("start", scene);
-
-
-                    }
-
-                    this.Update = function(scene) {
-                      this.fadeAlpha -= Scene.deltaTime*0.001;
-
-
-                      if(this.fadeAlpha <= 0) {
-                        this.fadeAlpha = 0;
+                       if(this.map.properties.backgroundMusic) {
+                        Scene.playMusic(this.map.properties.backgroundMusic);
                       }
-
-
                     }
 
-                    this.Draw = function(scene) {
-                      ctx.drawImage(this.tileBuffer, 0,0, this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
+                    this.fadeAlpha = 1;
+
+                  }
+
+
+                  this.Start = function(scene) {
+
+                    this.loadMap("start", scene);
+
+
+                  }
+
+                  this.Update = function(scene) {
+                    this.fadeAlpha -= Scene.deltaTime*0.001;
+
+
+                    if(this.fadeAlpha <= 0) {
+                      this.fadeAlpha = 0;
+                    }
+
+
+                  }
+
+                  this.Draw = function(scene) {
+                    ctx.drawImage(this.tileBuffer, 0,0, this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
                       //ctx.drawImage(this.tileBuffer, Scene.Camera.transform.position.x - Scene.Camera.offset.x,Scene.Camera.transform.position.y - Scene.Camera.offset.y, canvas.width, canvas.height,Scene.Camera.transform.position.x - Scene.Camera.offset.x,Scene.Camera.transform.position.y - Scene.Camera.offset.y, canvas.width, canvas.height);
 
                       Scene.Camera.resetTransform();
@@ -284,14 +299,14 @@ function TileRenderer() {
 
                    this.ClearLightLayer = function() {
 
-                       this.lightContext.fillStyle = "#111111";
-        this.lightContext.fillRect(0, 0, this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
+                     this.lightContext.fillStyle = "#111111";
+                     this.lightContext.fillRect(0, 0, this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
 
                    }
 
                    this.DrawLightLayer = function(scene) {
 
-                    
+
 
 
                      ctx.drawImage(this.lightBuffer, 0,0, this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
