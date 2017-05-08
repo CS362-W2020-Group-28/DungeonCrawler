@@ -27,7 +27,7 @@ function HPotion(x, y, width, height, parent) {
 
     this.timer = 2000;
 
-  	this.img = document.getElementById("HealthIcon");
+  	this.img = document.getElementById("HealthFX");
 
   	this.delete = false;
   	this.ignoreOnLoad = false;
@@ -78,7 +78,7 @@ function SPotion(x, y, width, height, parent) {
 
     this.timer = 10000;
 
-  	this.img = document.getElementById("playerShield");
+  	this.img = document.getElementById("SpeedFX");
 
   	this.delete = false;
   	this.ignoreOnLoad = false;
@@ -112,7 +112,7 @@ function SPotion(x, y, width, height, parent) {
 	}
 
 	this.Draw = function(scene) {
-    	ctx.drawImage(this.img,0, 0, 32,32, this.transform.position.x - (width/2),this.transform.position.y - (height/2), width, height);
+    	ctx.drawImage(this.img,0, 0, 16,16, this.transform.position.x - (width/2),this.transform.position.y - (height/2), width, height);
 	}
 
 }

@@ -191,7 +191,7 @@
                  "properties":
                     {
                      "isTrigger":true,
-                     "onCollide":"console.log(\"door collision!\");\nScene.player.setPosition(9*16, 12*16);\nScene.playSound(\"doorSound\");\nScene.loadMap(\"dungeon1\/entrance\/entrance\");\n"
+                     "onCollide":"console.log(\"door collision!\");\nScene.player.setPosition(9*16, 13*16);\nScene.playSound(\"doorSound\");\nScene.loadMap(\"dungeon1\/entrance\/entrance\");\n"
                     },
                  "propertytypes":
                     {
@@ -243,7 +243,7 @@
                 }, 
                 {
                  "gid":193,
-                 "height":31.7170923379175,
+                 "height":31.7171,
                  "id":75,
                  "name":"Door to Ice Dungeon",
                  "properties":
@@ -259,9 +259,105 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":40.5579567779961,
-                 "x":487.088408644401,
-                 "y":287.960707269155
+                 "width":40.558,
+                 "x":487.088,
+                 "y":287.961
+                }, 
+                {
+                 "gid":84,
+                 "height":80,
+                 "id":63,
+                 "name":"Bird Dude",
+                 "rotation":0,
+                 "type":"Bird",
+                 "visible":true,
+                 "width":30,
+                 "x":768,
+                 "y":224
+                }, 
+                {
+                 "gid":84,
+                 "height":30,
+                 "id":64,
+                 "name":"Skull",
+                 "rotation":0,
+                 "type":"Skull",
+                 "visible":true,
+                 "width":30,
+                 "x":112,
+                 "y":208
+                }, 
+                {
+                 "gid":84,
+                 "height":16,
+                 "id":66,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":624,
+                 "y":576
+                }, 
+                {
+                 "gid":84,
+                 "height":16,
+                 "id":67,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":624,
+                 "y":576
+                }, 
+                {
+                 "gid":84,
+                 "height":16,
+                 "id":68,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":624,
+                 "y":576
+                }, 
+                {
+                 "gid":84,
+                 "height":16,
+                 "id":69,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":544,
+                 "y":496
+                }, 
+                {
+                 "gid":84,
+                 "height":16,
+                 "id":71,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":624,
+                 "y":576
+                }, 
+                {
+                 "gid":84,
+                 "height":32,
+                 "id":74,
+                 "name":"",
+                 "rotation":0,
+                 "type":"Wizerd",
+                 "visible":true,
+                 "width":32,
+                 "x":80,
+                 "y":912
                 }],
          "opacity":1,
          "type":"objectgroup",

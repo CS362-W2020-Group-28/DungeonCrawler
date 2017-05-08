@@ -119,13 +119,19 @@ function Player() {
 
       this.doDamage(25);
     }
+  if(collider.parent.type == "Wizerd") {
 
+      this.velocity.x += collider.parent.velocity.x*8;
+      this.velocity.y += collider.parent.velocity.y*8;
+
+      this.doDamage(35);
+    }
     if(collider.parent.type == "Bird") {
 
       this.velocity.x += collider.parent.velocity.x*4;
       this.velocity.y += collider.parent.velocity.y*4;
 
-      this.doDamage(40);
+      this.doDamage(45);
     }
 
     return true;
