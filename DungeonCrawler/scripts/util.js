@@ -249,8 +249,11 @@ function Transform(GameObject) {
 
         
         if(this.collider) {
-                  if(this.collider.collision != null) {
-              this.collider.collision.parent.onCollide(scene, this.collider);
+                  if(this.collider.collisions.length > 0) {
+                    for(var i = 0; i < this.collider.collisions.length; i++) {
+                      this.collider.collisions[i].parent.onCollide(scene, this.collider);
+
+                    }
         }
         }
 

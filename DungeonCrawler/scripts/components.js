@@ -154,7 +154,7 @@ function BoxCollider(width, height, parent) {
     this.type = "BoxCollider";
     this.offset = new Vector2();
     this.parent = parent;
-    this.collision = null;
+    this.collisions = [];
     this.width = width;
     this.height = height;
     this.ignorePlayer = false;
@@ -185,6 +185,8 @@ function BoxCollider(width, height, parent) {
     		var tileID;
 
             var collision = false;
+
+            this.collisions = [];
 
 
     		for(var i = 0; i < scene.tileRenderer.map.layers.length; i++) {
@@ -261,27 +263,12 @@ function BoxCollider(width, height, parent) {
                         
                             if(scene.GameObjects[i].components.boxCollider.isTrigger) {
 
-                                this.collision = scene.GameObjects[i].components.boxCollider;
-
-                                
-
-
+                                this.collisions.push(scene.GameObjects[i].components.boxCollider);
                             }
                             else {
-                                this.collision = scene.GameObjects[i].components.boxCollider;
-
-                                 
-
-
-
-
+                                this.collisions.push(scene.GameObjects[i].components.boxCollider);
                                 collision = true;
                             }
-
-                        
-
-                        //else return true;
-
                     }
                 }
             }
