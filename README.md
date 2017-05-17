@@ -1,10 +1,7 @@
 # FumblingHotshots
 
 Dungeon Crawler
-Play Here: 
-http://mrmatt.tv/dungeoncrawler/
-https://jbarajar.github.io/FumblingHotshots/
 
 Controls:
-Move: WASD
-Attack: Space
+Move: Arrow keys (Up, Down, Left, Right)
+Action Keys: Z and X
