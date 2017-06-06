@@ -39,11 +39,11 @@ function Camera() {
         this.offset.y = canvas.height / 2;
 
 
-        
+
         this.transform.position = lerp(this.transform.position, transform.position, Scene.deltaTime*0.004);
 
 
-        
+
 
 
     }
@@ -52,7 +52,7 @@ function Camera() {
 
 
 
-        //if((this.transform.position.x - this.offset.x) > 0 
+        //if((this.transform.position.x - this.offset.x) > 0
             //&& (this.transform.position.x + this.offset.x) < (Scene.tileRenderer.map.width * Scene.tileRenderer.map.tilewidth)) {
                 this.vPosX = this.transform.position.x - this.offset.x;
 
@@ -120,7 +120,7 @@ function Scene() {
      var element = document.getElementById("music");
 
      if($("#music").attr("title") != soundName || element.currentTime == 0) {
-      $("#music").attr("title", soundName); 
+      $("#music").attr("title", soundName);
       element.pause();
       element.currentTime = 0;
       element.src = "sounds/" + soundName + ".mp3";
@@ -137,14 +137,6 @@ this.Start = function() {
         //run TileRenderer's Start() before pushing in other objects to prevent them from being wiped from inital loadMap call
         this.tileRenderer.Start(this);
 
-
-        //Skips TileRenderer at index 0 since already done above
-		//for(var i = 1; i < this.GameObjects.length; i++) {
-			//this.GameObjects[i].Start(this);
-
-		//}
-
-
         this.tileRenderer.ClearLightLayer();
 
 	}
@@ -155,11 +147,6 @@ this.Start = function() {
 
         this.UIBuffer.width = canvas.width;
         this.UIBuffer.height = canvas.height;
-
-
-
-        //ctx.scale(2,2);
-
 
         this.Camera.Update(this);
 
@@ -188,35 +175,22 @@ this.Start = function() {
         //"Delete" marked objects
         this.GameObjects = newList;
 
-
-
-            
-
         this.deltaTime = new Date() - startTime;
         startTime = new Date();
     }
 
     this.Draw = function() {
 
-     
-
         ctx.globalCompositeOperation = "source-over";
-
         this.tileRenderer.ClearLightLayer();
 
         ctx.scale(1, 1);
         ctx.fillStyle = "#000000";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        //ctx.clearRect(0, 0, width, height);
-
-
         this.Camera.translate(ctx);
         //Iterate through GameObject components
         for(var i = 0; i < this.GameObjects.length; i++) {
-
-
-            
 
             //Iterate through components
             for(var c in this.GameObjects[i].components) {
@@ -224,43 +198,10 @@ this.Start = function() {
             }
 
             this.GameObjects[i].Draw(this);
-
-
-            
-
         }
 
-        ctx.globalCompositeOperation = "multiply";
-
-
-            this.tileRenderer.DrawLightLayer(this);
-
-            
-        ctx.globalCompositeOperation = "source-over";
-
         this.tileRenderer.DrawTopLayer(this);
-
-
-
-            ctx.setTransform(1, 0, 0, 1, 0, 0);
-
-
-
-
-
-
-        
-
-        //
-
-
-        //Draw lighting here
-
-        
-
-
-
-
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
         ctx.drawImage(this.UIBuffer, 0, 0);
 
 

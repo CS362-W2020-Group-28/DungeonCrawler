@@ -10,62 +10,10 @@ function SpriteRenderer() {
     }
 
     this.Draw = function() {
-      
+
     }
 }
 
-
-function LightRenderer(parent, color, radius) {
-
-    this.parent = parent;
-    this.radius = radius;
-
-    this.color = color;
-    this.img = document.getElementById("light");
-
-
-    this.Start = function() {
-
-    }
-
-    this.Update = function() {
-
-    }
-
-    this.Draw = function() {
-
-      Scene.tileRenderer.lightContext.globalCompositeOperation = "lighter";
-
-      /*
-
-
-      for(var i = 1; i < 8; i++) {
-
-
-
-        Scene.tileRenderer.lightContext.fillStyle = this.color;
-        Scene.tileRenderer.lightContext.beginPath();
-      Scene.tileRenderer.lightContext.arc(this.parent.transform.position.x, this.parent.transform.position.y, this.radius/i, 0, 2 * Math.PI, false);
-      Scene.tileRenderer.lightContext.fill();
-
-      }
-
-      */
-
-
-        Scene.tileRenderer.lightContext.drawImage(this.img,0, 0, 128,128, this.parent.transform.position.x - (radius/2),this.parent.transform.position.y - (radius/2), radius, radius);
-      
-
-
-
-
-
-
-
-      Scene.tileRenderer.lightContext.globalCompositeOperation = "source-over";
-      
-    }
-}
 
 function MessageHandler(parent) {
 
@@ -113,7 +61,7 @@ function MessageHandler(parent) {
        Scene.Camera.resetTransform(Scene.UIContext);
 
       }
-        
+
    }
 
 
@@ -203,7 +151,7 @@ function BoxCollider(width, height, parent) {
                        if(scene.tileRenderer.map.tilesets[0].tileproperties[tileID.toString()].isSolid) {
                           collision = true;
                       }
-                  } 
+                  }
 
                     //Top right
                     tileID = scene.tileRenderer.map.layers[i].data[Math.floor((position.x + (this.width/2))/16) + scene.tileRenderer.map.width*Math.floor((position.y - (this.height/2))/16)] - 1;
@@ -236,7 +184,7 @@ function BoxCollider(width, height, parent) {
 
           }
 
-          
+
 
           for(var i = 0; i < scene.GameObjects.length; i++) {
 
@@ -246,13 +194,13 @@ function BoxCollider(width, height, parent) {
 
 				if(scene.GameObjects[i] != this.parent) {
 
-                    
+
 
              if(scene.GameObjects[i].components.boxCollider.ignorePlayer && this.parent.type == "Player") {
               continue;
              }
 
-                    
+
 
                     if (position.x - (this.width/2) < scene.GameObjects[i].transform.position.x + scene.GameObjects[i].components.boxCollider.width/2 &&
                      position.x + (this.width/2) > scene.GameObjects[i].transform.position.x - scene.GameObjects[i].components.boxCollider.width/2  &&
@@ -260,7 +208,7 @@ function BoxCollider(width, height, parent) {
                      (this.height/2) + position.y > scene.GameObjects[i].transform.position.y - scene.GameObjects[i].components.boxCollider.height/2) {
 
 
-                        
+
                             if(scene.GameObjects[i].components.boxCollider.isTrigger) {
 
                                 this.collisions.push(scene.GameObjects[i].components.boxCollider);

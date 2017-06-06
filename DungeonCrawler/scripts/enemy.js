@@ -14,9 +14,9 @@ function Harambe(x, y) {
     this.ignoreOnLoad = false;
     this.delete = false;
 
-    this.messages = { 
+    this.messages = {
             "data" : [
-            "Feel free to take this key.  It may help you.", 
+            "Feel free to take this key.  It may help you.",
             "Otherwise, welcome to Gorilla Goods!",
             "You look like a mighty warrior.",
             "We haven't officially opened yet...",
@@ -24,7 +24,7 @@ function Harambe(x, y) {
             "I was a big name up in Cincinnati.",
             "Sadly, fate forced me here.",
             "I do find solace in this line of work."
-            ] 
+            ]
     };
 
 
@@ -92,8 +92,8 @@ function NPC(x, y) {
     this.ignoreOnLoad = false;
     this.delete = false;
 
-    this.messages = { 
-            "data" : [ "I'm an NPC!" ] 
+    this.messages = {
+            "data" : [ "I'm an NPC!" ]
     };
 
 
@@ -112,7 +112,6 @@ function NPC(x, y) {
     this.Start = function(scene) {
         this.components.messageHandler = new MessageHandler(this);
         this.components.boxCollider = new BoxCollider(16, 16, this);
-        this.components.lightRenderer = new LightRenderer(this, "#111111", 32);
         this.transform = new Transform(this);
         this.transform.position.x = x;
         this.transform.position.y = y;
@@ -174,7 +173,6 @@ function Skull(x, y) {
 
     this.Start = function(scene) {
         this.components.boxCollider = new BoxCollider(30, 30, this);
-        this.components.lightRenderer = new LightRenderer(this, "#000800", 128);
 
         this.transform = new Transform(this);
         this.transform.position.x = x;
@@ -199,7 +197,7 @@ function Skull(x, y) {
             this.velocity.x += -scene.deltaTime * 0.01;
 
         }
-        
+
         if(this.transform.position.y <= Scene.player.transform.position.y) {
             this.velocity.y += scene.deltaTime * 0.01;
 
@@ -254,7 +252,6 @@ function Bird(x, y) {
 
     this.Start = function(scene) {
         this.components.boxCollider = new BoxCollider(30, 80, this);
-        //this.components.lightRenderer = new LightRenderer(this, "#000800", 256);
 
         this.transform = new Transform(this);
         this.transform.position.x = x;
@@ -276,7 +273,7 @@ function Bird(x, y) {
                 o.velocity.x = getRandomArbitrary(-4, 4);
                 o.velocity.y = getRandomArbitrary(-4, 4);
 
-                
+
 
                 Scene.addObject(o);
             }
@@ -296,7 +293,7 @@ function Bird(x, y) {
             this.flipX = true;
 
         }
-        
+
         if(this.transform.position.y <= Scene.player.transform.position.y) {
             this.velocity.y += scene.deltaTime * 0.01;
 
@@ -351,7 +348,6 @@ function Wizerd(x, y) {
 
     this.Start = function(scene) {
         this.components.boxCollider = new BoxCollider(32, 32, this);
-        //this.components.lightRenderer = new LightRenderer(this, "#000800", 256);
 
         this.transform = new Transform(this);
         this.transform.position.x = x;
@@ -378,7 +374,7 @@ function Wizerd(x, y) {
             this.flipX = true;
 
         }
-        
+
         if(this.transform.position.y <= Scene.player.transform.position.y) {
             this.velocity.y += scene.deltaTime * 0.01;
 
@@ -431,7 +427,6 @@ function Slime(x, y) {
 
     this.Start = function(scene) {
         this.components.boxCollider = new BoxCollider(16, 16, this);
-        //this.components.lightRenderer = new LightRenderer(this, "#000800", 32);
 
         this.transform = new Transform(this);
         this.transform.position.x = x;

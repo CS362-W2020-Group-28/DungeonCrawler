@@ -172,10 +172,7 @@ function Player() {
   //intializes the player class
   this.Start = function(scene) {
 
-
-
     this.components.boxCollider = new BoxCollider(14, 14, this);
-    this.components.lightRenderer = new LightRenderer(this, "#202020", 1024);
     this.transform = new Transform(this);
     this.transform.position.x = 64*16;
     this.transform.position.y = 71*16;
@@ -222,25 +219,6 @@ function Player() {
 
 
           if(this.health > 0) {
-
-            
-
-
-            //this.velocity.x -= scene.deltaTime*0.01;
-            //this.velocity.y -= scene.deltaTime*0.01;
-
-
-            /*
-
-            if(this.velocity.x <= 0) {
-              this.velocity.x = 0;
-            }
-
-            if(this.velocity.y <= 0) {
-              this.velocity.y = 0;
-            }
-
-            */
 
 
             if(input.arrowKeyUp || input.arrowKeyDown || input.arrowKeyLeft || input.arrowKeyRight) {
@@ -387,6 +365,9 @@ function Player() {
                  Scene.UIContext.fillText(this.health,60,canvas.height - 16 - (this.isMenu ? 24 : 0));
                  Scene.UIContext.drawImage(this.healthIcon,0, 0, 8,8, 48,canvas.height-25 - (this.isMenu ? 24 : 0), 8, 8);
 
+
+
+
                  if(this.health <= 0) {
                  Scene.UIContext.fillStyle= "#000000";
                  Scene.UIContext.textAlign = "center";
@@ -419,8 +400,6 @@ function Player() {
                     if(this.inventory && this.inventory[i].icon)
                       Scene.UIContext.drawImage(this.inventory[i].icon,0, 0, 16,16, 8+(i*16),canvas.height - 22, 16, 16);
                   }
-
-
 
 
                   Scene.UIContext.strokeStyle="#000000";
