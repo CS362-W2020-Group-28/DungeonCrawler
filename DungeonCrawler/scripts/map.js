@@ -308,23 +308,8 @@ function TileRenderer() {
                       Scene.Camera.translate(ctx);
                     }
 
-                    this.DrawTopLayer = function(scene) {
-                     ctx.drawImage(this.floatBuffer, 0,0, this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
-                   }
-
-                   this.ClearLightLayer = function() {
-
-                     this.lightContext.fillStyle = "#111111";
-                     this.lightContext.fillRect(0, 0, this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
-
-                   }
-
-                   this.DrawLightLayer = function(scene) {
+              
 
 
-
-
-                     ctx.drawImage(this.lightBuffer, 0,0, this.map.width*this.map.tilewidth, this.map.height*this.map.tileheight);
-                   }
 
                  }

@@ -137,7 +137,7 @@ this.Start = function() {
         //run TileRenderer's Start() before pushing in other objects to prevent them from being wiped from inital loadMap call
         this.tileRenderer.Start(this);
 
-        this.tileRenderer.ClearLightLayer();
+      
 
 	}
 
@@ -182,7 +182,6 @@ this.Start = function() {
     this.Draw = function() {
 
         ctx.globalCompositeOperation = "source-over";
-        this.tileRenderer.ClearLightLayer();
 
         ctx.scale(1, 1);
         ctx.fillStyle = "#000000";
@@ -200,7 +199,7 @@ this.Start = function() {
             this.GameObjects[i].Draw(this);
         }
 
-        this.tileRenderer.DrawTopLayer(this);
+        //this.tileRenderer.DrawTopLayer(this);
         ctx.setTransform(1, 0, 0, 1, 0, 0);
         ctx.drawImage(this.UIBuffer, 0, 0);
 
